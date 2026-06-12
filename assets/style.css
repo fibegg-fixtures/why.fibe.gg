@@ -444,7 +444,7 @@ body.is-drawer-open { overflow: hidden; }
   .nav__inner { gap: 0.6rem; padding: 0.5rem var(--pad-x); justify-content: flex-start; }
   .nav__cta { display: none; }
   .nav__paths { display: none; }
-  .nav__brand { margin-right: auto; }
+  .nav__inner > .nav__brand { display: none !important; }
 }
 
 /* ──────────────────────────────────────────────
@@ -2308,6 +2308,12 @@ body.is-drawer-open { overflow: hidden; }
     radial-gradient(900px 500px at 50% 110%, color-mix(in srgb, var(--brand-500) 16%, transparent), transparent 60%),
     radial-gradient(800px 400px at 82% -20%, color-mix(in srgb, var(--gold-500) 13%, transparent), transparent 60%),
     linear-gradient(180deg, var(--ink-0) 0%, var(--ink-2) 100%);
+  min-height: calc(100vh - 56px);
+  min-height: calc(100dvh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 /* The phoenix — a tinted ghost rising behind the closing CTA: rebirth,
    freedom. The phosphor tint is baked into the PNG at build time (the
@@ -2526,8 +2532,7 @@ body.is-drawer-open { overflow: hidden; }
   .matrix-section,
   .persona,
   .solutions,
-  .capture,
-  .close {
+  .capture {
     min-height: calc(100vh - var(--nav-h));
     display: flex;
     flex-direction: column;
