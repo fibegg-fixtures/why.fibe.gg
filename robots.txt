@@ -1,0 +1,7 @@
+# https://www.robotstxt.org
+# Allow all crawlers.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://why.fibe.gg/sitemap.xml

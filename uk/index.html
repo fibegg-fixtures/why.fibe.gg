@@ -1,0 +1,1557 @@
+<!doctype html>
+<html lang="uk" data-locale="uk">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" >
+    <meta name="color-scheme" content="dark" >
+    <meta name="theme-color" content="#191c14" >
+
+    <title data-i18n="meta.title">Чому Fibe?</title>
+    <meta name="description" content="Чи ти ніколи не писав код, чи ведеш дослідницьку лабораторію, чи запускаєш стартапи уві сні — Fibe це майстерня, якої тобі бракувало. Обери свій шлях." data-i18n-attr="content=meta.description">
+    <meta name="author" content="Fibe" >
+    <meta name="robots" content="index, follow, max-image-preview:large" >
+    <meta name="keywords" content="Fibe, fibe.gg, no-code, low-code, AI агент, Docker середовища, фаундер, CTO, AI дослідження, Genie, Marquee, Playground, dev environment, vibe coding" data-i18n-attr="content=meta.keywords">
+
+    <link rel="canonical" href="https://why.fibe.gg/uk/">
+    <!-- i18n: search engines should see distinct, fully-rendered URLs per language -->
+    <link rel="alternate" hreflang="en" href="https://why.fibe.gg/" >
+    <link rel="alternate" hreflang="uk" href="https://why.fibe.gg/uk/" >
+    <link rel="alternate" hreflang="x-default" href="https://why.fibe.gg/" >
+    <link rel="icon" type="image/svg+xml" href="/fibe.svg" >
+    <link rel="alternate icon" href="/img/favicon.ico" sizes="any" >
+    <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192" >
+    <link rel="icon" type="image/png" href="/img/icon-512.png" sizes="512x512" >
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" >
+    <link rel="manifest" href="/site.webmanifest" >
+
+    <meta property="og:site_name" content="Fibe" data-i18n-attr="content=meta.og_site_name">
+    <meta property="og:type" content="website" >
+    <meta property="og:title" content="Чому Fibe — шість шляхів в одну майстерню" data-i18n-attr="content=meta.og_title">
+    <meta property="og:description" content="Без досвіду. З глибокою експертизою. Дослідник. Фаундер. CTO. Fibe зустрічає кожного там, де він є." data-i18n-attr="content=meta.og_description">
+    <meta property="og:url" content="https://why.fibe.gg/" >
+    <meta property="og:image" content="https://why.fibe.gg/img/og-default.png" >
+    <meta name="twitter:card" content="summary_large_image" >
+    <meta name="twitter:title" content="Чому Fibe — шість шляхів в одну майстерню" data-i18n-attr="content=meta.twitter_title">
+    <meta name="twitter:description" content="Без досвіду. З глибокою експертизою. Дослідник. Фаундер. CTO. Fibe зустрічає кожного там, де він є." data-i18n-attr="content=meta.twitter_description">
+    <meta name="twitter:image" content="https://why.fibe.gg/img/og-default.png" >
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Why Fibe",
+        "url": "https://why.fibe.gg",
+        "publisher": { "@type": "Organization", "name": "Fibe", "url": "https://fibe.gg" }
+      }
+    </script>
+
+    <!-- Type: Chakra Petch (display, Latin) · Play (display fallback with
+         Cyrillic for /uk/) · IBM Plex Sans (body) · JetBrains Mono (labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Play:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" >
+
+    <link rel="preload" href="/assets/style.css?v=15" as="style" >
+    <link rel="stylesheet" href="/assets/style.css?v=15" >
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav" aria-label="Primary">
+      <div class="nav__inner">
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" data-drawer-toggle>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <a class="nav__brand" href="/" aria-label="Fibe">
+          <img class="nav__mark" src="/fibe.svg" alt="" width="28" height="28" aria-hidden="true" >
+          <span class="nav__word">Fibe</span>
+          <span class="nav__slash" aria-hidden="true">/</span>
+          <span class="nav__sub">why</span>
+        </a>
+
+        <nav class="nav__paths" aria-label="Jump to a path" data-paths>
+          <a href="#reasons" class="nav__path nav__path--reasons" data-path="reasons">
+            <span class="nav__path-label" data-i18n="nav.reasons">Причини:</span>
+          </a>
+          <a href="#p-fun" class="nav__path nav__path--fun" data-path="p-fun">
+            <span class="nav__path-label" data-i18n="nav.fun">розваги,</span>
+          </a>
+          <a href="#p-problem" class="nav__path nav__path--business" data-path="p-problem">
+            <span class="nav__path-label" data-i18n="nav.business">бізнес,</span>
+          </a>
+          <a href="#p-product" class="nav__path nav__path--expertise" data-path="p-product">
+            <span class="nav__path-label" data-i18n="nav.expertise">експертиза,</span>
+          </a>
+          <a href="#p-sharpen" class="nav__path nav__path--craft" data-path="p-sharpen">
+            <span class="nav__path-label" data-i18n="nav.craft">ремесло,</span>
+          </a>
+          <a href="#p-compete" class="nav__path nav__path--dream" data-path="p-compete">
+            <span class="nav__path-label" data-i18n="nav.dream">мрія,</span>
+          </a>
+          <a href="#p-cto" class="nav__path nav__path--shareholders" data-path="p-cto">
+            <span class="nav__path-label" data-i18n="nav.shareholders">акціонери,</span>
+          </a>
+          <a href="#p-research" class="nav__path nav__path--research" data-path="p-research">
+            <span class="nav__path-label" data-i18n="nav.research">дослідження...</span>
+          </a>
+          <a href="#solutions" class="nav__path nav__path--solutions" data-path="solutions">
+            <span class="nav__path-label" data-i18n="nav.solutions">Рішення</span>
+          </a>
+          <a href="#fibedentity" class="nav__path nav__path--fibedentity" data-path="fibedentity">
+            <span class="nav__path-label" data-i18n="nav.fibedentity">Fibedentity</span>
+          </a>
+        </nav>
+
+        <a class="nav__lang" hreflang="en" href="/" data-i18n="nav.lang_switch_label" data-i18n-attr="hreflang=nav.lang_switch_hreflang;href=nav.lang_switch_href" aria-label="Switch language">English</a>
+
+        <a class="nav__cta" href="https://fibe.gg/" rel="noopener" data-i18n="nav.try_fibe">fibe →</a>
+      </div>
+    </header>
+
+    <!-- Mobile drawer (hidden on desktop). Lives outside <header> so it isn't
+         trapped by the nav's backdrop-filter containing block. -->
+    <div class="drawer" id="nav-drawer" hidden data-drawer>
+      <div class="drawer__backdrop" data-drawer-close></div>
+      <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div class="drawer__head">
+          <a class="nav__brand" href="/" aria-label="Fibe">
+            <img class="nav__mark" src="/fibe.svg" alt="" width="28" height="28" aria-hidden="true" >
+            <span class="nav__word">Fibe</span>
+            <span class="nav__slash" aria-hidden="true">/</span>
+              <span class="nav__sub">why</span>
+            </a>
+            <button class="drawer__close" type="button" aria-label="Close menu" data-drawer-close>×</button>
+          </div>
+          <nav class="drawer__list" aria-label="Jump to a path">
+            <a href="#reasons" class="drawer__item" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.reasons">Причини:</span>
+            </a>
+            <a href="#p-fun" class="drawer__item drawer__item--fun" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.fun">розваги,</span>
+            </a>
+            <a href="#p-problem" class="drawer__item drawer__item--business" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.business">бізнес,</span>
+            </a>
+            <a href="#p-product" class="drawer__item drawer__item--expertise" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.expertise">експертиза,</span>
+            </a>
+            <a href="#p-sharpen" class="drawer__item drawer__item--craft" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.craft">ремесло,</span>
+            </a>
+            <a href="#p-compete" class="drawer__item drawer__item--dream" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.dream">мрія,</span>
+            </a>
+            <a href="#p-cto" class="drawer__item drawer__item--shareholders" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.shareholders">акціонери,</span>
+            </a>
+            <a href="#p-research" class="drawer__item drawer__item--research" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.research">дослідження...</span>
+            </a>
+            <a href="#solutions" class="drawer__item drawer__item--solutions" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.solutions">Рішення</span>
+            </a>
+            <a href="#fibedentity" class="drawer__item drawer__item--fibedentity" data-drawer-link>
+              <span class="drawer__item-label" data-i18n="drawer.fibedentity">Fibedentity</span>
+            </a>
+          </nav>
+          <div class="drawer__foot">
+            <a class="drawer__lang" hreflang="en" href="/" data-i18n="drawer.lang_switch_label" data-i18n-attr="hreflang=drawer.lang_switch_hreflang;href=drawer.lang_switch_href">English</a>
+            <a class="btn btn--primary drawer__cta" href="https://fibe.gg/" rel="noopener" data-i18n="drawer.try_fibe">fibe →</a>
+            <nav class="drawer__family" aria-label="Family">
+              <a href="https://fibe.gg/" rel="noopener">fibe.gg</a>
+              <a href="https://when.fibe.gg/" rel="noopener">when</a>
+              <a href="https://where.fibe.gg/" rel="noopener">where</a>
+              <a href="https://whats.fibe.gg/" rel="noopener">whats</a>
+            </nav>
+          </div>
+      </aside>
+    </div>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__inner">
+          <h1 id="hero-title" class="hero__title" data-i18n="hero.title">Смартфон потрібен кожному<br>
+            <span class="hero__title-em">У 2007 багато хто сумнівався</span></h1>
+
+          <figure class="hero__graph" data-graph>
+            <span class="hero__graph-tip" data-graph-tip aria-hidden="true"></span>
+            <!-- SVG body is generated at build time from i18n.json
+                 (hero.graph.{start_label,end_label,way_label,steps}). Edit
+                 the steps array in assets/i18n.json to change the waypoints. -->
+            <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph aria-label="Багато шляхів; один прямий — Fibe Way">
+    <title>Багато шляхів; один прямий — Fibe Way</title>
+    <defs>
+      <!-- gradientUnits=userSpaceOnUse so the gradient anchors to SVG
+           coordinates, not the path's bounding box. With all waypoints on
+           the same horizontal line the bounding box has zero height, and
+           the default objectBoundingBox mode wouldn't render the gradient
+           — leaving the stroke invisible. -->
+      <linearGradient id="hero-graph-shortest"
+                      x1="60" y1="110"
+                      x2="660" y2="110"
+                      gradientUnits="userSpaceOnUse">
+        <stop offset="0%" style="stop-color: var(--brand-300)" stop-opacity="0.95" ></stop>
+        <stop offset="55%" style="stop-color: var(--brand-500)" stop-opacity="0.95" ></stop>
+        <stop offset="100%" style="stop-color: var(--gold-400)" stop-opacity="0.95" ></stop>
+      </linearGradient>
+      <!-- filterUnits=userSpaceOnUse for the same reason as the gradient:
+           the Fibe Way path is perfectly horizontal so its bounding box
+           collapses to zero height; objectBoundingBox-relative coords on
+           the filter region would also collapse and the glow wouldn't
+           render. Fixed-viewBox coords keep the blur intact. -->
+      <filter id="hero-graph-glow"
+              x="0" y="0" width="720" height="220"
+              filterUnits="userSpaceOnUse">
+        <feGaussianBlur stdDeviation="3" result="blur" ></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="blur" ></feMergeNode>
+          <feMergeNode in="SourceGraphic" ></feMergeNode>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Base pairs — the rungs of the ladder -->
+    <g style="stroke: var(--fg-3)" opacity="0.16" stroke-width="1" fill="none">
+      <line x1="72" y1="121.4" x2="72" y2="98.6" ></line>
+      <line x1="96" y1="141.5" x2="96" y2="78.5" ></line>
+      <line x1="120" y1="153.7" x2="120" y2="66.3" ></line>
+      <line x1="144" y1="155.2" x2="144" y2="64.8" ></line>
+      <line x1="168" y1="145.4" x2="168" y2="74.6" ></line>
+      <line x1="192" y1="126.9" x2="192" y2="93.1" ></line>
+      <line x1="240" y1="83.0" x2="240" y2="137.0" ></line>
+      <line x1="264" y1="68.4" x2="264" y2="151.6" ></line>
+      <line x1="288" y1="64.1" x2="288" y2="155.9" ></line>
+      <line x1="312" y1="71.2" x2="312" y2="148.8" ></line>
+      <line x1="336" y1="87.8" x2="336" y2="132.2" ></line>
+      <line x1="384" y1="132.2" x2="384" y2="87.8" ></line>
+      <line x1="408" y1="148.8" x2="408" y2="71.2" ></line>
+      <line x1="432" y1="155.9" x2="432" y2="64.1" ></line>
+      <line x1="456" y1="151.6" x2="456" y2="68.4" ></line>
+      <line x1="480" y1="137.0" x2="480" y2="83.0" ></line>
+      <line x1="528" y1="93.1" x2="528" y2="126.9" ></line>
+      <line x1="552" y1="74.6" x2="552" y2="145.4" ></line>
+      <line x1="576" y1="64.8" x2="576" y2="155.2" ></line>
+      <line x1="600" y1="66.3" x2="600" y2="153.7" ></line>
+      <line x1="624" y1="78.5" x2="624" y2="141.5" ></line>
+      <line x1="648" y1="98.6" x2="648" y2="121.4" ></line>
+    </g>
+
+    <!-- The two strands: phosphor green and signal gold -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M 60 110.0 L 66 115.8 L 72 121.4 L 78 126.9 L 84 132.2 L 90 137.0 L 96 141.5 L 102 145.4 L 108 148.8 L 114 151.6 L 120 153.7 L 126 155.2 L 132 155.9 L 138 155.9 L 144 155.2 L 150 153.7 L 156 151.6 L 162 148.8 L 168 145.4 L 174 141.5 L 180 137.0 L 186 132.2 L 192 126.9 L 198 121.4 L 204 115.8 L 210 110.0 L 216 104.2 L 222 98.6 L 228 93.1 L 234 87.8 L 240 83.0 L 246 78.5 L 252 74.6 L 258 71.2 L 264 68.4 L 270 66.3 L 276 64.8 L 282 64.1 L 288 64.1 L 294 64.8 L 300 66.3 L 306 68.4 L 312 71.2 L 318 74.6 L 324 78.5 L 330 83.0 L 336 87.8 L 342 93.1 L 348 98.6 L 354 104.2 L 360 110.0 L 366 115.8 L 372 121.4 L 378 126.9 L 384 132.2 L 390 137.0 L 396 141.5 L 402 145.4 L 408 148.8 L 414 151.6 L 420 153.7 L 426 155.2 L 432 155.9 L 438 155.9 L 444 155.2 L 450 153.7 L 456 151.6 L 462 148.8 L 468 145.4 L 474 141.5 L 480 137.0 L 486 132.2 L 492 126.9 L 498 121.4 L 504 115.8 L 510 110.0 L 516 104.2 L 522 98.6 L 528 93.1 L 534 87.8 L 540 83.0 L 546 78.5 L 552 74.6 L 558 71.2 L 564 68.4 L 570 66.3 L 576 64.8 L 582 64.1 L 588 64.1 L 594 64.8 L 600 66.3 L 606 68.4 L 612 71.2 L 618 74.6 L 624 78.5 L 630 83.0 L 636 87.8 L 642 93.1 L 648 98.6 L 654 104.2 L 660 110.0" style="stroke: var(--brand-400)" stroke-width="1.6" opacity="0.38" ></path>
+      <path d="M 60 110.0 L 66 104.2 L 72 98.6 L 78 93.1 L 84 87.8 L 90 83.0 L 96 78.5 L 102 74.6 L 108 71.2 L 114 68.4 L 120 66.3 L 126 64.8 L 132 64.1 L 138 64.1 L 144 64.8 L 150 66.3 L 156 68.4 L 162 71.2 L 168 74.6 L 174 78.5 L 180 83.0 L 186 87.8 L 192 93.1 L 198 98.6 L 204 104.2 L 210 110.0 L 216 115.8 L 222 121.4 L 228 126.9 L 234 132.2 L 240 137.0 L 246 141.5 L 252 145.4 L 258 148.8 L 264 151.6 L 270 153.7 L 276 155.2 L 282 155.9 L 288 155.9 L 294 155.2 L 300 153.7 L 306 151.6 L 312 148.8 L 318 145.4 L 324 141.5 L 330 137.0 L 336 132.2 L 342 126.9 L 348 121.4 L 354 115.8 L 360 110.0 L 366 104.2 L 372 98.6 L 378 93.1 L 384 87.8 L 390 83.0 L 396 78.5 L 402 74.6 L 408 71.2 L 414 68.4 L 420 66.3 L 426 64.8 L 432 64.1 L 438 64.1 L 444 64.8 L 450 66.3 L 456 68.4 L 462 71.2 L 468 74.6 L 474 78.5 L 480 83.0 L 486 87.8 L 492 93.1 L 498 98.6 L 504 104.2 L 510 110.0 L 516 115.8 L 522 121.4 L 528 126.9 L 534 132.2 L 540 137.0 L 546 141.5 L 552 145.4 L 558 148.8 L 564 151.6 L 570 153.7 L 576 155.2 L 582 155.9 L 588 155.9 L 594 155.2 L 600 153.7 L 606 151.6 L 612 148.8 L 618 145.4 L 624 141.5 L 630 137.0 L 636 132.2 L 642 126.9 L 648 121.4 L 654 115.8 L 660 110.0" style="stroke: var(--gold-400)" stroke-width="1.6" opacity="0.34" ></path>
+    </g>
+
+    <!-- Nucleotides scattered along the strands -->
+    <g>
+      <circle cx="98" cy="142.9" r="3.5" style="fill: var(--brand-400)" opacity="0.55" ></circle>
+      <circle cx="164" cy="72.2" r="3.5" style="fill: var(--gold-400)" opacity="0.55" ></circle>
+      <circle cx="230" cy="91.3" r="3.5" style="fill: var(--brand-400)" opacity="0.55" ></circle>
+      <circle cx="296" cy="154.8" r="3.5" style="fill: var(--gold-400)" opacity="0.55" ></circle>
+      <circle cx="362" cy="111.9" r="3.5" style="fill: var(--brand-400)" opacity="0.55" ></circle>
+      <circle cx="428" cy="64.5" r="3.5" style="fill: var(--gold-400)" opacity="0.55" ></circle>
+      <circle cx="494" cy="125.1" r="3.5" style="fill: var(--brand-400)" opacity="0.55" ></circle>
+      <circle cx="560" cy="149.8" r="3.5" style="fill: var(--gold-400)" opacity="0.55" ></circle>
+      <circle cx="626" cy="79.9" r="3.5" style="fill: var(--brand-400)" opacity="0.55" ></circle>
+    </g>
+
+    <!-- The Fibe Way — the straight axis of the helix: the shortest path
+         through the genome of software -->
+    <g class="hero__graph-shortest" tabindex="0" role="button" aria-label="Fibe Way">
+      <title>Fibe Way</title>
+      <path class="hero__graph-shortest-line" d="M 60 110 L 210 110 L 360 110 L 510 110 L 660 110"
+            stroke="url(#hero-graph-shortest)" stroke-width="3.5" fill="none"
+            stroke-linecap="round" stroke-linejoin="round"
+            filter="url(#hero-graph-glow)" ></path>
+      <path class="hero__graph-shortest-hit" d="M 60 110 L 210 110 L 360 110 L 510 110 L 660 110"
+            stroke="transparent" stroke-width="22" fill="none"
+            stroke-linecap="round" stroke-linejoin="round" ></path>
+    </g>
+
+    <!-- Each Fibe-Way waypoint is its own hoverable group with an i18n label -->
+    <g class="hero__graph-step" tabindex="0" role="button"
+       data-step-label="Зареєструйся" aria-label="Зареєструйся">
+      <title>Зареєструйся</title>
+      <circle cx="210" cy="110" r="6" style="fill: var(--brand-300)" class="hero__graph-step-dot" ></circle>
+      <circle cx="210" cy="110" r="14" fill="transparent" class="hero__graph-step-hit" ></circle>
+    </g>
+    <g class="hero__graph-step" tabindex="0" role="button"
+       data-step-label="Виклич Джина" aria-label="Виклич Джина">
+      <title>Виклич Джина</title>
+      <circle cx="360" cy="110" r="6" style="fill: var(--brand-300)" class="hero__graph-step-dot" ></circle>
+      <circle cx="360" cy="110" r="14" fill="transparent" class="hero__graph-step-hit" ></circle>
+    </g>
+    <g class="hero__graph-step" tabindex="0" role="button"
+       data-step-label="Опиши свою ідею" aria-label="Опиши свою ідею">
+      <title>Опиши свою ідею</title>
+      <circle cx="510" cy="110" r="6" style="fill: var(--brand-300)" class="hero__graph-step-dot" ></circle>
+      <circle cx="510" cy="110" r="14" fill="transparent" class="hero__graph-step-hit" ></circle>
+    </g>
+
+    <!-- Source endpoint (YOU) — the green strand begins -->
+    <g>
+      <circle cx="60" cy="110" r="14" style="fill: var(--ink-0); stroke: var(--brand-300)" stroke-width="2.5" ></circle>
+      <circle cx="60" cy="110" r="5" style="fill: var(--brand-300)" ></circle>
+    </g>
+
+    <!-- Target endpoint (SHIP) — lands on gold -->
+    <g>
+      <circle cx="660" cy="110" r="14" style="fill: var(--ink-0); stroke: var(--gold-400)" stroke-width="2.5" ></circle>
+      <circle cx="660" cy="110" r="5" style="fill: var(--gold-400)" ></circle>
+    </g>
+
+    <text x="60" y="152" text-anchor="middle"
+      style="fill: var(--fg-3)" font-size="11" font-family="JetBrains Mono, ui-monospace, Menlo, monospace"
+      letter-spacing="0.12em">ТИ</text>
+    <text x="660" y="152" text-anchor="middle"
+      style="fill: var(--fg-3)" font-size="11" font-family="JetBrains Mono, ui-monospace, Menlo, monospace"
+      letter-spacing="0.12em">ЦІЛЬ</text>
+  </svg>
+          </figure>
+
+          <p class="hero__lede" data-i18n="hero.lede">Сьогодні ми всі залежимо від софту.
+            Інтернет створив застосунки, а смартфони принесли їх у наші кишені.
+            Fibe підлаштовує їх саме під те, що тобі потрібно</p>
+          <div class="hero__ctas">
+            <a href="#reasons">
+              <p class="eyebrow eyebrow--hero" data-i18n="hero.eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>
+            Чому <b>тобі</b>
+            <span class="eyebrow__swap" aria-label="справді, а не просто можливо">
+              <span class="eyebrow__strike" aria-hidden="true">можливо</span>
+              <span class="eyebrow__really">справді</span>
+            </span>
+            варто Fibe-ити?</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Marquee strip — homage to Fibe's Marquee concept -->
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee__track">
+            <span data-i18n="hero.marquee.landing_pages">лендінги</span><span>·</span>
+            <span data-i18n="hero.marquee.crms">CRM-ки</span><span>·</span>
+            <span data-i18n="hero.marquee.internal_tools">внутрішні тули</span><span>·</span>
+            <span data-i18n="hero.marquee.mvps">MVP</span><span>·</span>
+            <span data-i18n="hero.marquee.staging_environments">stage-середовища</span><span>·</span>
+            <span data-i18n="hero.marquee.data_pipelines">пайплайни даних</span><span>·</span>
+            <span data-i18n="hero.marquee.qa_sandboxes">QA-пісочниці</span><span>·</span>
+            <span data-i18n="hero.marquee.agent_experiments">експерименти з агентами</span><span>·</span>
+            <span data-i18n="hero.marquee.founder_demos">фаундер-демки</span><span>·</span>
+            <span data-i18n="hero.marquee.side_projects">пет-проекти</span><span>·</span>
+            <span data-i18n="hero.marquee.portfolio_sites">портфоліо-сайти</span><span>·</span>
+            <span data-i18n="hero.marquee.research_notebooks">research-ноутбуки</span><span>·</span>
+            <span data-i18n="hero.marquee.pr_previews">PR-прев'ю</span><span>·</span>
+            <span data-i18n="hero.marquee.weekend_hacks">weekend-хаки</span><span>·</span>
+            <!-- duplicated for seamless loop -->
+            <span data-i18n="hero.marquee.landing_pages">лендінги</span><span>·</span>
+            <span data-i18n="hero.marquee.crms">CRM-ки</span><span>·</span>
+            <span data-i18n="hero.marquee.internal_tools">внутрішні тули</span><span>·</span>
+            <span data-i18n="hero.marquee.mvps">MVP</span><span>·</span>
+            <span data-i18n="hero.marquee.staging_environments">stage-середовища</span><span>·</span>
+            <span data-i18n="hero.marquee.data_pipelines">пайплайни даних</span><span>·</span>
+            <span data-i18n="hero.marquee.qa_sandboxes">QA-пісочниці</span><span>·</span>
+            <span data-i18n="hero.marquee.agent_experiments">експерименти з агентами</span><span>·</span>
+            <span data-i18n="hero.marquee.founder_demos">фаундер-демки</span><span>·</span>
+            <span data-i18n="hero.marquee.side_projects">пет-проекти</span><span>·</span>
+            <span data-i18n="hero.marquee.portfolio_sites">портфоліо-сайти</span><span>·</span>
+            <span data-i18n="hero.marquee.research_notebooks">research-ноутбуки</span><span>·</span>
+            <span data-i18n="hero.marquee.pr_previews">PR-прев'ю</span><span>·</span>
+            <span data-i18n="hero.marquee.weekend_hacks">weekend-хаки</span><span>·</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="reasons" class="matrix-section" aria-labelledby="reasons-title">
+        <header class="section-head">
+
+          <h2 id="reasons-title" data-i18n="matrix.title">Багато причин користуватися смартфоном</h2>
+          <p class="section-sub" data-i18n="matrix.sub">А fibe-ити — ще більше. Причини залежать від твого бекграунду</p>
+        </header>
+
+        <div class="matrix">
+          <!-- LEFT FLANK: triangle-shaped tile for "For fun" -->
+          <a href="#p-fun" class="tile tile--fun matrix__flank matrix__flank--left" role="listitem">
+            <span class="tile__shape tile__shape--triangle" aria-hidden="true"></span>
+            <span class="tile__content">
+              <span class="tile__tag" data-i18n="matrix.tile.fun.tag">Будь-хто</span>
+              <span class="tile__title" data-i18n="matrix.tile.fun.title">Для розваги</span>
+              <span class="tile__sub" data-i18n="matrix.tile.fun.sub">Своя гра, спонтанна анімація, експеримент на викид — на ходу.</span>
+            </span>
+          </a>
+
+          <div class="matrix__grid" role="list">
+            <div class="matrix__axes" aria-hidden="true">
+              <div class="matrix__axis matrix__axis--y">
+                <span class="matrix__axis-label" data-i18n="matrix.axis_domain">Знання предметної області</span>
+                <span class="matrix__axis-arrow">↓</span>
+              </div>
+              <div class="matrix__axis matrix__axis--x">
+                <span class="matrix__axis-label" data-i18n="matrix.axis_dev">Досвід розробки</span>
+                <span class="matrix__axis-arrow">→</span>
+              </div>
+            </div>
+            <!-- (no domain, no software) -->
+            <a href="#p-problem" class="tile tile--problem" role="listitem">
+              <span class="tile__tag" data-i18n="matrix.tile.problem.tag">Без домену · Без коду</span>
+              <span class="tile__title" data-i18n="matrix.tile.problem.title">Виріши проблему</span>
+              <span class="tile__sub" data-i18n="matrix.tile.problem.sub">Лендінг, CRM, внутрішній тул — без найму агенції.</span>
+            </a>
+
+            <!-- (no domain, software) -->
+            <a href="#p-sharpen" class="tile tile--sharpen" role="listitem">
+              <span class="tile__tag" data-i18n="matrix.tile.sharpen.tag">Без домену · З кодом</span>
+              <span class="tile__title" data-i18n="matrix.tile.sharpen.title">Заточи свої інструменти</span>
+              <span class="tile__sub" data-i18n="matrix.tile.sharpen.sub">Працюй з мобілки, створюй унікальні тули, автоматизуй усе — прямо під час дейлі.</span>
+            </a>
+
+            <!-- (domain, no software) -->
+            <a href="#p-product" class="tile tile--product" role="listitem">
+              <span class="tile__tag" data-i18n="matrix.tile.product.tag">Домен · Без коду</span>
+              <span class="tile__title" data-i18n="matrix.tile.product.title">Сфокусуй свою експертизу</span>
+              <span class="tile__sub" data-i18n="matrix.tile.product.sub">Збудуй <strong>ту саму</strong> кастомну інтеграцію, зроби, щоб <strong>оця</strong> валідація запрацювала — без того, щоб ставати фаундером (чи?..)</span>
+            </a>
+
+            <!-- (domain, software) -->
+            <a href="#p-compete" class="tile tile--compete" role="listitem">
+              <span class="tile__tag" data-i18n="matrix.tile.compete.tag">Домен · З кодом</span>
+              <span class="tile__title" data-i18n="matrix.tile.compete.title">Конкуруй із <strong>Ними</strong></span>
+              <span class="tile__sub" data-i18n="matrix.tile.compete.sub">Бий мережевий ефект і безмежні ресурси точковими ударами й асиметричними відповідями.</span>
+            </a>
+          </div>
+
+          <!-- CTO/orchestrator tile — OUTSIDE the axis frame, sitting below the
+               2×2 in the middle column. The axis arrows now only enclose the
+               2×2 grid. -->
+          <a href="#p-cto" class="tile tile--cto matrix__cto" role="listitem">
+            <span class="tile__tag" data-i18n="matrix.tile.cto.tag">C-level</span>
+            <span class="tile__title" data-i18n="matrix.tile.cto.title">AI-native на ділі, а не лише на папері</span>
+            <span class="tile__sub" data-i18n="matrix.tile.cto.sub">QA збирає playground разом із фіксом бага. PM перетворює юзер-сторі на середовища та PR-и. Sentry-таски стають URL-ом із фіксом. Ти оркеструєш цю реальність.</span>
+          </a>
+
+          <!-- RIGHT FLANK: oval-shaped tile for "Researcher" -->
+          <a href="#p-research" class="tile tile--research matrix__flank matrix__flank--right" role="listitem">
+            <span class="tile__shape tile__shape--oval" aria-hidden="true"></span>
+            <span class="tile__content">
+              <span class="tile__tag" data-i18n="matrix.tile.research.tag">Дослідник</span>
+              <span class="tile__title" data-i18n="matrix.tile.research.title">Приборкай агентів</span>
+              <span class="tile__sub" data-i18n="matrix.tile.research.sub">Дай агентам дім: гранулярні дозволи, точкова безпека, <strong>YOLO</strong> — збирай, а не винаходь заново.</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- PERSONA 1: FOR FUN -->
+      <section id="p-fun" class="persona persona--07" aria-labelledby="p-fun-title">
+        <header class="persona__head persona__head--no-switches">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.fun.eyebrow">Розважайся з Fibe</p>
+        </header>
+        <div class="persona__inner">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.fun.chip_tag">А чому б ні?</span>
+            </div>
+            <div class="persona__art persona__art--fun" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Whimsical: kite + party hat + sparkles -->
+                <polygon points="100 28, 138 90, 100 152, 62 90" ></polygon>
+                <line x1="100" y1="28" x2="100" y2="152" ></line>
+                <line x1="62" y1="90" x2="138" y2="90" ></line>
+                <path d="M100 152 q-6 12 -14 18" ></path>
+                <path d="M86 170 l-3 4 l 6 -1 l -3 8 l 6 -2" stroke-width="1" ></path>
+                <circle cx="46" cy="46" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="160" cy="60" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="48" cy="148" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="156" cy="150" r="2" fill="currentColor" stroke="none" ></circle>
+                <g stroke-width="1">
+                  <path d="M40 40 l4 4 m0 -4 l-4 4" ></path>
+                  <path d="M168 36 l4 4 m0 -4 l-4 4" ></path>
+                  <path d="M40 168 l4 4 m0 -4 l-4 4" ></path>
+                  <path d="M166 164 l4 4 m0 -4 l-4 4" ></path>
+                </g>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-fun-title" class="persona__title" data-i18n="persona.fun.title">Збудуй це, заради задоволення</h2>
+            <p class="persona__lede" data-i18n="persona.fun.lede_0">Хочеш узяти максимум від найновіших технологій, але не хочеш марнувати час на вивчення технічних нудот?</p>
+            <p class="persona__lede" data-i18n="persona.fun.lede_1">Fibe-ни це, щоб здивувати друзів:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.fun.list_0"><strong>Teamspeak-сервер</strong> — для членів твоєї пативки.</li>
+              <li data-i18n="persona.fun.list_1"><strong>Аліас</strong> — за своїми правилами.</li>
+              <li data-i18n="persona.fun.list_2"><strong>Мультиплеєрна tower-defense гра</strong> — де ти граєш проти друзів, а не комп'ютера, кожен зі своєю фракцією.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-fun-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.fun.eyebrow">Розважайся з Fibe</p>
+            <h3 class="persona__action-title" data-i18n="persona.fun.action_title">Створи власну гру</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="For-fun walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="fun/discord-bot" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">3:18</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.fun.slide_0.title">Будуємо PvP Tower Defense</h4>
+                    <p class="slide__sub" data-i18n="persona.fun.slide_0.sub">Обери атаку чи захист, грай із друзями, прокачуй ліги і не тільки...</p>
+                    <span class="slide__cta" data-i18n="persona.fun.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 2: SOLVE A PROBLEM -->
+      <section id="p-problem" class="persona persona--01" aria-labelledby="p-problem-title">
+        <header class="persona__head">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.problem.eyebrow">Будуй бізнес — щодня</p>
+          <div class="persona__switches" role="group" aria-label="Axis position">
+            <span class="switch" data-on="false">
+              <span class="switch__label" data-i18n="persona.problem.switch_dev">Розробка</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.problem.switch_state_0">OFF</span>
+            </span>
+            <span class="switch" data-on="false">
+              <span class="switch__label" data-i18n="persona.problem.switch_domain">Домен</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.problem.switch_state_1">OFF</span>
+            </span>
+          </div>
+        </header>
+        <div class="persona__inner persona__inner--flip">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.problem.chip_tag">Софт більше не задача, яку треба «вирішити»</span>
+            </div>
+            <div class="persona__art persona__art--problem" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- A "form" being assembled -->
+                <rect x="30" y="40" width="140" height="120" rx="10" ></rect>
+                <line x1="30" y1="60" x2="170" y2="60" ></line>
+                <circle cx="40" cy="50" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="48" cy="50" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="56" cy="50" r="2" fill="currentColor" stroke="none" ></circle>
+                <rect x="44" y="74" width="112" height="14" rx="4" ></rect>
+                <rect x="44" y="96" width="78" height="14" rx="4" ></rect>
+                <rect x="44" y="118" width="50" height="20" rx="6" fill="currentColor" fill-opacity="0.15" ></rect>
+                <path d="M134 132l8 8 18-20" stroke-width="2" ></path>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-problem-title" class="persona__title" data-i18n="persona.problem.title">Прийми софт — допоможи своєму бізнесу</h2>
+            <p class="persona__lede" data-i18n="persona.problem.lede_0">Хочеш лендінг для пекарні, CRM, у якій клієнти реально можуть записуватися,
+              трекер залишків для складу, внутрішній тул, який покладе край Slack-пінгу —
+              а агенція щойно виставила шестизначний ціник?</p>
+            <p class="persona__lede" data-i18n="persona.problem.lede_1">Просто дай Fibe з цим розібратися:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.problem.list_0"><strong>Готові рецепти</strong> — лендінги, CRM-ки, портфоліо, прості магазини.</li>
+              <li data-i18n="persona.problem.list_1"><strong>No-code, через UI</strong> — досягни мети, не стаючи IT-експертом.</li>
+              <li data-i18n="persona.problem.list_2"><strong>Під ключ</strong> — повністю керована інфраструктура, від А до Я.</li>
+              <li data-i18n="persona.problem.list_3"><strong>AI-помічник</strong> — завжди готовий допомогти, щойно захочеш копнути глибше.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-problem-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.problem.eyebrow">Будуй бізнес — щодня</p>
+            <h3 class="persona__action-title" data-i18n="persona.problem.action_title">Стрес через софт — ніколи</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="Solve-a-problem walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="problem/landing" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">4:12</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.problem.slide_0.title">Швидкий запуск системи Akaunting</h4>
+                    <p class="slide__sub" data-i18n="persona.problem.slide_0.sub">Підіймай популярні застосунки за кілька кліків — припини платити за десятки SaaS-продуктів</p>
+                    <span class="slide__cta" data-i18n="persona.problem.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 3: FUNNEL THE EXPERTISE -->
+      <section id="p-product" class="persona persona--02" aria-labelledby="p-product-title">
+        <header class="persona__head">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.product.eyebrow">Спрямуй свою експертизу</p>
+          <div class="persona__switches" role="group" aria-label="Axis position">
+            <span class="switch" data-on="false">
+              <span class="switch__label" data-i18n="persona.product.switch_dev">Розробка</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.product.switch_state_0">OFF</span>
+            </span>
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.product.switch_domain">Домен</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.product.switch_state_1">ON</span>
+            </span>
+          </div>
+        </header>
+        <div class="persona__inner">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.product.chip_tag">Знання домену — серце продукту</span>
+            </div>
+            <div class="persona__art persona__art--product" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Domain (briefcase) + AI builder (gear) merging -->
+                <rect x="22" y="70" width="70" height="60" rx="6" ></rect>
+                <path d="M45 70v-8h24v8" ></path>
+                <line x1="22" y1="92" x2="92" y2="92" opacity="0.4" ></line>
+                <circle cx="135" cy="100" r="32" ></circle>
+                <circle cx="135" cy="100" r="6" fill="currentColor" stroke="none" ></circle>
+                <g stroke-width="1.2">
+                  <line x1="135" y1="60" x2="135" y2="72" ></line>
+                  <line x1="135" y1="128" x2="135" y2="140" ></line>
+                  <line x1="95" y1="100" x2="107" y2="100" ></line>
+                  <line x1="163" y1="100" x2="175" y2="100" ></line>
+                  <line x1="107" y1="72" x2="115" y2="80" ></line>
+                  <line x1="155" y1="120" x2="163" y2="128" ></line>
+                  <line x1="107" y1="128" x2="115" y2="120" ></line>
+                  <line x1="155" y1="80" x2="163" y2="72" ></line>
+                </g>
+                <path d="M88 100c10-4 10-4 20 0" stroke-width="2" ></path>
+                <path d="M104 96l4 4-4 4" stroke-width="2" ></path>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-product-title" class="persona__title" data-i18n="persona.product.title">Оцифруй свій досвід</h2>
+            <p class="persona__lede" data-i18n="persona.product.lede_0">Ти знаєш, що <em>насправді</em> потрібно стоматологам, далекобійникам, архітекторам, фермерам — але інженерія навколо твоєї справи завжди з'їдала твої ночі?</p>
+            <p class="persona__lede" data-i18n="persona.product.lede_1">Ти займаєшся фічами, Fibe бере на себе деталі:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.product.list_0"><strong>Чат з AI</strong> — будуй пайплайни, які оживляють <strong>твою</strong> візію.</li>
+              <li data-i18n="persona.product.list_1"><strong>Отримай URL, щоб ділитися</strong> — з колегами чи клієнтами.</li>
+              <li data-i18n="persona.product.list_2"><strong>Ітеруй без страху</strong> — зроби бранч, спробуй рендер, викинь, спробуй знов.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-product-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.product.eyebrow">Спрямуй свою експертизу</p>
+            <h3 class="persona__action-title" data-i18n="persona.product.action_title">Fibe-ни це в Продукт</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="Build-a-product walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="product/dental-schedule" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">8:14</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.product.slide_0.title">Чат, щоб зібрати локальну платформу інвойсів</h4>
+                    <p class="slide__sub" data-i18n="persona.product.slide_0.sub">Збудуй власну локальну платформу для інвойсів з усім досвідом, який маєш у своїй країні</p>
+                    <span class="slide__cta" data-i18n="persona.product.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 4: SHARPEN YOUR TOOLS -->
+      <section id="p-sharpen" class="persona persona--03" aria-labelledby="p-sharpen-title">
+        <header class="persona__head">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.sharpen.eyebrow">Зосередься на шедеврі</p>
+          <div class="persona__switches" role="group" aria-label="Axis position">
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.sharpen.switch_dev">Розробка</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.sharpen.switch_state_0">ON</span>
+            </span>
+            <span class="switch" data-on="false">
+              <span class="switch__label" data-i18n="persona.sharpen.switch_domain">Домен</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.sharpen.switch_state_1">OFF</span>
+            </span>
+          </div>
+        </header>
+        <div class="persona__inner persona__inner--flip">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.sharpen.chip_tag">Доведи до кінця те, на що ніколи не було часу</span>
+            </div>
+            <div class="persona__art persona__art--sharpen" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Terminal window stack -->
+                <rect x="20" y="40" width="130" height="90" rx="6" ></rect>
+                <line x1="20" y1="56" x2="150" y2="56" ></line>
+                <circle cx="30" cy="48" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="38" cy="48" r="2" fill="currentColor" stroke="none" ></circle>
+                <circle cx="46" cy="48" r="2" fill="currentColor" stroke="none" ></circle>
+                <path d="M30 76l6 4-6 4" stroke-width="2" ></path>
+                <line x1="42" y1="80" x2="80" y2="80" ></line>
+                <path d="M30 96l6 4-6 4" stroke-width="2" ></path>
+                <line x1="42" y1="100" x2="110" y2="100" ></line>
+                <rect x="40" y="118" width="2" height="6" fill="currentColor" stroke="none">
+                  <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite" ></animate>
+                </rect>
+                <!-- second window behind -->
+                <rect x="50" y="70" width="130" height="90" rx="6" opacity="0.55" ></rect>
+                <line x1="50" y1="86" x2="180" y2="86" opacity="0.55" ></line>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-sharpen-title" class="persona__title" data-i18n="persona.sharpen.title">Володій своїм ремеслом</h2>
+            <p class="persona__lede" data-i18n="persona.sharpen.lede_0">Ти знаєш, ЯК має бути, але компанії, у яких ти працюєш, цього не розуміють? Знаєш, ЩО треба зробити, але щоразу виявляється, що бракує ресурсів?</p>
+            <p class="persona__lede" data-i18n="persona.sharpen.lede_1">Делегуй деталі реалізації та сконцентруйся на загальній картині. Найкращі майстри завжди використовують одноразові інструменти під конкретну задачу — як найкращі ювеліри роблять разові вставки для оправок під каблучки. З Fibe ти можеш:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.sharpen.list_0"><strong>Нарешті дороби той CI</strong> — e2e-сюїт, deploy-пайплайн, інтеграційні тести, які завжди збирався зробити, але ніколи не мав вільного пів дня.</li>
+              <li data-i18n="persona.sharpen.list_1"><strong>Сел-хост по-своєму</strong> — своя машина, свій GPU, свої правила. Те саме середовище, яке <em>ти</em> б собі налаштував — налаштував один раз і скрізь готове.</li>
+              <li data-i18n="persona.sharpen.list_2"><strong>Релізь з телефону</strong> — пет-проекти, побічні ідеї, задумки на вихідні. З електрички, з дивана чи прямо під час дейлі.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-sharpen-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.sharpen.eyebrow">Зосередься на шедеврі</p>
+            <h3 class="persona__action-title" data-i18n="persona.sharpen.action_title">Не деталі реалізації</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="Sharpen-your-tools walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="sharpen/clone-and-run" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">2:48</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.sharpen.slide_0.title">Створюємо повну перевірку продукту</h4>
+                    <p class="slide__sub" data-i18n="persona.sharpen.slide_0.sub">Створи єдиний docker-compose.yml, який перевіряє всю твою інфраструктуру. Запускай і локально, і на Fibe</p>
+                    <span class="slide__cta" data-i18n="persona.sharpen.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 5: COMPETE WITH THEM -->
+      <section id="p-compete" class="persona persona--04" aria-labelledby="p-compete-title">
+        <header class="persona__head">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.compete.eyebrow">Конкуруй із <strong>Ними</strong></p>
+          <div class="persona__switches" role="group" aria-label="Axis position">
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.compete.switch_dev">Розробка</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.compete.switch_state_0">ON</span>
+            </span>
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.compete.switch_domain">Домен</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.compete.switch_state_1">ON</span>
+            </span>
+          </div>
+        </header>
+        <div class="persona__inner">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.compete.chip_tag">Попри все</span>
+            </div>
+            <div class="persona__art persona__art--compete" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Parallel rockets -->
+                <g>
+                  <path d="M40 150c0-20 8-40 20-50l4 4c-8 12-14 28-14 46z" ></path>
+                  <circle cx="58" cy="100" r="3" ></circle>
+                  <path d="M44 154l-6 14 14-6" ></path>
+                </g>
+                <g opacity="0.85">
+                  <path d="M90 145c0-20 8-40 20-50l4 4c-8 12-14 28-14 46z" ></path>
+                  <circle cx="108" cy="95" r="3" ></circle>
+                  <path d="M94 149l-6 14 14-6" ></path>
+                </g>
+                <g opacity="0.7">
+                  <path d="M140 140c0-20 8-40 20-50l4 4c-8 12-14 28-14 46z" ></path>
+                  <circle cx="158" cy="90" r="3" ></circle>
+                  <path d="M144 144l-6 14 14-6" ></path>
+                </g>
+                <line x1="20" y1="170" x2="180" y2="170" ></line>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-compete-title" class="persona__title" data-i18n="persona.compete.title">Зрівняй гру</h2>
+            <p class="persona__lede" data-i18n="persona.compete.lede_0">Ти знаєш, <strong>що будувати</strong> — роками думав про це, до релізу — кілька днів. Знаєш, <strong>як це збудувати</strong> — архітектура, компроміси, правильні рішення вже прийняті в голові.</p>
+            <p class="persona__lede" data-i18n="persona.compete.lede_1">Для тебе — жодних дизайн-комітетів, жодних переписувань. Для них — пропозиція досі мандрує через три рівні погоджень. Просто перетвори цю асиметрію на готовий продукт:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.compete.list_0"><strong>Найкраща MVP-інфра в комплекті</strong> — фокусуйся на бізнес-логіці</li>
+              <li data-i18n="persona.compete.list_1"><strong>Найшвидший SDLC</strong> — і водночас найнадійніший</li>
+              <li data-i18n="persona.compete.list_2"><strong>Команди агентів</strong> — налаштовані тобою, для тебе</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-compete-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.compete.eyebrow">Конкуруй із <strong>Ними</strong></p>
+            <h3 class="persona__action-title" data-i18n="persona.compete.action_title">Збудуй свою мрію</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="Compete-with-the-biggest walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="compete/parallel-bets" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">6:46</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.compete.slide_0.title">Керуй паралельною роботою з мобілки</h4>
+                    <p class="slide__sub" data-i18n="persona.compete.slide_0.sub">Запусти 3 копії свого застосунку, кожну на окремому домені, наспавн кілька агентів, щоб будувати фічі паралельно</p>
+                    <span class="slide__cta" data-i18n="persona.compete.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 6: CTO / AI-NATIVE ON THE GROUND -->
+      <section id="p-cto" class="persona persona--06" aria-labelledby="p-cto-title">
+        <header class="persona__head">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.cto.eyebrow">Практикуй AI Native</p>
+          <div class="persona__switches" role="group" aria-label="Axis position">
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.cto.switch_dev">Розробка</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.cto.switch_state_0">ON</span>
+            </span>
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.cto.switch_domain">Домен</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.cto.switch_state_1">ON</span>
+            </span>
+            <span class="switch" data-on="true">
+              <span class="switch__label" data-i18n="persona.cto.switch_corp">Корпорація</span>
+              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="switch__state" data-i18n="persona.cto.switch_state_2">ON</span>
+            </span>
+          </div>
+        </header>
+        <div class="persona__inner persona__inner--flip">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.cto.chip_tag">Принеси AI-native у свій продукт</span>
+            </div>
+            <div class="persona__art persona__art--cto" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Org chart with parallel branches -->
+                <circle cx="100" cy="40" r="10" ></circle>
+                <line x1="100" y1="50" x2="100" y2="70" ></line>
+                <line x1="40" y1="80" x2="160" y2="80" ></line>
+                <line x1="40" y1="80" x2="40" y2="100" ></line>
+                <line x1="100" y1="80" x2="100" y2="100" ></line>
+                <line x1="160" y1="80" x2="160" y2="100" ></line>
+                <rect x="22" y="100" width="36" height="36" rx="6" ></rect>
+                <rect x="82" y="100" width="36" height="36" rx="6" ></rect>
+                <rect x="142" y="100" width="36" height="36" rx="6" ></rect>
+                <path d="M40 145v15" ></path>
+                <path d="M100 145v15" ></path>
+                <path d="M160 145v15" ></path>
+                <text x="40" y="124" text-anchor="middle" font-size="10" fill="currentColor" stroke="none">QA</text>
+                <text x="100" y="124" text-anchor="middle" font-size="10" fill="currentColor" stroke="none">PM</text>
+                <text x="160" y="124" text-anchor="middle" font-size="10" fill="currentColor" stroke="none">DEV</text>
+                <path d="M30 168h20M90 168h20M150 168h20" stroke-width="2" ></path>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-cto-title" class="persona__title" data-i18n="persona.cto.title">Припини вдавати</h2>
+            <p class="persona__lede" data-i18n="persona.cto.lede_0">Втомився міняти <i>loading...</i> на <i>thinking...</i> і фарбувати це у фіолетовий перед наступним засіданням ради?</p>
+            <p class="persona__lede" data-i18n="persona.cto.lede_1">Стань AI-native орієнтиром у своїй ніші:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.cto.list_0"><strong>Показуй, не розказуй</strong> — продакти перетворюють юзер-сторі на робоче середовище, яким можна поділитися. QA більше не шукають баги — вони фіксять happy path на персональному playground-і.</li>
+              <li data-i18n="persona.cto.list_1"><strong>Дай інженерам робити їхню роботу</strong> — звільни їх від постійних нюансів бізнес-логіки, які вони мусять узгоджувати з продактами, QA, саппортом: хай роблять те, що вміють найкраще, за гроші, які ти їм платиш.</li>
+              <li data-i18n="persona.cto.list_2"><strong>Не вгадуй, що таке AI-native</strong> — на наступному квартальному демо покажи, як рої агентів змінюють функціонал твого застосунку під суворим наглядом відділів Product і QA.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-cto-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.cto.eyebrow">Практикуй AI Native</p>
+            <h3 class="persona__action-title" data-i18n="persona.cto.action_title">Підсиль команди в масштабі</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="CTO walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="cto/qa-staging" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">4:30</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.cto.slide_0.title">Перший AI Native реліз</h4>
+                    <p class="slide__sub" data-i18n="persona.cto.slide_0.sub">Створюй персональні Playground-и. Підключай агентів на LLM-провайдері за твоїм вибором. Кожен робить свою роботу, код — побічний ефект</p>
+                    <span class="slide__cta" data-i18n="persona.cto.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA 7: RESEARCHERS / VISIT THE EDGE -->
+      <section id="p-research" class="persona persona--05" aria-labelledby="p-research-title">
+        <header class="persona__head persona__head--no-switches">
+          <p class="eyebrow eyebrow--persona" data-i18n="persona.research.eyebrow">Контролюй AI</p>
+        </header>
+        <div class="persona__inner">
+          <aside class="persona__visual" aria-hidden="true">
+            <div class="persona__chip">
+              <span class="persona__chip-tag" data-i18n="persona.research.chip_tag">Гострі інструменти потребують захисту</span>
+            </div>
+            <div class="persona__art persona__art--research" data-art>
+              <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Isolated cells/sandboxes -->
+                <g>
+                  <rect x="20" y="30" width="50" height="50" rx="6" ></rect>
+                  <circle cx="45" cy="55" r="8" ></circle>
+                </g>
+                <g>
+                  <rect x="80" y="30" width="50" height="50" rx="6" ></rect>
+                  <circle cx="105" cy="55" r="8" ></circle>
+                </g>
+                <g>
+                  <rect x="140" y="30" width="50" height="50" rx="6" ></rect>
+                  <circle cx="165" cy="55" r="8" ></circle>
+                </g>
+                <g>
+                  <rect x="20" y="120" width="50" height="50" rx="6" ></rect>
+                  <circle cx="45" cy="145" r="8" ></circle>
+                </g>
+                <g>
+                  <rect x="80" y="120" width="50" height="50" rx="6" ></rect>
+                  <circle cx="105" cy="145" r="8" ></circle>
+                </g>
+                <g>
+                  <rect x="140" y="120" width="50" height="50" rx="6" ></rect>
+                  <circle cx="165" cy="145" r="8" ></circle>
+                </g>
+                <line x1="70" y1="100" x2="80" y2="100" stroke-dasharray="3 3" ></line>
+                <line x1="130" y1="100" x2="140" y2="100" stroke-dasharray="3 3" ></line>
+              </svg>
+            </div>
+          </aside>
+          <div class="persona__body">
+            <h2 id="p-research-title" class="persona__title" data-i18n="persona.research.title">Час поставитися до цього серйозно</h2>
+            <p class="persona__lede" data-i18n="persona.research.lede_0">Ти завжди дивувався, чому ми дозволяємо AI керувати нашими особистими машинами, мати доступ до всіх креденшелів, і молилися <i>сподіваюсь, цього разу все буде ок</i>?</p>
+            <p class="persona__lede" data-i18n="persona.research.lede_1">Зважаючи на те, що тепер LLM-и всюди і доволі потужні, час це виправити:</p>
+            <ul class="persona__list">
+              <li data-i18n="persona.research.list_0"><strong>Жорстка ізоляція, гранулярні дозволи</strong> — контролюй, де агенти працюють і який доступ мають</li>
+              <li data-i18n="persona.research.list_1"><strong>Контроль на рівні токенів</strong> — скіли, промт, аргументи, замонтовані файли, дозволені й заблоковані тули. Записуй реальний трафік між агентами та LLM-провайдерами</li>
+              <li data-i18n="persona.research.list_2"><strong>Міняй LLM-провайдерів як батарейки</strong> — локальний GPU, hosted, frontier, приватний endpoint, минулотижнева модель проти цьоготижневої. Той самий експеримент, та сама обв'язка, інший мозок — порівнюй однією env-змінною.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="p-research-action" class="persona__action">
+          <header class="persona__action-head">
+            <p class="persona__action-tag" data-i18n="persona.research.eyebrow">Контролюй AI</p>
+            <h3 class="persona__action-title" data-i18n="persona.research.action_title">Зроби, щоб працювало</h3>
+          </header>
+          <div class="slider-shell">
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
+            <div class="slider" role="region" aria-label="Researcher walkthroughs" tabindex="0" data-slider>
+
+              <article class="slide">
+                <button class="slide__action" type="button" data-rumble-slug="research/agent-eval" data-embed-src="">
+                  <span class="slide__poster" aria-hidden="true">
+                    <span class="slide__play">▶</span>
+                    <span class="slide__duration">9:12</span>
+                  </span>
+                  <span class="slide__body">
+                    <h4 class="slide__title" data-i18n="persona.research.slide_0.title">Кастомний агент, ідеальна пісочниця</h4>
+                    <p class="slide__sub" data-i18n="persona.research.slide_0.sub">Зручно налаштовуй кастомних агентів будь-якої форми, конструюй їхнє середовище саме так, як хочеш</p>
+                    <span class="slide__cta" data-i18n="persona.research.slide_0.cta">▶ Глянь прев'ю</span>
+                  </span>
+                </button>
+              </article>
+            </div>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="More walkthroughs" data-slider-next>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUTIONS -->
+      
+
+      <!-- CAPTURE — the fundamentals people miss at first. Three cards, each
+           with a "Read more" link that opens a modal rendered from a markdown
+           file under /assets/principles/{slug}.md. -->
+      
+
+      <!-- CLOSING — also acts as the "how Fibe pulls this off" reference:
+           the six concept bubbles drift in the background; the main message
+           is the CTA. -->
+<section id="solutions" class="solutions" aria-labelledby="solutions-title">
+        <header class="section-head">
+          <h2 id="solutions-title" data-i18n="solutions.title">Рішення</h2>
+          <p class="section-sub" data-i18n="solutions.sub">Fibe вирішує широкий спектр задач — від нудних до інноваційних</p>
+        </header>
+
+        <ol class="solutions__grid" role="list">
+          <li class="solution" data-novelty="15" data-solution-slug="production-deployment">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" ></circle>
+                  <path d="M3 12h18" ></path>
+                  <path d="M12 3a14 14 0 010 18 14 14 0 010-18z" ></path>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.production-deployment.title">Деплой у прод</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.production-deployment.desc">Твій сайт, магазин чи застосунок — крутиться для справжніх користувачів. Без того, щоб ставати сисадміном.</p>
+            <div class="solution__scale" aria-label="Novelty: 15 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.production-deployment.scale_low">Нудне</span><span data-i18n="solutions.card.production-deployment.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 15%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="production-deployment" data-i18n="solutions.card.production-deployment.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="20" data-solution-slug="staging-uat">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 3v6L4 19a2 2 0 002 2h12a2 2 0 002-2L15 9V3" ></path>
+                  <line x1="8" y1="3" x2="16" y2="3" ></line>
+                  <line x1="7" y1="14" x2="17" y2="14" ></line>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.staging-uat.title">Staging та UAT</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.staging-uat.desc">Майже ідентична копія продакшну — стільки, скільки треба, за частину хмарного рахунку.</p>
+            <div class="solution__scale" aria-label="Novelty: 20 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.staging-uat.scale_low">Нудне</span><span data-i18n="solutions.card.staging-uat.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 20%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="staging-uat" data-i18n="solutions.card.staging-uat.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="30" data-solution-slug="build-test-ci">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3" ></circle>
+                  <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.9 2.9l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1A2 2 0 014 16.9l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.9L4.2 6.8A2 2 0 117 4l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.9 2.9l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z" ></path>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.build-test-ci.title">Build та тести в CI</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.build-test-ci.desc">Підіймай увесь застосунок усередині CI-джоби, прогонь E2E, гаси, коли джоба завершиться. Жодної черги. Жодного спільного staging-у.</p>
+            <div class="solution__scale" aria-label="Novelty: 30 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.build-test-ci.scale_low">Нудне</span><span data-i18n="solutions.card.build-test-ci.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 30%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="build-test-ci" data-i18n="solutions.card.build-test-ci.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="35" data-solution-slug="internal-tools">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a4 4 0 015.7 5.7l-2.8 2.8a4 4 0 01-5.7 0L9.5 12.5l3-3 2.4 2.4a2 2 0 102.8-2.8L15.3 6.7l-0.6-0.4z" ></path>
+                  <path d="M14 9L4 19a2 2 0 102.8 2.8L17 12" ></path>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.internal-tools.title">Внутрішні тули</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.internal-tools.desc">Кнопки повернень, admin-панелі, ті непомітні тули, що роблять команду удвічі швидшою — без SDLC-витрат.</p>
+            <div class="solution__scale" aria-label="Novelty: 35 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.internal-tools.scale_low">Нудне</span><span data-i18n="solutions.card.internal-tools.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 35%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="internal-tools" data-i18n="solutions.card.internal-tools.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="45" data-solution-slug="software-distribution">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3L4 7v10l8 4 8-4V7l-8-4z" ></path>
+                  <path d="M4 7l8 4 8-4" ></path>
+                  <line x1="12" y1="11" x2="12" y2="21" ></line>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.software-distribution.title">Дистрибуція софту</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.software-distribution.desc">Кнопка «Спробуй» одним кліком для твого WordPress-плагіна, Shopify-додатка чи ERP-розширення — клієнти граються за 30 секунд, без встановлення.</p>
+            <div class="solution__scale" aria-label="Novelty: 45 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.software-distribution.scale_low">Нудне</span><span data-i18n="solutions.card.software-distribution.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 45%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="software-distribution" data-i18n="solutions.card.software-distribution.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="55" data-solution-slug="self-hosted-stacks">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12l9-8 9 8" ></path>
+                  <path d="M5 10v10h14V10" ></path>
+                  <rect x="10" y="14" width="4" height="6" ></rect>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.self-hosted-stacks.title">Self-hosting</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.self-hosted-stacks.desc">Налаштуй свою альтернативу хмарі під особисті чи бізнес-потреби — без «opensource-податку»</p>
+            <div class="solution__scale" aria-label="Novelty: 55 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.self-hosted-stacks.scale_low">Нудне</span><span data-i18n="solutions.card.self-hosted-stacks.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 55%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="self-hosted-stacks" data-i18n="solutions.card.self-hosted-stacks.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="65" data-solution-slug="build-in-public">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12.55a11 11 0 0114 0" ></path>
+                  <path d="M2 8.5a16 16 0 0120 0" ></path>
+                  <path d="M8 16.55a6 6 0 018 0" ></path>
+                  <circle cx="12" cy="20" r="0.8" fill="currentColor" stroke="none" ></circle>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.build-in-public.title">Будуй публічно</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.build-in-public.desc">Показуй, як ти fibe-уєш код, на публіку — для своїх підписників, студентів чи друзів</p>
+            <div class="solution__scale" aria-label="Novelty: 65 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.build-in-public.scale_low">Нудне</span><span data-i18n="solutions.card.build-in-public.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 65%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="build-in-public" data-i18n="solutions.card.build-in-public.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution" data-novelty="75" data-solution-slug="ephemeral-environments">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" ></path>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.ephemeral-environments.title">Ефемерні середовища</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.ephemeral-environments.desc">Preview-середовище на PR, multi-branch білд для QA, дай продактам подивитись на чернетку фіча-гілки, коли деталі ще не зрозумілі</p>
+            <div class="solution__scale" aria-label="Novelty: 75 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.ephemeral-environments.scale_low">Нудне</span><span data-i18n="solutions.card.ephemeral-environments.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 75%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="ephemeral-environments" data-i18n="solutions.card.ephemeral-environments.more">Дізнатися більше →</button>
+          </li>
+
+          <li class="solution solution--featured" data-novelty="95" data-solution-slug="vibe-coding-on-steroids">
+            <header class="solution__head">
+              <span class="solution__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" ></path>
+                  <path d="M19 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" opacity="0.6" ></path>
+                </svg>
+              </span>
+              <h3 class="solution__title" data-i18n="solutions.card.vibe-coding-on-steroids.title">Fibe coding</h3>
+            </header>
+            <p class="solution__desc" data-i18n="solutions.card.vibe-coding-on-steroids.desc">Живи на краю — з віддаленим, завжди увімкненим агентом, з яким можна спілкуватись через чат, API чи MCP. Він деплоїть справжні URL-и під твої запити</p>
+            <div class="solution__scale" aria-label="Novelty: 95 of 100">
+              <div class="solution__scale-labels"><span data-i18n="solutions.card.vibe-coding-on-steroids.scale_low">Нудне</span><span data-i18n="solutions.card.vibe-coding-on-steroids.scale_high">Інноваційне</span></div>
+              <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 95%"></span></div>
+            </div>
+            <button class="solution__more" type="button" data-solution-more="vibe-coding-on-steroids" data-i18n="solutions.card.vibe-coding-on-steroids.more">Дізнатися більше →</button>
+          </li>
+        </ol>
+      </section>
+
+      <section id="fibedentity" class="capture" aria-labelledby="capture-title">
+        <header class="section-head">
+          <h2 id="capture-title" data-i18n="capture.title">Fibedentity</h2>
+          <p class="section-sub" data-i18n="capture.sub">Твої причини. Наші принципи</p>
+        </header>
+
+        <div class="capture__grid">
+          <!-- 01: Total control over where it runs -->
+          <article class="capture__card">
+            <header class="capture__head">
+              <span class="capture__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11l9-7 9 7" ></path>
+                <path d="M5 10v10h14V10" ></path>
+                <rect x="10" y="13" width="4" height="7" ></rect>
+                <circle cx="12" cy="8.5" r="1" fill="currentColor" stroke="none" ></circle>
+              </svg>
+            </span>
+              <h3 class="capture__title" data-i18n="capture.card.total-control.title">Повний контроль</h3>
+            </header>
+            <ul class="capture__list">
+              <li data-i18n="capture.card.total-control.list_0"><strong>Керований сервіс</strong> — дай Fibe керувати всім: від SSL до LLM</li>
+              <li data-i18n="capture.card.total-control.list_1"><strong>Або сел-хост</strong> — або підключи власний сервер із локальною LLM і дай Fibe оркеструвати: один SSH-порт, щоб правити всіма</li>
+              <li data-i18n="capture.card.total-control.list_2"><strong>Ти вирішуєш</strong> — скільки контролю й відповідальності <b>ти</b> хочеш</li>
+            </ul>
+            <p class="capture__kicker" data-i18n="capture.card.total-control.kicker">Поверни його собі</p>
+            <button class="capture__more" type="button" data-capture-more="total-control" data-i18n="capture.card.total-control.more">Читати далі →</button>
+          </article>
+
+          <!-- 02: Flat per-server pricing -->
+          <article class="capture__card">
+            <header class="capture__head">
+              <span class="capture__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="18" x2="21" y2="18" ></line>
+                <line x1="3" y1="12" x2="21" y2="12" stroke-dasharray="2 3" opacity="0.4" ></line>
+                <line x1="3" y1="6" x2="21" y2="6" stroke-dasharray="2 3" opacity="0.4" ></line>
+                <circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none" ></circle>
+                <circle cx="12" cy="14" r="1.5" fill="currentColor" stroke="none" ></circle>
+                <circle cx="18" cy="14" r="1.5" fill="currentColor" stroke="none" ></circle>
+                <path d="M6 14h12" ></path>
+              </svg>
+            </span>
+              <h3 class="capture__title" data-i18n="capture.card.flat-pricing.title">Передбачуваний рахунок</h3>
+            </header>
+            <ul class="capture__list">
+              <li data-i18n="capture.card.flat-pricing.list_0"><strong>Одна цифра за сервер</strong> — обери коробку, плати за коробку. Який би не був розмір — одна фіксована плата.</li>
+              <li data-i18n="capture.card.flat-pricing.list_1"><strong>Жодного per-seat</strong> — запроси 5 колег чи 500. Той самий рахунок.</li>
+              <li data-i18n="capture.card.flat-pricing.list_2"><strong>Виріс із плану?</strong> — просто апгрейдь сервер. Новий план, та сама форма: одна цифра.</li>
+            </ul>
+            <p class="capture__kicker" data-i18n="capture.card.flat-pricing.kicker">Твій рахунок масштабується із залізом, а не з кількістю людей. Передбачуваний у перший день, передбачуваний на третій рік.</p>
+            <button class="capture__more" type="button" data-capture-more="flat-pricing" data-i18n="capture.card.flat-pricing.more">Читати далі →</button>
+          </article>
+
+          <!-- 03: Boring core, AI on top -->
+          <article class="capture__card">
+            <header class="capture__head">
+              <span class="capture__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="9" width="18" height="12" rx="1.5" ></rect>
+                <path d="M3 13h18" ></path>
+                <circle cx="7" cy="17" r="1" fill="currentColor" stroke="none" ></circle>
+                <circle cx="11" cy="17" r="1" fill="currentColor" stroke="none" ></circle>
+                <path d="M12 4l1.5 3 3 .5-2.2 2.2.5 3-2.8-1.5-2.8 1.5.5-3L7.5 7.5l3-.5z" stroke-width="1.2" ></path>
+              </svg>
+            </span>
+              <h3 class="capture__title" data-i18n="capture.card.boring-core.title">Нудне ядро</h3>
+            </header>
+            <ul class="capture__list">
+              <li data-i18n="capture.card.boring-core.list_0"><strong>Продукт — це середовища</strong> — справжні, full-stack, ізольовані Docker-хости. Натисни кнопку або підіймай програмно.</li>
+              <li data-i18n="capture.card.boring-core.list_1"><strong>Та сама поверхня скрізь</strong> — веб UI, CLI, скрипт, агент. Усі лізуть в одні й ті ж API.</li>
+              <li data-i18n="capture.card.boring-core.list_2"><strong>AI — це фіча, а не суть</strong> — вмонтуй усюди, або взагалі не вмонтовуй. Продукт усе одно працює.</li>
+            </ul>
+            <p class="capture__kicker" data-i18n="capture.card.boring-core.kicker">Нудна частина — це те, чим ти реально користуєшся. AI — це те, що робить її вп'ятеро швидшою.</p>
+            <button class="capture__more" type="button" data-capture-more="boring-core" data-i18n="capture.card.boring-core.more">Читати далі →</button>
+          </article>
+
+          <!-- 04: Local↔Fibe parity via docker-compose -->
+          <article class="capture__card">
+            <header class="capture__head">
+              <span class="capture__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="8" height="7" rx="1.2" ></rect>
+                <rect x="13" y="4" width="8" height="7" rx="1.2" ></rect>
+                <rect x="3" y="13" width="8" height="7" rx="1.2" ></rect>
+                <rect x="13" y="13" width="8" height="7" rx="1.2" ></rect>
+                <path d="M11 7.5h2" stroke-dasharray="1.5 1.5" ></path>
+                <path d="M11 16.5h2" stroke-dasharray="1.5 1.5" ></path>
+                <path d="M7 11v2" stroke-dasharray="1.5 1.5" ></path>
+                <path d="M17 11v2" stroke-dasharray="1.5 1.5" ></path>
+              </svg>
+            </span>
+              <h3 class="capture__title" data-i18n="capture.card.local-parity.title">Локально всюди</h3>
+            </header>
+            <ul class="capture__list">
+              <li data-i18n="capture.card.local-parity.list_0"><strong>Звичайний <code>docker-compose.yml</code></strong> — Fibe це тонкий враппер, а не власний DSL. Твій реп — джерело істини.</li>
+              <li data-i18n="capture.card.local-parity.list_1"><strong>Перевір CI/CD на лептопі</strong> — прожени весь пайплайн локально. Пуш у прод — лише коли все зелене.</li>
+              <li data-i18n="capture.card.local-parity.list_2"><strong>Той самий compose, де завгодно</strong> — твій лептоп, Fibe, машина колеги, air-gapped майданчик клієнта. Ідентична поведінка.</li>
+            </ul>
+            <p class="capture__kicker" data-i18n="capture.card.local-parity.kicker">Стандартний Docker. Стандартний Compose. Жодної магії між ними і тобою.</p>
+            <button class="capture__more" type="button" data-capture-more="local-parity" data-i18n="capture.card.local-parity.more">Читати далі →</button>
+          </article>
+        </div>
+      </section>
+
+<section class="close" aria-labelledby="close-title">
+        <!-- The phoenix — tinted ghost of the brand mark rising behind the CTA.
+             Pre-tinted raster (see .close__phoenix in style.css for why). -->
+        <img class="close__phoenix" src="/img/fibe-phoenix-ghost.png" width="1080" height="1080" alt="" aria-hidden="true" loading="lazy" decoding="async" >
+        <div class="close__bubbles" data-bubbles aria-label="Як Fibe це робить" data-i18n-attr="aria-label=close.bubbles_aria">
+          <a class="close__bubble" style="--x:5%;  --y:10%;" href="https://whats.fibe.gg/concepts/marquees/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <line x1="12" y1="1" x2="12" y2="4" ></line>
+                <path d="M3.5 14C3.5 8.5 7 4 12 4s8.5 4.5 8.5 10" ></path>
+                <line x1="12" y1="4" x2="12" y2="14" ></line>
+                <line x1="12" y1="4" x2="7" y2="14" ></line>
+                <line x1="12" y1="4" x2="17" y2="14" ></line>
+                <path d="M3.5 14q1.7 2 3.5 0t3.5 0 3.5 0 3.5 0" ></path>
+                <line x1="5" y1="16" x2="5" y2="21" ></line>
+                <line x1="19" y1="16" x2="19" y2="21" ></line>
+                <line x1="3" y1="21" x2="21" y2="21" ></line>
+                <path d="M10 21v-4a2 2 0 014 0v4" ></path>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.marquees">Marquees</span>
+          </a>
+
+          <a class="close__bubble" style="--x:80%; --y:6%;" href="https://whats.fibe.gg/concepts/playspecs/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ></rect>
+                <line x1="3" y1="8" x2="21" y2="8" opacity="0.4" ></line>
+                <line x1="3" y1="14" x2="21" y2="14" opacity="0.4" ></line>
+                <line x1="9" y1="3" x2="9" y2="21" opacity="0.4" ></line>
+                <line x1="15" y1="3" x2="15" y2="21" opacity="0.4" ></line>
+                <rect x="10.5" y="9.5" width="3" height="3" rx="0.3" fill="currentColor" stroke="none" ></rect>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.playspecs">Playspecs</span>
+          </a>
+
+          <a class="close__bubble" style="--x:2%; --y:38%;" href="https://whats.fibe.gg/concepts/playgrounds/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <line x1="15" y1="4" x2="15" y2="10" ></line>
+                <path d="M15 4c1 0 3 3 6 6" ></path>
+                <line x1="3" y1="8" x2="10" y2="5" ></line>
+                <path d="M5.5 10l1-3 1 3" ></path>
+                <path d="M3 17q3.5-3 7 0" ></path>
+                <line x1="3.5" y1="17.5" x2="4" y2="20" ></line>
+                <line x1="9.5" y1="17.5" x2="9" y2="20" ></line>
+                <circle cx="18" cy="18" r="2.5" ></circle>
+                <line x1="18" y1="15.5" x2="18" y2="18" ></line>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.playgrounds">Playgrounds</span>
+          </a>
+
+          <a class="close__bubble" style="--x:84%; --y:34%;" href="https://whats.fibe.gg/concepts/tricks/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M10 3.5V1.5h4v2" ></path>
+                <line x1="8.5" y1="3.5" x2="15.5" y2="3.5" ></line>
+                <circle cx="12" cy="5" r="1.5" ></circle>
+                <line x1="12" y1="6.5" x2="12" y2="12.5" ></line>
+                <path d="M5 8l3 1h8l3-1" ></path>
+                <line x1="6" y1="16" x2="18" y2="16" stroke-width="2" ></line>
+                <circle cx="12" cy="18.5" r="2.5" ></circle>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.tricks">Tricks</span>
+          </a>
+
+          <a class="close__bubble" style="--x:8%; --y:74%;" href="https://whats.fibe.gg/agents/genies/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" width="24" height="24" fill="none">
+                <polygon points="32,10 54,50 10,50" fill="#dc2626" ></polygon>
+                <rect x="20" y="30" width="24" height="14" rx="3" fill="#991b1b" ></rect>
+                <rect x="22" y="33" width="8" height="4" rx="2" fill="#fca5a5" ></rect>
+                <rect x="34" y="33" width="8" height="4" rx="2" fill="#fca5a5" ></rect>
+                <rect x="28" y="40" width="8" height="3" rx="1.5" fill="#fecaca" ></rect>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.genies">Genies</span>
+          </a>
+
+          <a class="close__bubble" style="--x:78%; --y:78%;" href="https://whats.fibe.gg/sdk/intro/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M8 8l-4 4 4 4" ></path>
+                <path d="M16 8l4 4-4 4" ></path>
+                <line x1="13" y1="6" x2="11" y2="18" ></line>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.sdk">SDK</span>
+          </a>
+
+          <a class="close__bubble" style="--x:46%; --y:4%;" href="https://whats.fibe.gg/sdk/cli/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <rect x="3" y="5" width="18" height="14" rx="1.5" ></rect>
+                <path d="M7 11l3 2-3 2" ></path>
+                <line x1="13" y1="15" x2="17" y2="15" ></line>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.cli">CLI</span>
+          </a>
+
+          <a class="close__bubble" style="--x:40%; --y:88%;" href="https://whats.fibe.gg/sdk/mcp/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <rect x="6" y="8" width="12" height="9" rx="1" ></rect>
+                <line x1="9" y1="8" x2="9" y2="4" ></line>
+                <line x1="15" y1="8" x2="15" y2="4" ></line>
+                <line x1="12" y1="17" x2="12" y2="21" ></line>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.mcp">MCP</span>
+          </a>
+
+          <a class="close__bubble" style="--x:24%; --y:24%;" href="https://whats.fibe.gg/concepts/props/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M6 21V9l6-5 6 5v12" ></path>
+                <path d="M9 21v-6h6v6" ></path>
+                <line x1="6" y1="9" x2="18" y2="9" ></line>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.props">Props</span>
+          </a>
+
+          <a class="close__bubble" style="--x:62%; --y:22%;" href="https://whats.fibe.gg/concepts/bazaar/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M3 9l2-5h14l2 5" ></path>
+                <path d="M3 9v11h18V9" ></path>
+                <path d="M3 9q3 2 6 0t6 0 6 0" ></path>
+                <rect x="10" y="13" width="4" height="7" ></rect>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.bazaar">Bazaar</span>
+          </a>
+
+          <a class="close__bubble" style="--x:22%; --y:60%;" href="https://whats.fibe.gg/concepts/scrolls/" rel="noopener">
+            <span class="close__bubble-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <rect x="4" y="3" width="4" height="18" rx="0.4" ></rect>
+                <rect x="10" y="3" width="4" height="18" rx="0.4" ></rect>
+                <rect x="16" y="3" width="4" height="18" rx="0.4" transform="rotate(8 18 12)" ></rect>
+              </svg>
+            </span>
+            <span class="close__bubble-label" data-i18n="close.bubble.scrolls">Scrolls</span>
+          </a>
+        </div>
+
+        <div class="close__inner">
+          <h2 id="close-title" class="close__title" data-i18n="close.title">Досить читати.<br>
+            <span class="close__title-em">Починай релізити.</span></h2>
+          <p class="close__sub" data-i18n="close.sub">Яким би шляхом ти не пішов, наступний крок один — один акаунт, одна майстерня.
+            Підіймай своє перше середовище менш ніж за хвилину.</p>
+          <div class="close__ctas">
+            <a class="btn btn--primary btn--lg" href="https://fibe.gg/" rel="noopener" data-i18n="close.cta_0">fibe →</a>
+            <a class="btn btn--ghost btn--lg" href="https://whats.fibe.gg/intro/" rel="noopener" data-i18n="close.cta_1">Читати гайд</a>
+          </div>
+        </div>
+      </section>
+
+      
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <nav class="footer__family" aria-label="The Fibe family of sites">
+          <a class="footer__family-link" href="https://fibe.gg/" rel="noopener" data-i18n="footer.family.fibe_gg">fibe.gg</a>
+          <span class="footer__family-sep" aria-hidden="true">·</span>
+          <a class="footer__family-link" href="https://why.fibe.gg/" aria-current="page" data-i18n="footer.family.why">why</a>
+          <span class="footer__family-sep" aria-hidden="true">·</span>
+          <a class="footer__family-link" href="https://where.fibe.gg/" rel="noopener" data-i18n="footer.family.where">where</a>
+          <span class="footer__family-sep" aria-hidden="true">·</span>
+          <a class="footer__family-link" href="https://when.fibe.gg/" rel="noopener" data-i18n="footer.family.when">when</a>
+          <span class="footer__family-sep" aria-hidden="true">·</span>
+          <a class="footer__family-link" href="https://whats.fibe.gg/" rel="noopener" data-i18n="footer.family.whats">whats</a>
+        </nav>
+        <nav class="footer__social" aria-label="Fibe on social platforms">
+          <a class="footer__icon" href="https://github.com/fibegg" rel="me noopener noreferrer" target="_blank" aria-label="Fibe on GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12Z"></path>
+            </svg>
+          </a>
+          <a class="footer__icon" href="#" target="_blank" rel="me noopener noreferrer" aria-label="Fibe on Nostr · Yakihonne" title="Nostr · Yakihonne">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0Zm-2.43 6.18c2.05 0 3.7 1.65 3.7 3.7v.36h2.06c.65 0 1.18.53 1.18 1.18v6.6h-2v-6h-1.24v.76c0 1.05-.36 1.93-1.04 2.55-.68.62-1.55.94-2.6.94-.45 0-.86-.06-1.23-.18v2.13h-2V9.88c0-2.05 1.65-3.7 3.17-3.7Zm.02 2c-.92 0-1.67.74-1.67 1.66v3.34c.37.27.84.43 1.43.43.58 0 1.05-.16 1.4-.46.34-.3.51-.7.51-1.2v-2.1c0-.92-.75-1.67-1.67-1.67Z"></path>
+            </svg>
+          </a>
+          <a class="footer__icon" href="#" target="_blank" rel="me noopener noreferrer" aria-label="Fibe on Rumble" title="Rumble">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M12.005 0C5.378 0 0 5.378 0 12.005 0 18.633 5.378 24 12.005 24 18.633 24 24 18.633 24 12.005 24 5.378 18.633 0 12.005 0Zm-1.36 6.295 6.4 3.71c1.226.71 1.226 2.46 0 3.17l-6.4 3.71c-1.23.715-2.77-.16-2.77-1.585V7.88c0-1.425 1.54-2.3 2.77-1.585Z"></path>
+            </svg>
+          </a>
+          <a class="footer__icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Fibe newsletter on Buttondown" title="Newsletter (Buttondown)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.236-8 4.764-8-4.764V6h16zm0 9.764H4V10.6l8 4.764 8-4.764z"></path>
+            </svg>
+          </a>
+          <a class="footer__icon" href="#" target="_blank" rel="me noopener noreferrer" aria-label="Fibe on Slack" title="Slack">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52ZM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313ZM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834ZM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312ZM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834ZM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312ZM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52ZM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313Z"></path>
+            </svg>
+          </a>
+        </nav>
+        <div class="footer__support" role="note">
+          <span class="flag" aria-hidden="true">🇺🇦</span>
+          <span class="footer__support-text" data-i18n="footer.support"><strong>Підтримай Україну.</strong>
+            <span class="footer__support-sub">росія — країна-терорист.</span></span>
+        </div>
+        <div class="footer__copy" data-i18n="footer.copyright">© <span id="year">2026</span> fibe.gg — Усі права захищено.</div>
+      </div>
+    </footer>
+
+    <!-- Solutions "Learn more" modal — content rendered from markdown -->
+    
+
+    <script src="/assets/script.js?v=14" defer></script>
+    <!-- Dev hot-reload: connects only when the page is served from a localhost
+         port (i.e. `npm run dev`). On any other host this script is a no-op,
+         so it costs ~300 bytes in production and never runs. -->
+    <script>
+      (() => {
+        const host = location.hostname;
+        if (host !== "localhost" && host !== "127.0.0.1") return;
+        if (!location.port) return;
+        const port = parseInt(location.port, 10) + 1;
+        try {
+          const es = new EventSource(`http://${host}:${port}/__reload`);
+          es.addEventListener("reload", () => location.reload());
+        } catch {}
+      })();
+    </script>
+<dialog id="solution-modal" class="modal" aria-labelledby="solution-modal-title">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close">×</button>
+      <article class="modal__content" data-solution-modal-content>
+        <p class="modal__loading">Loading…</p>
+      </article>
+    </dialog>
+
+  </body>
+</html>

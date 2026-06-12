@@ -1,0 +1,13 @@
+{
+  "name": "why-fibe-gg",
+  "private": true,
+  "type": "module",
+  "description": "why.fibe.gg — single-page marketing site (static).",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build:locales": "node scripts/build-locales.mjs"
+  },
+  "devDependencies": {
+    "node-html-parser": "^7.1.0"
+  }
+}

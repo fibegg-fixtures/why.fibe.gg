@@ -1,0 +1,14 @@
+{
+  "name": "Why Fibe",
+  "short_name": "Why Fibe",
+  "description": "Six paths into the same workshop. Why every kind of builder uses Fibe.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#191c14",
+  "theme_color": "#191c14",
+  "icons": [
+    { "src": "/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

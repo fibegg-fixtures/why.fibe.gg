@@ -1,0 +1,2796 @@
+/*
+ * why.fibe.gg — single-page marketing
+ * "Phoenix Terminal" — phosphor green × signal gold on a warm olive-graphite
+ * field. Digital DNA, professional cyberpunk, the phoenix, freedom.
+ * Purple is permitted in exactly one place: the boring→innovative range.
+ */
+
+:root {
+  /* Brand — phosphor green, the living strand */
+  --brand-50:  #f1fbe6;
+  --brand-200: #c8f0a3;
+  --brand-300: #abe87f;
+  --brand-400: #92df62;
+  --brand-500: #79d44e;
+  --brand-600: #5cb43a;
+  --brand-700: #46942e;
+  --brand-800: #357424;
+
+  /* Gold — the second strand of the helix */
+  --gold-200: #f9e8a4;
+  --gold-300: #f5da79;
+  --gold-400: #eec854;
+  --gold-500: #e2b33a;
+  --gold-600: #c0952b;
+  --gold-700: #99761f;
+
+  /* Ember — phoenix fire, used sparingly */
+  --ember-400: #f08760;
+  --ember-500: #e26a44;
+
+  /* Field — warm olive graphite. Not black, not white: console metal.
+     The page base (--ink-1) is LIGHTER than the cards (--ink-2/3), so
+     panels read as recessed instrument wells, not floating glass. */
+  --ink-0:  #191c14;   /* deepest well */
+  --ink-1:  #2e3327;   /* page base */
+  --ink-2:  #252a1e;   /* recessed panel */
+  --ink-3:  #20251a;   /* panel depth */
+  --ink-4:  #434a35;   /* hairline */
+  --ink-5:  #545c42;   /* strong line */
+  --ink-6:  #757d5e;   /* etched glyphs */
+
+  /* Text — warm bone */
+  --fg-0:   #fdfbf0;
+  --fg-1:   #f3f0e0;
+  --fg-2:   #e5e2cf;
+  --fg-3:   #c7c4ae;
+  --fg-4:   #a19f89;
+  --fg-5:   #918f7c;
+
+  /* Tile accents — green/gold dominant, ember + mint supporting */
+  --accent-problem:  #92df62;  /* sprout    — business */
+  --accent-product:  #e8b542;  /* honey     — expertise */
+  --accent-sharpen:  #56d8c0;  /* mint-teal — craft */
+  --accent-compete:  #f6e07e;  /* solar     — dream */
+  --accent-research: #7fec9f;  /* emerald   — research */
+  --accent-cto:      #f08760;  /* ember     — shareholders */
+  --accent-fun:      #fcb35f;  /* tangerine — fun */
+
+  /* Layout */
+  --maxw: 1180px;
+  --pad-x: clamp(1.1rem, 4vw, 2.25rem);
+
+  /* Type */
+  /* Play carries the Cyrillic glyphs Chakra Petch lacks (the /uk/ locale) —
+     same squared, technical voice, so per-glyph fallback stays coherent. */
+  --font-display: "Chakra Petch", "Play", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --radius-sm: 3px;
+  --radius:    6px;
+  --radius-lg: 10px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background:
+    /* faint etched grain — keeps the field from reading as flat plastic */
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 4px),
+    var(--ink-1);
+  color: var(--fg-2);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: var(--brand-400); text-decoration: none; }
+a:hover { color: var(--brand-300); }
+
+h1, h2, h3, h4 {
+  color: var(--fg-1);
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0;
+}
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+::selection { background: color-mix(in srgb, var(--brand-500) 40%, transparent); color: var(--fg-0); }
+
+:focus-visible { outline: 2px solid var(--brand-400); outline-offset: 2px; }
+
+.skip-link {
+  position: absolute;
+  top: -100px; left: 1rem;
+  background: var(--brand-500); color: var(--ink-0);
+  padding: 0.5rem 0.9rem; border-radius: 4px; font-weight: 600;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ──────────────────────────────────────────────
+   NAV
+   ────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--ink-0) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid var(--ink-4);
+}
+/* Thin phosphor seam under the bar — the console's powered-on line. */
+.nav::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--brand-500) 55%, transparent) 18%,
+    color-mix(in srgb, var(--gold-400) 55%, transparent) 82%,
+    transparent 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.nav__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.55rem var(--pad-x);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.nav__brand { flex-shrink: 0; }
+.nav__brand {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--fg-1);
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.05rem; letter-spacing: 0.01em;
+}
+.nav__brand:hover { color: var(--fg-1); }
+.nav__mark {
+  width: 28px; height: 28px; border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--ink-5);
+}
+.nav__word { color: var(--fg-1); }
+.nav__slash { color: var(--ink-6); margin: 0 0.1rem; }
+.nav__sub {
+  color: var(--brand-400);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.92em;
+  letter-spacing: 0.04em;
+}
+.nav__cta {
+  flex-shrink: 0;
+  padding: 0.46rem 0.95rem;
+  border: none;
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+  background: linear-gradient(180deg, var(--gold-300) 0%, var(--gold-500) 100%);
+  color: var(--ink-0);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav__cta:hover { background: linear-gradient(180deg, var(--gold-200) 0%, var(--gold-400) 100%); color: var(--ink-0); }
+
+/* Language switcher next to the Try-Fibe button. */
+.nav__lang {
+  flex-shrink: 0;
+  padding: 0.42rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+  text-decoration: none !important;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav__lang:hover {
+  color: var(--brand-200);
+  background: color-mix(in srgb, var(--brand-500) 8%, transparent);
+}
+@media (max-width: 768px) {
+  .nav__lang { display: none; } /* drawer carries it on mobile */
+}
+
+/* Drawer variant — sits above the Try-Fibe button. */
+.drawer__lang {
+  display: block;
+  padding: 0.7rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+  text-align: center;
+  text-decoration: none !important;
+  border-top: 1px solid var(--ink-4);
+  margin-top: 0.6rem;
+}
+.drawer__lang:hover { color: var(--brand-200); }
+
+/* Hamburger toggle — visible on mobile only. */
+.nav__toggle {
+  display: none;
+  width: 40px; height: 40px;
+  border-radius: 9px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--ink-5);
+  color: var(--fg-1);
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-items: center; justify-content: center;
+  gap: 4px;
+  flex-direction: column;
+  transition: background 0.15s, border-color 0.15s;
+}
+.nav__toggle:hover { background: color-mix(in srgb, var(--brand-500) 10%, transparent); border-color: color-mix(in srgb, var(--brand-500) 45%, transparent); }
+.nav__toggle-bar {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--fg-1);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 640px) {
+  .nav__toggle { display: inline-flex; }
+}
+
+/* ──────────────────────────────────────────────
+   MOBILE DRAWER — vertical full-list menu
+   ────────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: block;
+}
+.drawer[hidden] { display: none; }
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.drawer__panel {
+  position: relative;
+  margin-left: auto;
+  height: 100%;
+  width: min(86vw, 360px);
+  background: var(--ink-0);
+  border-left: 1px solid var(--ink-4);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -20px 0 60px rgba(0,0,0,0.6);
+}
+.drawer__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1rem 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--ink-4);
+  background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+}
+.drawer__close {
+  width: 40px; height: 40px;
+  border-radius: 9px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--ink-5);
+  color: var(--fg-1);
+  font-size: 1.4rem; line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+.drawer__close:hover { background: color-mix(in srgb, var(--brand-500) 10%, transparent); border-color: color-mix(in srgb, var(--brand-500) 45%, transparent); color: var(--brand-300); }
+.drawer__list {
+  display: flex; flex-direction: column;
+  padding: 0.5rem 0.5rem 1rem;
+  flex: 1;
+  gap: 0.15rem;
+}
+.drawer__item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  color: var(--fg-2);
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.drawer__item:hover,
+.drawer__item:focus-visible {
+  color: var(--fg-1);
+  background: color-mix(in srgb, var(--brand-500) 8%, transparent);
+  border-color: color-mix(in srgb, var(--brand-500) 18%, transparent);
+  outline: none;
+}
+.drawer__item-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--fg-4);
+  min-width: 28px;
+}
+.drawer__item.is-active {
+  background: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 14%, transparent);
+  border-color: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 40%, transparent);
+  color: var(--fg-0);
+}
+.drawer__item.is-active .drawer__item-num { color: var(--persona-accent, var(--brand-300)); }
+.drawer__item--business.is-active     { --persona-accent: var(--accent-problem); }
+.drawer__item--expertise.is-active    { --persona-accent: var(--accent-product); }
+.drawer__item--craft.is-active        { --persona-accent: var(--accent-sharpen); }
+.drawer__item--dream.is-active        { --persona-accent: var(--accent-compete); }
+.drawer__item--research.is-active     { --persona-accent: var(--accent-research); }
+.drawer__item--shareholders.is-active { --persona-accent: var(--accent-cto); }
+.drawer__item--fun.is-active          { --persona-accent: var(--accent-fun); }
+.drawer__item--solutions.is-active    { --persona-accent: var(--gold-400); }
+.drawer__item--fibedentity.is-active  { --persona-accent: var(--brand-400); }
+
+.drawer__foot {
+  padding: 0.85rem 1rem 1.25rem;
+  border-top: 1px solid var(--ink-4);
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.drawer__cta {
+  justify-content: center;
+  font-size: 1rem;
+}
+.drawer__family {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+.drawer__family a {
+  padding: 0.3rem 0.55rem;
+  color: var(--fg-4);
+  border-radius: 6px;
+}
+.drawer__family a:hover { color: var(--brand-300); background: rgba(255,255,255,0.04); }
+
+body.is-drawer-open { overflow: hidden; }
+
+/* ──────────────────────────────────────────────
+   NAV — jump-to-path chips (table of contents in nav row)
+   ────────────────────────────────────────────── */
+.nav__paths {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+  margin: 0 0.25rem;
+  mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+}
+.nav__paths::-webkit-scrollbar { display: none; }
+
+.nav__path {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  color: var(--fg-3);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.nav__path:hover {
+  color: var(--fg-1);
+  background: rgba(255,255,255,0.04);
+}
+.nav__path-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--fg-5);
+}
+.nav__path-label { font-weight: 500; }
+
+.nav__path.is-active {
+  color: var(--fg-0);
+  background: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 14%, transparent);
+  border-color: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 40%, transparent);
+}
+.nav__path.is-active .nav__path-num {
+  color: var(--persona-accent, var(--brand-300));
+}
+
+.nav__path--business.is-active     { --persona-accent: var(--accent-problem); }
+.nav__path--expertise.is-active    { --persona-accent: var(--accent-product); }
+.nav__path--craft.is-active        { --persona-accent: var(--accent-sharpen); }
+.nav__path--dream.is-active        { --persona-accent: var(--accent-compete); }
+.nav__path--research.is-active     { --persona-accent: var(--accent-research); }
+.nav__path--shareholders.is-active { --persona-accent: var(--accent-cto); }
+.nav__path--fun.is-active          { --persona-accent: var(--accent-fun); }
+.nav__path--solutions.is-active    { --persona-accent: var(--gold-400); }
+.nav__path--fibedentity.is-active  { --persona-accent: var(--brand-400); }
+
+/* Mobile: hide the chip strip and the Try-Fibe CTA — the drawer takes over.
+   The hamburger toggle sits on the left, brand right next to it. */
+@media (max-width: 640px) {
+  .nav__inner { gap: 0.6rem; padding: 0.5rem var(--pad-x); justify-content: flex-start; }
+  .nav__cta { display: none; }
+  .nav__paths { display: none; }
+  .nav__brand { margin-right: auto; }
+}
+
+/* ──────────────────────────────────────────────
+   GENERIC BITS — eyebrows, buttons, section heads
+   ────────────────────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  margin: 0 0 1rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--brand-500) 40%, transparent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-300);
+  background: color-mix(in srgb, var(--brand-500) 8%, transparent);
+}
+.eyebrow__dot {
+  width: 6px; height: 6px; border-radius: 1px;
+  background: var(--brand-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 25%, transparent);
+  animation: eyebrow-blink 2.8s steps(1) infinite;
+}
+@keyframes eyebrow-blink {
+  0%, 92%, 100% { opacity: 1; }
+  94%, 98% { opacity: 0.25; }
+}
+.eyebrow--alt {
+  color: var(--fg-1);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Hero eyebrow — "WHY YOU might/REALLY WANT TO TRY FIBE" swap.
+   "MIGHT" is dimmed and struck through; "REALLY" sits next to it, slightly
+   tilted, glowing — reads as a handwritten correction. */
+.eyebrow--hero { gap: 0.55rem; padding-block: 0.45rem; }
+.eyebrow__swap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  position: relative;
+}
+.eyebrow__strike {
+  text-decoration: line-through;
+  text-decoration-color: rgba(239, 68, 68, 0.9);
+  text-decoration-thickness: 2px;
+  color: var(--fg-5);
+  font-weight: 500;
+  opacity: 0.55;
+}
+.eyebrow__really {
+  display: inline-block;
+  color: var(--gold-300);
+  font-weight: 800;
+  font-size: 1.05em;
+  letter-spacing: 0.14em;
+  text-shadow:
+    0 0 12px color-mix(in srgb, var(--gold-500) 60%, transparent),
+    0 0 4px color-mix(in srgb, var(--gold-300) 30%, transparent);
+  transform: rotate(-3deg) translateY(-1px);
+  transform-origin: left center;
+  animation: hero-really-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hero-really-pulse {
+  0%, 100% { transform: rotate(-3deg) translateY(-1px) scale(1); }
+  50%      { transform: rotate(-3deg) translateY(-1px) scale(1.08);
+             text-shadow:
+               0 0 22px color-mix(in srgb, var(--gold-500) 75%, transparent),
+               0 0 6px color-mix(in srgb, var(--gold-300) 40%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow__really { animation: none; transform: rotate(-3deg) translateY(-1px); }
+}
+
+/* Hero graph — Dijkstra-ish illustration sitting between title and lede. */
+.hero__graph {
+  position: relative;
+  margin: 0 auto 1.4rem;
+  max-width: 720px;
+  width: 100%;
+}
+.hero__graph svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible; /* so glow filter isn't clipped */
+}
+
+/* Interactive "shortest path" group — the one labelled "Fibe Way". */
+.hero__graph-shortest {
+  cursor: help;
+  outline: none;
+}
+.hero__graph-shortest-line {
+  transition: stroke-width 0.2s ease, filter 0.2s ease;
+}
+.hero__graph-shortest:hover .hero__graph-shortest-line,
+.hero__graph-shortest:focus-visible .hero__graph-shortest-line,
+.hero__graph-shortest.is-active .hero__graph-shortest-line {
+  stroke-width: 5;
+}
+
+/* Floating tooltip — appears above the hovered waypoint / line. The graph
+   container sets --tip-x / --tip-y (in container-relative px) from JS;
+   here we just lift the tip "above" that point with translate(-50%, -100%). */
+.hero__graph-tip {
+  position: absolute;
+  left: var(--tip-x, 50%);
+  top: var(--tip-y, 38%);
+  transform: translate(-50%, -100%) scale(0.92);
+  padding: 0.42rem 0.9rem;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--brand-500) 92%, #000 8%) 0%,
+    color-mix(in srgb, var(--brand-700) 90%, #000 10%) 100%);
+  border: 1px solid color-mix(in srgb, var(--brand-300) 60%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-0);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  box-shadow:
+    0 12px 28px -8px color-mix(in srgb, var(--brand-500) 55%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  z-index: 2;
+}
+.hero__graph-tip::after {
+  /* little notch underneath, pointing down at the hovered element */
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px; height: 8px;
+  background: color-mix(in srgb, var(--brand-700) 90%, #000 10%);
+  border-right: 1px solid color-mix(in srgb, var(--brand-300) 60%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-300) 60%, transparent);
+}
+.hero__graph.is-tip-visible .hero__graph-tip {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1);
+}
+
+/* Per-waypoint hover/focus state — pop the dot slightly + accent glow */
+.hero__graph-step { cursor: help; outline: none; }
+.hero__graph-step-dot { transition: r 0.15s ease, filter 0.15s ease; }
+.hero__graph-step:hover .hero__graph-step-dot,
+.hero__graph-step:focus-visible .hero__graph-step-dot {
+  r: 8;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand-300) 70%, transparent));
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  border: 1px solid transparent;
+  text-decoration: none !important;
+  will-change: transform;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-700) 100%);
+  color: var(--ink-0);
+  box-shadow:
+    0 8px 24px color-mix(in srgb, var(--brand-700) 32%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+.btn--primary:hover { color: var(--ink-0); transform: translateY(-1px); box-shadow: 0 12px 30px color-mix(in srgb, var(--brand-700) 45%, transparent); }
+
+.btn--ghost {
+  color: var(--fg-1);
+  background: rgba(255,255,255,0.03);
+  border-color: var(--ink-5);
+}
+.btn--ghost:hover { color: var(--fg-1); border-color: color-mix(in srgb, var(--brand-500) 50%, transparent); background: color-mix(in srgb, var(--brand-500) 6%, transparent); }
+
+.btn--lg { padding: 0.95rem 1.6rem; font-size: 1.05rem; }
+
+/* Most-emphasized CTA: "See it in action".
+   Persona-tinted solid with chamfered corners, oversized play badge. */
+.btn--play {
+  position: relative;
+  gap: 0.65rem;
+  padding: 0.85rem 1.25rem 0.85rem 0.7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink-0);
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--persona-accent, var(--brand-500)) 100%, transparent) 0%,
+      color-mix(in srgb, var(--persona-accent, var(--brand-500)) 80%, #000 20%) 100%);
+  box-shadow:
+    0 14px 36px -8px color-mix(in srgb, var(--persona-accent, var(--brand-500)) 55%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+}
+.btn--play:hover {
+  color: var(--ink-0);
+  transform: translateY(-1px);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--persona-accent, var(--brand-500)) 88%, #fff 12%) 0%,
+      color-mix(in srgb, var(--persona-accent, var(--brand-500)) 92%, #000 8%) 100%);
+}
+.btn--play:focus-visible {
+  outline: 2px solid var(--persona-accent, var(--brand-300));
+  outline-offset: 3px;
+}
+.btn__play {
+  display: inline-grid; place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 92%, transparent);
+  color: var(--persona-accent, var(--brand-300));
+  font-size: 0.7rem; line-height: 1;
+  padding-left: 2px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+.btn--play:hover .btn__play { color: var(--fg-0); }
+
+/* Demoted primary: now the secondary outline-filled style. */
+.btn--primary {
+  background: color-mix(in srgb, var(--brand-500) 6%, transparent);
+  color: var(--fg-1);
+  border-color: color-mix(in srgb, var(--brand-500) 45%, transparent);
+  box-shadow: none;
+}
+.btn--primary:hover {
+  color: var(--fg-0);
+  background: color-mix(in srgb, var(--brand-500) 12%, transparent);
+  border-color: color-mix(in srgb, var(--brand-500) 70%, transparent);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--brand-700) 20%, transparent);
+}
+
+.section-head {
+  max-width: 720px; margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.section-head h2 {
+  font-size: clamp(1.7rem, 2.2vw + 0.9rem, 2.6rem);
+  margin: 0.25rem 0 0.65rem;
+}
+.section-sub {
+  color: var(--fg-3); font-size: 1.02rem; line-height: 1.6;
+}
+.section-sub a { color: var(--brand-300); }
+.section-sub a:hover { color: var(--brand-200); text-decoration: underline; }
+.section-sub strong {
+  color: var(--fg-1);
+  font-weight: 600;
+  background: linear-gradient(transparent 70%, color-mix(in srgb, var(--brand-500) 22%, transparent) 70%);
+  padding: 0 0.15em;
+}
+.section-sub em {
+  color: var(--gold-300);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────
+   HERO
+   ────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7rem) var(--pad-x) clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink-4);
+  /* Two strands of light meet over the console: phosphor from the left,
+     gold from the right — the helix palette before the helix itself. */
+  background:
+    radial-gradient(1000px 560px at 18% -12%, color-mix(in srgb, var(--brand-500) 13%, transparent), transparent 62%),
+    radial-gradient(1000px 560px at 82% -12%, color-mix(in srgb, var(--gold-500) 11%, transparent), transparent 62%),
+    radial-gradient(900px 480px at 50% 115%, color-mix(in srgb, var(--brand-700) 9%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+}
+.hero__glow {
+  position: absolute; inset: 0;
+  background-image:
+    /* CRT scanlines */
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 1px, transparent 1px 3px),
+    /* engineering grid */
+    linear-gradient(color-mix(in srgb, var(--brand-500) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand-500) 6%, transparent) 1px, transparent 1px);
+  background-size: 100% 3px, 56px 56px, 56px 56px;
+  mask-image: radial-gradient(70% 70% at 50% 40%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000 30%, transparent 78%);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.hero__inner {
+  position: relative;
+  max-width: 980px; margin: 0 auto;
+  text-align: center;
+}
+.hero__title {
+  font-size: clamp(2.3rem, 5.2vw + 0.5rem, 2.6rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin: 0 0 1.25rem;
+  color: var(--fg-1);
+}
+.hero__title-em {
+  background: linear-gradient(92deg, var(--brand-300) 0%, var(--brand-400) 38%, var(--gold-300) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__lede {
+  max-width: 760px; margin: 0 auto 2rem;
+  color: var(--fg-3);
+  font-size: clamp(1.02rem, 0.6vw + 0.9rem, 1.2rem);
+  line-height: 1.6;
+}
+.hero__lede em { color: var(--fg-1); font-style: normal; font-weight: 600; }
+.hero__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; }
+
+.marquee {
+  position: relative;
+  margin: clamp(2.5rem, 5vw, 4rem) calc(var(--pad-x) * -1) 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--ink-4);
+  border-bottom: 1px solid var(--ink-4);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ink-0) 70%, transparent), color-mix(in srgb, var(--ink-0) 35%, transparent)),
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand-500) 8%, transparent), transparent);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: inline-flex; gap: 1.5rem;
+  white-space: nowrap;
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+.marquee__track span {
+  color: var(--fg-4);
+  font-size: 0.92rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+/* Alternate the two strand colours down the ticker. */
+.marquee__track span:nth-child(4n + 1) { color: var(--brand-300); }
+.marquee__track span:nth-child(4n + 3) { color: var(--gold-300); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}
+
+/* ──────────────────────────────────────────────
+   2×2 MATRIX
+   ────────────────────────────────────────────── */
+.matrix-section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(3rem, 5vw, 5rem) var(--pad-x);
+}
+.matrix {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+/* On mobile, force a logical reading order independent of DOM order:
+   1) fun  → the friendly entry-point
+   2) grid → the four dev/domain quadrants (problem · sharpen · product · compete)
+   3) cto  → C-suite, after dev/domain context is established
+   4) research → the edge case, last
+   DOM order is fun→grid→cto→research for the big-screen flank layout, but
+   without explicit `order` here the CTO (DOM child of .matrix) would
+   default to order:0 and float to the top of the mobile stack. */
+.matrix__flank--left  { order: 0; }
+.matrix__grid         { order: 1; }
+.matrix__cto          { order: 2; }
+.matrix__flank--right { order: 3; }
+@media (min-width: 880px) {
+  .matrix {
+    /* triangle flank │ axes-grid │ oval flank.
+       Two implicit rows: row 1 = 2×2 + flanks, row 2 = CTO tile in centre. */
+    grid-template-columns: 1fr minmax(0, 2.2fr) 1fr;
+    gap: 1.25rem;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  /* Pin flanks + grid to row 1 so the flanks centre on the 2×2's height,
+     not on the (taller) full stack including CTO. */
+  .matrix__flank--left  { grid-column: 1; grid-row: 1; order: 0; }
+  .matrix__grid         { grid-column: 2; grid-row: 1; padding-left: 36px; order: 0; }
+  .matrix__flank--right { grid-column: 3; grid-row: 1; order: 0; }
+  /* CTO sits in row 2, centre column. margin-top clears the x-axis arrow
+     that hangs ~32 px below the 2×2 grid; margin-left mirrors the 36 px
+     padding-left of .matrix__grid so the CTO's left edge lines up with
+     the 2×2 grid items above it. */
+  .matrix__cto {
+    grid-column: 2;
+    grid-row: 2;
+    margin-left: 36px;
+    margin-top: 70px;
+  }
+}
+/* Chart-style axes — line + arrowhead + label outside the grid */
+.matrix__axis-arrow { display: none; }
+
+@media (min-width: 880px) {
+  .matrix__axis {
+    position: absolute;
+    color: var(--fg-2);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Y-AXIS: vertical line on the left of the 2×2 grid, arrow at the bottom */
+  .matrix__axis--y {
+    left: 8px;
+    top: 16px;
+    bottom: 24px;
+    width: 18px;
+  }
+  .matrix__axis--y::before {
+    /* the line */
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 12px;
+    width: 2px;
+    border-radius: 1px;
+    background: linear-gradient(to bottom,
+      color-mix(in srgb, var(--brand-500) 12%, transparent) 0%,
+      var(--brand-500) 50%,
+      var(--brand-300) 100%);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--brand-500) 30%, transparent);
+  }
+  .matrix__axis--y::after {
+    /* arrow head pointing down */
+    content: "";
+    position: absolute;
+    left: 8px;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 10px 5px 0 5px;
+    border-color: var(--brand-300) transparent transparent transparent;
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand-500) 55%, transparent));
+  }
+  .matrix__axis--y .matrix__axis-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center;
+    background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid color-mix(in srgb, var(--brand-500) 25%, transparent);
+    color: var(--brand-200);
+  }
+
+  /* X-AXIS: horizontal line below the 2×2 grid, arrow at the right.
+     Gold — the second strand. The Y axis stays phosphor green, so the two
+     coordinates of the matrix carry the two colours of the helix. */
+  .matrix__axis--x {
+    bottom: -32px;
+    left: 36px;
+    right: 8px;
+    height: 18px;
+  }
+  .matrix__axis--x::before {
+    /* the line */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 12px;
+    top: 8px;
+    height: 2px;
+    border-radius: 1px;
+    background: linear-gradient(to right,
+      color-mix(in srgb, var(--gold-500) 12%, transparent) 0%,
+      var(--gold-500) 50%,
+      var(--gold-300) 100%);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--gold-500) 30%, transparent);
+  }
+  .matrix__axis--x::after {
+    /* arrow head pointing right */
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 8px;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent var(--gold-300);
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold-500) 55%, transparent));
+  }
+  .matrix__axis--x .matrix__axis-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid color-mix(in srgb, var(--gold-500) 25%, transparent);
+    color: var(--gold-200);
+  }
+}
+
+.matrix__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+@media (min-width: 560px) {
+  .matrix__grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+}
+/* matrix__axes is now a child of matrix__grid — axes only span the middle
+   column on big screens (instead of the full 3-col matrix). */
+.matrix__axes { display: none; pointer-events: none; }
+@media (min-width: 880px) {
+  .matrix__grid > .matrix__axes {
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+}
+
+/* Registered so the bracket reveal can interpolate instead of snapping. */
+@property --tile-brackets {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.tile {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 1.25rem 1.4rem 1.4rem;
+  /* Recessed instrument well — darker than the page field, with a faint
+     top shadow as if the panel is set INTO the console. */
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  border: 1px solid var(--ink-4);
+  border-radius: var(--radius);
+  color: inherit;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 168px;
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.28),
+    inset 0 -1px 0 rgba(255,255,255,0.03);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.tile::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    /* HUD corner brackets — hidden until hover */
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) left 0 top 0 / 16px 2px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) left 0 top 0 / 2px 16px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) right 0 top 0 / 16px 2px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) right 0 top 0 / 2px 16px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) left 0 bottom 0 / 16px 2px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) left 0 bottom 0 / 2px 16px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) right 0 bottom 0 / 16px 2px,
+    linear-gradient(var(--tile-accent, var(--brand-400)), var(--tile-accent, var(--brand-400))) right 0 bottom 0 / 2px 16px,
+    radial-gradient(80% 80% at 100% 0%, var(--tile-glow, color-mix(in srgb, var(--brand-500) 18%, transparent)), transparent 70%);
+  background-repeat: no-repeat;
+  opacity: 0.55;
+  --tile-brackets: 0;
+  z-index: -1;
+  transition: opacity 0.18s ease, --tile-brackets 0.22s ease;
+  /* Mask the bracket layers out until hover by sizing them to zero. */
+  background-size: calc(var(--tile-brackets) * 16px) 2px, 2px calc(var(--tile-brackets) * 16px),
+                   calc(var(--tile-brackets) * 16px) 2px, 2px calc(var(--tile-brackets) * 16px),
+                   calc(var(--tile-brackets) * 16px) 2px, 2px calc(var(--tile-brackets) * 16px),
+                   calc(var(--tile-brackets) * 16px) 2px, 2px calc(var(--tile-brackets) * 16px),
+                   100% 100%;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--tile-accent, var(--brand-500)) 60%, var(--ink-4));
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.28),
+    0 10px 28px rgba(0,0,0,0.35);
+}
+.tile:hover::before { opacity: 1; --tile-brackets: 1; }
+.tile__corner {
+  position: absolute; top: 0.9rem; right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem; color: var(--fg-5);
+  letter-spacing: 0.08em;
+}
+.tile__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tile-accent, var(--brand-300));
+  margin-bottom: 0.6rem;
+}
+.tile__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--fg-1);
+  margin: 0 0 0.4rem;
+}
+.tile__sub {
+  display: block;
+  color: var(--fg-3);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.tile::after {
+  content: "→";
+  position: absolute;
+  right: 1.2rem; bottom: 1.05rem;
+  color: var(--tile-accent, var(--brand-300));
+  font-size: 1.15rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.tile:hover::after { opacity: 1; transform: translateX(0); }
+
+.tile--problem  { --tile-accent: var(--accent-problem);  --tile-glow: color-mix(in srgb, var(--brand-500) 22%, transparent); }
+.tile--product  { --tile-accent: var(--accent-product);  --tile-glow: color-mix(in srgb, var(--accent-product) 22%, transparent); }
+.tile--sharpen  { --tile-accent: var(--accent-sharpen);  --tile-glow: color-mix(in srgb, var(--accent-sharpen) 22%, transparent); }
+.tile--compete  { --tile-accent: var(--accent-compete);  --tile-glow: color-mix(in srgb, var(--accent-compete) 22%, transparent); }
+.tile--research { --tile-accent: var(--accent-research); --tile-glow: color-mix(in srgb, var(--accent-research) 22%, transparent); }
+.tile--cto      { --tile-accent: var(--accent-cto);      --tile-glow: color-mix(in srgb, var(--accent-cto) 22%, transparent); }
+.tile--fun      { --tile-accent: var(--accent-fun);      --tile-glow: color-mix(in srgb, var(--accent-fun) 22%, transparent); }
+
+/* Wide tile spans both columns at the bottom of the axis (the CTO/orchestrator). */
+@media (min-width: 560px) {
+  .matrix__grid .tile--wide { grid-column: 1 / -1; }
+}
+
+/* ──────────────────────────────────────────────
+   FLANK TILES — the "outside the grid" shapes.
+   For Fun = triangle on the left, Researcher = oval on the right.
+   These render at ALL viewport sizes; the shape is the tile's identity, not
+   a desktop-only flourish. On mobile they sit as centred ~260px squares.
+   ────────────────────────────────────────────── */
+.matrix__flank {
+  /* override the default tile card chrome so the shape itself becomes the
+     container. Background/border move to .tile__shape. */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  /* Square aspect — required for the oval to be a TRUE circle and for the
+     triangle to render as roughly equilateral. */
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  /* Scales down on narrow screens, caps at 300px on desktop. */
+  max-width: clamp(220px, 80vw, 300px);
+  margin: 0 auto;
+  transition: transform 0.18s ease;
+}
+.matrix__flank:hover {
+  transform: translateY(-3px);
+  box-shadow: none;        /* shadow lives on the shape */
+  border-color: transparent;
+}
+.matrix__flank .tile__content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1rem 0.4rem;
+  max-width: 88%;
+}
+.matrix__flank .tile__tag    { margin-bottom: 0.5rem; }
+.matrix__flank .tile__title  { font-size: 1.2rem; }
+.matrix__flank .tile__sub    { font-size: 0.86rem; line-height: 1.45; }
+.matrix__flank .tile__corner { display: none; }
+.matrix__flank::after { display: none; } /* hide the rectangle hover arrow */
+/* The default .tile::before paints a rectangular corner-glow that bleeds
+   outside the triangle/circle silhouette. Kill it on flanks — the inner
+   gradient inside .tile__shape already provides the accent glow. */
+.matrix__flank::before { display: none; }
+
+/* The shape backdrop — fills the square flank, painted under content. */
+.matrix__flank .tile__shape {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: filter 0.25s ease;
+}
+.matrix__flank:hover .tile__shape {
+  filter: brightness(1.08);
+}
+
+/* TRIANGLE (For fun) — clip-path so the gradient takes the shape.
+   box-shadow is clipped by clip-path, so we use filter: drop-shadow,
+   which renders the shadow of the *clipped* silhouette. */
+.tile__shape--triangle {
+  background:
+    radial-gradient(70% 70% at 50% 88%,
+      color-mix(in srgb, var(--tile-accent, var(--brand-500)) 32%, transparent) 0%,
+      transparent 72%),
+    linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  clip-path: polygon(50% 4%, 4% 96%, 96% 96%);
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.55))
+          drop-shadow(0 0 1px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 35%, transparent));
+  transition: filter 0.25s ease;
+}
+.matrix__flank--left:hover .tile__shape--triangle {
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 18px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 85%, transparent))
+          drop-shadow(0 0 3px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 90%, transparent))
+          brightness(1.12);
+}
+/* Brighten the inscribed SVG outline on hover by raising its opacity via
+   a different inline SVG — pure-CSS swap, no JS. */
+.matrix__flank--left:hover .tile__shape--triangle::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon points='50,4 4,96 96,96' fill='none' stroke='%23fcb35f' stroke-width='1' stroke-linejoin='round' opacity='1'/></svg>");
+}
+/* Stroked outline along the triangle edges — drawn by an inscribed SVG.
+   The clip-path on the parent clips the ::after too, so the outline edges
+   line up exactly with the silhouette. */
+.tile__shape--triangle::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon points='50,4 4,96 96,96' fill='none' stroke='%23fcb35f' stroke-width='0.6' stroke-linejoin='round' opacity='0.55'/></svg>");
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+/* Triangle content: pushed toward the bottom (wider part of the triangle) */
+.matrix__flank--left .tile__content {
+  margin-top: auto;
+  padding-bottom: 1.2rem;
+  max-width: 74%;
+}
+
+/* CIRCLE (Researcher) — true round, with a stronger lift shadow. */
+.tile__shape--oval {
+  background:
+    radial-gradient(60% 60% at 50% 50%,
+      color-mix(in srgb, var(--tile-accent, var(--brand-500)) 24%, transparent) 0%,
+      transparent 72%),
+    linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  border: 1px solid color-mix(in srgb, var(--tile-accent, var(--brand-500)) 40%, var(--ink-4));
+  border-radius: 50%;
+  box-shadow:
+    0 18px 32px -10px rgba(0, 0, 0, 0.55),
+    0 0 0 1px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 8%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.matrix__flank--right:hover .tile__shape--oval {
+  border-color: var(--tile-accent, var(--brand-500));
+  box-shadow:
+    0 22px 36px -10px rgba(0, 0, 0, 0.6),
+    0 0 0 1px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 25%, transparent),
+    0 0 28px color-mix(in srgb, var(--tile-accent, var(--brand-500)) 25%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ──────────────────────────────────────────────
+   PERSONA HEAD — a single rounded pill that combines the eyebrow label
+   with the two axis switches. On big screens it sits in one line; on
+   narrow screens the contents wrap inside the same outline.
+   ────────────────────────────────────────────── */
+.persona__head {
+  /* Shrink-to-content, centred via auto margins on a block-level wrapper. */
+  width: max-content;
+  max-width: calc(100% - 2 * var(--pad-x));
+  margin: 0 auto 1.6rem;
+  padding: 0.42rem 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--persona-accent, var(--brand-500)) 40%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 8%, transparent);
+  text-align: center;
+}
+
+/* The eyebrow becomes inline text inside the merged pill — strip its
+   own border / padding / background. */
+.persona__head .eyebrow--persona {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+  color: var(--brand-300);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Small mid-dot between the label and the switches. */
+.persona__head:not(.persona__head--no-switches) .eyebrow--persona::after {
+  content: "·";
+  margin-left: 0.75rem;
+  color: rgba(255, 255, 255, 0.28);
+  font-weight: normal;
+}
+
+/* Switches sit inline next to the label, each stripped of its own pill. */
+.persona__switches {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.85rem;
+}
+
+/* SWITCH — toggle-style indicator showing this persona's axis position. */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease;
+}
+.switch__label {
+  color: var(--fg-2);
+}
+.switch__track {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--ink-5);
+  border: 1px solid var(--ink-4);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.switch__knob {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fg-3);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+.switch__state {
+  /* visually hidden — the knob position alone communicates the state */
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.switch[data-on="true"] {
+  border-color: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 45%, var(--ink-4));
+}
+.switch[data-on="true"] .switch__track {
+  background: color-mix(in srgb, var(--persona-accent, var(--brand-500)) 80%, transparent);
+  border-color: var(--persona-accent, var(--brand-500));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--persona-accent, var(--brand-500)) 30%, transparent);
+}
+.switch[data-on="true"] .switch__knob {
+  transform: translateX(14px);
+  background: var(--ink-0);
+}
+
+@media (max-width: 559px) {
+  .persona__head { gap: 0.65rem; }
+  .switch { padding: 0.28rem 0.6rem 0.28rem 0.75rem; font-size: 0.66rem; }
+  .switch__track { width: 26px; height: 14px; }
+  .switch__knob { width: 10px; height: 10px; }
+  .switch[data-on="true"] .switch__knob { transform: translateX(12px); }
+}
+
+/* ──────────────────────────────────────────────
+   PERSONA SECTIONS
+   ────────────────────────────────────────────── */
+.persona {
+  position: relative;
+  padding: clamp(3.5rem, 6vw, 6rem) var(--pad-x);
+  border-top: 1px solid var(--ink-4);
+  background: var(--ink-1);
+}
+.persona:nth-of-type(even) {
+  background:
+    radial-gradient(900px 400px at 80% 0%, color-mix(in srgb, var(--persona-accent, var(--brand-500)) 7%, transparent), transparent 60%),
+    var(--ink-2);
+}
+.persona__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .persona__inner { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+  .persona__inner--flip { grid-template-columns: 1.1fr 1fr; }
+  .persona__inner--flip .persona__visual { order: 2; }
+  .persona__inner--flip .persona__body   { order: 1; }
+}
+.persona__visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(160deg, var(--ink-2) 0%, var(--ink-3) 70%, var(--ink-0) 100%);
+  border: 1px solid var(--ink-4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,0.3),
+    0 30px 60px -30px rgba(0,0,0,0.55);
+}
+.persona__visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    /* persona-tinted specimen light + faint scanlines: a viewing chamber */
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0 1px, transparent 1px 4px),
+    radial-gradient(140% 100% at 100% 0%, var(--persona-glow, color-mix(in srgb, var(--brand-500) 20%, transparent)), transparent 60%),
+    radial-gradient(120% 80% at 0% 100%, rgba(255,255,255,0.04), transparent 60%);
+  pointer-events: none;
+}
+/* Always-on HUD corner brackets in the persona's accent — quiet, etched. */
+.persona__visual::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) left 0 top 0 / 18px 1.5px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) left 0 top 0 / 1.5px 18px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) right 0 top 0 / 18px 1.5px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) right 0 top 0 / 1.5px 18px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) left 0 bottom 0 / 18px 1.5px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) left 0 bottom 0 / 1.5px 18px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) right 0 bottom 0 / 18px 1.5px,
+    linear-gradient(var(--persona-accent, var(--brand-400)), var(--persona-accent, var(--brand-400))) right 0 bottom 0 / 1.5px 18px;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+.persona__chip {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  z-index: 1;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.4rem 0.7rem;
+  background: color-mix(in srgb, var(--ink-0) 75%, transparent);
+  border: 1px solid var(--ink-5);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.persona__chip-num {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  color: var(--persona-accent, var(--brand-300));
+}
+.persona__chip-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-2);
+}
+.persona__art {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: var(--persona-accent, var(--brand-300));
+  padding: 18%;
+}
+.persona__art svg { width: 100%; height: 100%; }
+
+.persona--01 { --persona-accent: var(--accent-problem);  --persona-glow: color-mix(in srgb, var(--brand-500) 22%, transparent); }
+.persona--02 { --persona-accent: var(--accent-product);  --persona-glow: color-mix(in srgb, var(--accent-product) 22%, transparent); }
+.persona--03 { --persona-accent: var(--accent-sharpen);  --persona-glow: color-mix(in srgb, var(--accent-sharpen) 22%, transparent); }
+.persona--04 { --persona-accent: var(--accent-compete);  --persona-glow: color-mix(in srgb, var(--accent-compete) 22%, transparent); }
+.persona--05 { --persona-accent: var(--accent-research); --persona-glow: color-mix(in srgb, var(--accent-research) 22%, transparent); }
+.persona--06 { --persona-accent: var(--accent-cto);      --persona-glow: color-mix(in srgb, var(--accent-cto) 22%, transparent); }
+.persona--07 { --persona-accent: var(--accent-fun);      --persona-glow: color-mix(in srgb, var(--accent-fun) 22%, transparent); }
+
+.persona__body { max-width: 560px; }
+.persona__title {
+  font-size: clamp(1.8rem, 2.5vw + 0.7rem, 2.9rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0.4rem 0 1.1rem;
+}
+.persona__title br { display: block; }
+.persona__lede {
+  color: var(--fg-3);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+.persona__lede em { color: var(--fg-1); font-style: normal; font-weight: 600; }
+.persona__lede code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 0.08em 0.3em;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--brand-500) 10%, transparent);
+  color: var(--brand-200);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 18%, transparent);
+}
+.persona__list {
+  margin: 1rem 0 1.6rem;
+  display: grid; gap: 0.55rem;
+}
+.persona__list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--fg-3);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.persona__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  background: var(--persona-accent, var(--brand-500));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--persona-accent, var(--brand-500)) 22%, transparent);
+}
+.persona__list strong { color: var(--fg-1); font-weight: 600; }
+.persona__ctas { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+/* ──────────────────────────────────────────────
+   PERSONA "See it in action" — slider lives inside the visual square.
+   Slide 0 is the intro (chip + art); slides 1+ are video previews.
+   No modal/close — arrows always navigate freely.
+   ────────────────────────────────────────────── */
+.persona__visual--slider { overflow: hidden; }
+.persona__gallery {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ink-0) 55%, transparent) 0%, color-mix(in srgb, var(--ink-0) 85%, transparent) 100%);
+  /* No bottom strip needed now that prev/next arrows are gone — single
+     video reference per preview, advanced by auto-dwell tick. */
+  padding: 0.75rem 0.85rem 0.85rem;
+  transition: background 0.25s ease;
+}
+/* On the intro slide, the gallery chrome hides so the visual looks exactly
+   like the original card (chip + art only). Arrows stay visible. */
+.persona__gallery.is-on-intro {
+  background: transparent;
+}
+.persona__gallery.is-on-intro .persona__action-head {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+}
+.persona__gallery .persona__action-head {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Header sits above the slider as a bubble pill — matches the .persona__head
+   chrome at the top of the persona section so the two labels feel like one
+   visual system. The action-tag carries the persona's eyebrow text inside
+   the pill; the action-title (kept for screen readers + structure) is
+   visually hidden because the pill itself IS the header now. */
+/* Header (label + title) sits above the slider, centred so it doesn't
+   collide with the prev arrow. Plain text — NOT a pill. The action-tag
+   now carries the persona's eyebrow text (e.g. "HAVE FUN WITH FIBE")
+   sourced via data-i18n from persona.<name>.eyebrow. */
+.persona__gallery .persona__action-head {
+  display: block;
+  margin: 0 0 0.55rem;
+  text-align: center;
+  max-width: none;
+}
+.persona__gallery .persona__action-tag {
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.15rem;
+}
+.persona__gallery .persona__action-title {
+  font-size: clamp(0.95rem, 1vw + 0.5rem, 1.1rem);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0;
+}
+.persona__gallery .persona__action-sub { display: none; }
+
+/* The persona__head pill no longer sits ABOVE the preview as a section
+   label — its eyebrow text moved into the gallery's action-tag. But the
+   axis switches (Development / Domain / Corporation) still live inside
+   it, and we want those visible UNDER the preview. So:
+     - Hide the eyebrow text inside the pill (now duplicated in the gallery)
+     - Hide the entire pill for personas that never had switches (Fun, Research)
+     - Reorder the persona so its head row sits at the BOTTOM, below the
+       inner visual + body grid
+   Stack via flex column so `order` works without changing DOM. */
+.persona { display: flex; flex-direction: column; }
+.persona__inner { order: 1; }
+.persona__head  { order: 2; margin: 1.6rem auto 0; }
+
+.persona__head .eyebrow--persona { display: none; }
+/* And the dot separator that pseudo'd off the eyebrow — gone. No eyebrow
+   means no leading divider. */
+.persona__head:not(.persona__head--no-switches) .eyebrow--persona::after {
+  content: none;
+}
+
+/* Personas without switches (Fun, Research) end up with an empty pill.
+   Hide those entirely. */
+.persona__head--no-switches { display: none; }
+
+/* Slider inside the gallery — one slide at a time, full width */
+.persona__gallery .slider-shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+}
+.persona__gallery .slider {
+  position: absolute;
+  inset: 0;
+  grid-auto-columns: 100%;
+  /* Pin the row to exactly the slider's content area. Without this, the
+     row sizes to content (auto-rows: auto) and the slide__poster's 16:9
+     aspect-ratio can grow the slide TALLER than the slider — pushing the
+     bottom border outside the overflow:hidden viewport (which is why the
+     bottom border vanished on big screens on hover, where the brighter
+     accent colour made the clip obvious). */
+  grid-template-rows: 1fr;
+  gap: 0;
+  /* Top/bottom padding gives the slide__action's border breathing room
+     inside the overflow-y:hidden viewport. */
+  padding: 4px 0;
+  scroll-padding-left: 0;
+  /* overflow-x: auto on the base .slider forces overflow-y to auto too —
+     lock vertical scroll explicitly. */
+  overflow-y: hidden;
+}
+/* The slide IS the row now (1fr). Make its action fill it exactly so the
+   border sits cleanly inside the clipping viewport, and let the inner
+   poster + body lay out within slide__action's overflow:hidden box. */
+.persona__gallery .slide {
+  min-height: 0;     /* defeat grid item's auto min-height (= min-content) */
+  overflow: hidden;  /* extra guard for sub-pixel rounding */
+}
+.persona__gallery .slide__action {
+  height: 100%;
+  max-height: 100%;
+  align-self: stretch;
+}
+.persona__gallery .slide {
+  scroll-snap-align: center;
+}
+.persona__gallery .slide__action {
+  border-radius: 10px;
+}
+/* Inside the gallery the slide already fills its slot tight against the
+   gallery chrome — the base translateY(-3px) hover lift would shove the
+   top + bottom borders behind the action-head / arrow strip and clip them. */
+.persona__gallery .slide__action:hover {
+  transform: none;
+}
+.persona__gallery .slide__poster { aspect-ratio: 16 / 9; }
+.persona__gallery .slide__body {
+  padding: 0.7rem 0.9rem 0.85rem;
+  gap: 0.3rem;
+}
+.persona__gallery .slide__title { font-size: 0.95rem; }
+.persona__gallery .slide__sub { font-size: 0.82rem; }
+.persona__gallery .slide__cta { margin-top: 0.25rem; }
+
+/* INTRO SLIDE — slide 0 holds the chip + art. Style it to look exactly
+   like the original visual area (chip overlaid, art centred). */
+.persona__gallery .slide--intro {
+  position: relative;
+  display: block;
+  scroll-snap-align: start;
+  background: transparent;
+}
+.persona__gallery .slide--intro .persona__chip {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 3;
+}
+.persona__gallery .slide--intro .persona__art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18%;
+  color: var(--persona-accent, var(--brand-300));
+}
+.persona__gallery .slide--intro .persona__art svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Prev/next buttons — hidden. Each preview now shows ONE video reference;
+   the gallery is intro → single video poster, navigated by the auto-advance
+   dwell tick, so no manual arrows are needed. */
+.persona__gallery .slider__btn {
+  display: none !important;
+}
+.persona__gallery .slider__btn:active { transform: scale(0.96); }
+.persona__gallery .slider__btn--prev { left: 0; right: auto; }
+.persona__gallery .slider__btn--next { right: 0; left: auto; }
+.persona__gallery .slider__btn[aria-disabled="true"] { opacity: 0.2; }
+.persona__gallery .slider__btn:hover {
+  background: color-mix(in srgb, var(--ink-1) 95%, transparent);
+  border-color: var(--persona-accent, color-mix(in srgb, var(--brand-500) 60%, transparent));
+}
+
+/* Mobile: keep the same offset (gallery's padding-bottom is the same). */
+@media (max-width: 959px) {
+  .persona__gallery .slider__btn {
+    bottom: -2.2rem;
+    top: auto;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   PERSONA "See it in action" — slider of granular paths
+   ────────────────────────────────────────────── */
+.persona__action {
+  /* The standalone slider block is moved into persona__visual by JS at load,
+     where it lives as .persona__gallery. Keep this hidden in case JS hasn't
+     processed it yet so it doesn't flash below the persona. */
+  display: none;
+}
+.persona__action-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  max-width: 720px;
+}
+.persona__action-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--persona-accent, var(--brand-300));
+  margin: 0;
+}
+.persona__action-title {
+  font-size: clamp(1.3rem, 1.4vw + 0.6rem, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--fg-1);
+  margin: 0;
+}
+.persona__action-sub {
+  color: var(--fg-3);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin: 0.25rem 0 0;
+}
+
+.slider-shell {
+  position: relative;
+  margin: 0 calc(var(--pad-x) * -1);
+}
+.slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(265px, 280px);
+  gap: 0.9rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--pad-x);
+  padding: 0.35rem var(--pad-x) 1.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.slider::-webkit-scrollbar { display: none; }
+@media (min-width: 600px) {
+  .slider { grid-auto-columns: 300px; }
+}
+.slider:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: -3px;
+  border-radius: 8px;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+  border: 1px solid var(--ink-5);
+  color: var(--fg-1);
+  font-size: 1.5rem; line-height: 1;
+  display: grid; place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0;
+}
+.slider__btn:hover {
+  background: color-mix(in srgb, var(--ink-1) 95%, transparent);
+  border-color: var(--persona-accent, color-mix(in srgb, var(--brand-500) 60%, transparent));
+}
+.slider__btn:active { transform: translateY(-50%) scale(0.96); }
+.slider__btn:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 2px;
+}
+.slider__btn--prev { left: calc(var(--pad-x) - 6px); }
+.slider__btn--next { right: calc(var(--pad-x) - 6px); }
+.slider__btn[aria-disabled="true"] {
+  opacity: 0.25;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .slider__btn { display: none; }
+}
+
+.slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+}
+.slide__action {
+  display: flex; flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink-4);
+  background: var(--ink-2);
+  overflow: hidden;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none !important;
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.slide__action:hover {
+  color: inherit;
+  transform: translateY(-3px);
+  border-color: var(--persona-accent, color-mix(in srgb, var(--brand-500) 55%, transparent));
+  box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+}
+.slide__action:focus-visible {
+  outline: 2px solid var(--persona-accent, var(--brand-400));
+  outline-offset: 3px;
+}
+
+/* Playing state — poster replaced with iframe */
+.slide.is-playing .slide__action { cursor: default; }
+.slide.is-playing .slide__action:hover { transform: none; box-shadow: none; }
+.slide__iframe-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+.slide__iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+}
+.slide__close {
+  position: absolute;
+  top: 0.45rem; right: 0.45rem;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--fg-1);
+  font-size: 1.1rem; line-height: 1;
+  display: grid; place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.slide__close:hover {
+  background: color-mix(in srgb, var(--ink-1) 95%, transparent);
+  color: var(--persona-accent, var(--brand-300));
+}
+
+/* "Coming soon" toast when data-embed-src is empty */
+.slide__hint {
+  position: absolute;
+  inset: auto 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem 0.65rem;
+  background: color-mix(in srgb, var(--ink-0) 92%, transparent);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--fg-2);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 3;
+}
+.slide__hint.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide__poster {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid; place-items: center;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 100% at 28% 18%, var(--persona-accent, var(--brand-500)) 0%, transparent 55%),
+    radial-gradient(140% 110% at 78% 88%, var(--persona-glow, color-mix(in srgb, var(--brand-500) 40%, transparent)) 0%, transparent 60%),
+    linear-gradient(160deg, var(--ink-2) 0%, var(--ink-3) 100%);
+}
+.slide__poster::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.18) 0 1px, transparent 1px 7px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.slide__poster::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+}
+.slide__play {
+  position: relative;
+  z-index: 1;
+  display: inline-grid; place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 70%, transparent);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--fg-0);
+  font-size: 1rem;
+  padding-left: 3px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+.slide__action:hover .slide__play {
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--ink-0) 85%, transparent);
+}
+.slide__duration {
+  position: absolute;
+  right: 0.55rem; bottom: 0.55rem;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-1);
+  background: rgba(0,0,0,0.65);
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+}
+.slide__body {
+  display: flex; flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem 1rem;
+  flex: 1;
+}
+.slide__title {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--fg-1);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.slide__sub {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--fg-3);
+  line-height: 1.45;
+  flex: 1;
+}
+.slide__cta {
+  font-family: var(--font-sans);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--persona-accent, var(--brand-300));
+  margin-top: 0.35rem;
+}
+.slide__action:hover .slide__cta {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ──────────────────────────────────────────────
+   SOLUTIONS — the 10 abstract use-cases with novelty scale
+   ────────────────────────────────────────────── */
+.solutions {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4rem, 6vw, 6rem) var(--pad-x);
+  border-top: 1px solid var(--ink-4);
+}
+.solutions__grid {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.solution {
+  display: flex; flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.2rem 1.3rem 1.35rem;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-4);
+  border-radius: var(--radius);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.solution:hover {
+  border-color: color-mix(in srgb, var(--brand-500) 50%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.42);
+}
+.solution--featured {
+  background:
+    radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--brand-500) 13%, transparent), transparent 65%),
+    radial-gradient(120% 100% at 0% 100%, color-mix(in srgb, var(--gold-500) 9%, transparent), transparent 65%),
+    linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  border-color: color-mix(in srgb, var(--brand-500) 35%, transparent);
+}
+/* Icon + title sit on the same row (icon left, title right). */
+.solution__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.1rem;
+}
+.solution__icon {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--brand-500) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 25%, transparent);
+  color: var(--brand-500);
+}
+.solution__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg-1);
+  line-height: 1.25;
+}
+.solution__more {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0.25rem 0;
+  margin-top: 0.25rem;
+  font: inherit;
+  color: var(--brand-300);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.solution__more:hover {
+  color: var(--brand-200);
+  transform: translateX(2px);
+}
+.solution__more:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.solution__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--fg-3);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.solution__scale {
+  margin-top: 0.65rem;
+}
+.solution__scale-labels {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+/* THE sanctioned purple. The boring→innovative range is the one element
+   on the whole site allowed to run into violet — innovation sits off our
+   palette on purpose, beyond the green/gold of the everyday console. */
+.solution__scale-labels span:first-child { color: var(--fg-5); }
+.solution__scale-labels span:last-child  { color: #b9a4fb; }
+.solution__scale-bar {
+  position: relative;
+  height: 4px;
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  background: linear-gradient(90deg,
+    #ef4444 0%,
+    #f59e0b 30%,
+    #d6d3c0 50%,
+    #c3b0fc 75%,
+    #7c5ef3 100%);
+  opacity: 0.85;
+}
+.solution__scale-mark {
+  position: absolute;
+  top: 50%;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--fg-0);
+  box-shadow:
+    0 0 0 3px var(--ink-2),
+    0 0 14px color-mix(in srgb, var(--brand-500) 65%, transparent);
+  transform: translate(-50%, -50%);
+}
+
+/* ──────────────────────────────────────────────
+   CAPTURE — fundamentals section before the closing CTA. Three columns,
+   each with a Read-more button that opens the shared modal.
+   ────────────────────────────────────────────── */
+.capture {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4rem, 6vw, 6rem) var(--pad-x);
+  border-top: 1px solid var(--ink-4);
+}
+.capture__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+@media (min-width: 600px) {
+  .capture__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .capture__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.95rem;
+  }
+}
+
+.capture__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.3rem 1.35rem;
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  border: 1px solid var(--ink-4);
+  border-radius: var(--radius-lg);
+  isolation: isolate;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.capture__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(80% 80% at 100% 0%, color-mix(in srgb, var(--brand-500) 14%, transparent), transparent 70%);
+  opacity: 0.45;
+  z-index: -1;
+  border-radius: inherit;
+  transition: opacity 0.18s ease;
+}
+.capture__card:hover {
+  border-color: color-mix(in srgb, var(--brand-500) 45%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+.capture__card:hover::before { opacity: 1; }
+
+/* Card head — icon + title on one line, matching .solution__head. */
+.capture__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.capture__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--brand-500) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 28%, transparent);
+  color: var(--brand-300);
+}
+/* Alternate the strand colours across the four fundamentals. */
+.capture__card:nth-child(even) .capture__icon {
+  background: color-mix(in srgb, var(--gold-500) 12%, transparent);
+  border-color: color-mix(in srgb, var(--gold-500) 28%, transparent);
+  color: var(--gold-300);
+}
+.capture__card:nth-child(even):hover {
+  border-color: color-mix(in srgb, var(--gold-500) 45%, transparent);
+}
+.capture__card:nth-child(even)::before {
+  background:
+    radial-gradient(80% 80% at 100% 0%, color-mix(in srgb, var(--gold-500) 13%, transparent), transparent 70%);
+}
+.capture__card:nth-child(even) .capture__list li::before {
+  background: var(--gold-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold-500) 20%, transparent);
+}
+.capture__card:nth-child(even) .capture__more { color: var(--gold-300); }
+.capture__card:nth-child(even) .capture__more:hover { color: var(--gold-200); }
+
+/* Tag subheader ("WHERE IT RUNS" / "HOW YOU PAY" / etc.) — no longer
+   rendered. Kept as a defensive rule in case the markup is restored. */
+.capture__tag { display: none; }
+
+.capture__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--fg-1);
+}
+
+.capture__list {
+  list-style: none;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.capture__list li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--fg-3);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.capture__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.6em;
+  width: 6px; height: 6px;
+  border-radius: 2px;
+  background: var(--brand-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 20%, transparent);
+}
+.capture__list strong { color: var(--fg-1); font-weight: 600; }
+
+.capture__kicker {
+  margin: 0 0 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ink-4);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--fg-2);
+  font-style: italic;
+  flex: 1; /* push the read-more link to card bottom */
+}
+
+.capture__more {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0.25rem 0;
+  font: inherit;
+  color: var(--brand-300);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.capture__more:hover {
+  color: var(--brand-200);
+  transform: translateX(2px);
+}
+.capture__more:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ──────────────────────────────────────────────
+   CLOSING CTA — with floating concept bubbles in the background
+   ────────────────────────────────────────────── */
+.close {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7rem) var(--pad-x);
+  overflow: hidden;
+  border-top: 1px solid var(--ink-4);
+  background:
+    radial-gradient(900px 500px at 50% 110%, color-mix(in srgb, var(--brand-500) 16%, transparent), transparent 60%),
+    radial-gradient(800px 400px at 82% -20%, color-mix(in srgb, var(--gold-500) 13%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--ink-0) 0%, var(--ink-2) 100%);
+}
+/* The phoenix — a tinted ghost rising behind the closing CTA: rebirth,
+   freedom. The phosphor tint is baked into the PNG at build time (the
+   brand mark run through grayscale→sepia→hue-rotate) — a live CSS filter
+   on the full vector was measurably expensive to composite. */
+.close__phoenix {
+  position: absolute;
+  left: 50%;
+  bottom: -8%;
+  width: min(720px, 80vw);
+  height: auto;
+  transform: translateX(-50%);
+  opacity: 0.09;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.close__inner {
+  position: relative;
+  z-index: 2;            /* sit above the bubbles */
+  max-width: 820px; margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Concept bubbles — drift gently behind the CTA ─────────────────── */
+.close__bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;  /* the individual bubbles re-enable pointer events */
+  z-index: 1;
+}
+.close__bubble {
+  position: absolute;
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+  background: color-mix(in srgb, var(--brand-500) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 22%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--fg-3);
+  text-decoration: none;
+  pointer-events: auto;
+  opacity: 0.62;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.25s ease, border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+/* When the physics sim is running, JS sets top/left to 0 and drives
+   position via transform. */
+.close__bubbles.is-simulating .close__bubble {
+  top: 0;
+  left: 0;
+}
+.close__bubble:hover,
+.close__bubble:focus-visible {
+  opacity: 1;
+  color: var(--fg-1);
+  border-color: var(--brand-500);
+  background: color-mix(in srgb, var(--brand-500) 16%, transparent);
+  outline: none;
+}
+.close__bubble-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand-500) 16%, transparent);
+  color: var(--brand-200);
+}
+/* Every other drifting concept runs on the gold strand. */
+.close__bubble:nth-child(even) {
+  border-color: color-mix(in srgb, var(--gold-500) 25%, transparent);
+  background: color-mix(in srgb, var(--gold-500) 7%, transparent);
+}
+.close__bubble:nth-child(even) .close__bubble-icon {
+  background: color-mix(in srgb, var(--gold-500) 16%, transparent);
+  color: var(--gold-200);
+}
+.close__bubble:nth-child(even):hover,
+.close__bubble:nth-child(even):focus-visible {
+  border-color: var(--gold-500);
+  background: color-mix(in srgb, var(--gold-500) 16%, transparent);
+}
+.close__bubble-label {
+  font-weight: 600;
+}
+
+/* Hide bubbles when the section is too narrow to keep them out of the
+   centred CTA column. They are decorative — copy stays readable on
+   small screens. */
+@media (max-width: 1023px) {
+  .close__bubbles { display: none; }
+}
+.close__title {
+  font-size: clamp(1.9rem, 3vw + 0.8rem, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0.5rem 0 0.9rem;
+}
+.close__title-em {
+  background: linear-gradient(90deg, var(--brand-300) 0%, var(--brand-400) 45%, var(--gold-300) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.close__sub {
+  color: var(--fg-3);
+  font-size: 1.05rem;
+  margin: 0 auto 2rem;
+  max-width: 620px;
+}
+.close__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; }
+
+/* ──────────────────────────────────────────────
+   FOOTER
+   ────────────────────────────────────────────── */
+.footer {
+  background: var(--ink-0);
+  border-top: 1px solid var(--ink-4);
+  padding: 2.5rem var(--pad-x) 2rem;
+}
+.footer__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  text-align: center;
+}
+.footer__brand {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  color: var(--fg-1);
+  font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em;
+}
+.footer__mark {
+  width: 32px; height: 32px; border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--ink-5);
+}
+.footer__family {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.1rem 0.15rem;
+  font-size: 0.86rem;
+  color: var(--fg-3);
+}
+.footer__family-link {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.15rem 0.25rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.footer__family-link:hover {
+  color: var(--fg-1);
+  text-decoration: underline;
+}
+.footer__family-link[aria-current="page"] {
+  color: var(--fg-1);
+  font-weight: 600;
+}
+.footer__family-sep {
+  color: var(--fg-5);
+  margin: 0 0.25rem;
+}
+.footer__social { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+.footer__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  color: var(--fg-3);
+  transition: color 0.15s, background-color 0.15s, transform 0.15s;
+}
+.footer__icon:hover {
+  color: var(--brand-500);
+  background: color-mix(in srgb, var(--brand-500) 10%, transparent);
+  transform: translateY(-1px);
+}
+
+.footer__support {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(0, 87, 183, 0.45);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(0, 87, 184, 0.15) 0%, rgba(255, 221, 0, 0.08) 100%);
+}
+.footer__support .flag { font-size: 1.05em; }
+.footer__support strong { color: var(--fg-1); margin-right: 0.4rem; }
+.footer__support-sub { color: var(--fg-3); font-size: 0.92rem; }
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: var(--fg-5);
+}
+
+/* ──────────────────────────────────────────────
+   FULL-SCREEN SECTIONS ON DESKTOP
+   Each section fits inside one viewport height *below* the sticky nav, so
+   content above the marquee is visible without scrolling. The sticky nav
+   eats ~56px at the top.
+   ────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  :root { --nav-h: 56px; }
+
+  .hero,
+  .matrix-section,
+  .persona,
+  .solutions,
+  .capture,
+  .close {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Hero needs the marquee strip *anchored at the bottom* of the viewport
+     while the title/graph/lede stay vertically centred — so the running line
+     is visible without scrolling. */
+  .hero {
+    justify-content: space-between;
+  }
+  /* Persona pins its head row to the top, then vertically centres the
+     visual+body row in the remaining space. */
+  .persona {
+    justify-content: flex-start;
+  }
+  .persona__head {
+    flex-shrink: 0;
+  }
+  .persona__inner {
+    flex: 1;
+    align-content: center;
+  }
+  /* Hero inner: stable big-screen layout that doesn't shrink to the widest
+     text element. We force a fixed-ish width (capped at 1200px on huge
+     viewports) so the layout stays the same regardless of text length. */
+  .hero__inner {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* let flex children (eyebrow pill) shrink to natural width */
+    padding-bottom: clamp(1.25rem, 3vh, 2.25rem); /* breathing room above the marquee */
+  }
+  /* Title spans the column at a sensible cap so super-long headlines wrap. */
+  .hero__inner > .hero__title {
+    width: 100%;
+    max-width: 940px;
+  }
+  /* Lede stays at a comfortable reading width. */
+  .hero__inner > .hero__lede {
+    width: 100%;
+    max-width: 760px;
+  }
+  /* Graph is INDEPENDENT of text — pinned to its own size so changes to
+     copy don't move/resize it. */
+  .hero__inner > .hero__graph {
+    width: 800px;
+    max-width: 800px;
+    flex-shrink: 0;
+  }
+  .hero .marquee { margin-top: 0; }
+}
+
+/* ──────────────────────────────────────────────
+   COUNTDOWN — auto-open gallery after a brief dwell.
+   The chip shows a soft 0→100% fill and a numeric badge.
+   ────────────────────────────────────────────── */
+.persona__chip-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.45rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--ink-5);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--fg-4);
+  min-width: 2.6em;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.persona__chip.is-counting .persona__chip-progress { opacity: 1; }
+.persona__chip {
+  overflow: hidden;
+  isolation: isolate;
+}
+.persona__chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--persona-accent, var(--brand-500)) 26%, transparent) 0%,
+    color-mix(in srgb, var(--persona-accent, var(--brand-500)) 12%, transparent) 100%);
+  border-radius: inherit;
+  transform-origin: left center;
+  transform: scaleX(var(--chip-progress, 0));
+  transition: transform 0.06s linear;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ──────────────────────────────────────────────
+   REVEAL ON SCROLL
+   ────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ──────────────────────────────────────────────
+   MODAL — generic <dialog>, used by the "Learn more" links on the
+   Solutions cards. Markdown content rendered into .modal__content.
+   ────────────────────────────────────────────── */
+.modal {
+  border: 1px solid var(--ink-4);
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink-1) 100%);
+  color: var(--fg-1);
+  border-radius: 16px;
+  padding: 0;
+  width: min(720px, 92vw);
+  max-width: 92vw;
+  max-height: 86vh;
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.75);
+}
+.modal::backdrop {
+  background: color-mix(in srgb, var(--ink-0) 75%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.modal:focus { outline: none; }
+.modal[open] {
+  animation: modal-in 0.22s ease-out;
+}
+@keyframes modal-in {
+  from { transform: translateY(12px) scale(0.985); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);     opacity: 1; }
+}
+.modal__close {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  z-index: 5;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 70%, transparent);
+  border: 1px solid var(--ink-5);
+  color: var(--fg-1);
+  font-size: 1.25rem; line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.modal__close:hover {
+  background: color-mix(in srgb, var(--ink-1) 95%, transparent);
+  color: var(--brand-300);
+  border-color: var(--brand-500);
+}
+.modal__close:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 2px;
+}
+.modal__content {
+  padding: 2.4rem 2.4rem 2.2rem;
+  overflow-y: auto;
+  max-height: 86vh;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--fg-3);
+}
+.modal__content::-webkit-scrollbar { width: 8px; }
+.modal__content::-webkit-scrollbar-thumb {
+  background: var(--ink-5);
+  border-radius: 4px;
+}
+/* Typography inside the modal — applied to markdown-rendered children */
+.modal__content h1 {
+  font-size: clamp(1.5rem, 2vw + 0.7rem, 1.95rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--fg-1);
+  padding-right: 2.5rem; /* leave room for the close button */
+}
+.modal__content h2 {
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  margin: 1.4rem 0 0.6rem;
+  color: var(--fg-1);
+}
+.modal__content h3 {
+  font-size: 1rem;
+  margin: 1.1rem 0 0.4rem;
+  color: var(--fg-1);
+}
+.modal__content p {
+  margin: 0 0 0.95rem;
+}
+.modal__content p:last-child { margin-bottom: 0; }
+.modal__content strong { color: var(--fg-1); font-weight: 600; }
+.modal__content em { color: var(--fg-1); font-style: italic; }
+.modal__content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: color-mix(in srgb, var(--brand-500) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 18%, transparent);
+  color: var(--brand-200);
+  padding: 0.08em 0.35em;
+  border-radius: 5px;
+}
+.modal__content a {
+  color: var(--brand-300);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--brand-500) 45%, transparent);
+}
+.modal__content a:hover {
+  color: var(--brand-200);
+  text-decoration-color: var(--brand-300);
+}
+.modal__content ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+.modal__content ul li {
+  position: relative;
+  padding-left: 1.45rem;
+}
+.modal__content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  background: var(--brand-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 18%, transparent);
+}
+.modal__content blockquote {
+  margin: 1rem 0;
+  padding: 0.55rem 0.9rem;
+  border-left: 3px solid var(--brand-500);
+  background: color-mix(in srgb, var(--brand-500) 6%, transparent);
+  border-radius: 0 8px 8px 0;
+  color: var(--fg-2);
+  font-style: italic;
+}
+.modal__loading {
+  color: var(--fg-5);
+  font-style: italic;
+}
+@media (max-width: 559px) {
+  .modal__content { padding: 1.9rem 1.4rem 1.5rem; }
+  .modal__close { top: 0.6rem; right: 0.6rem; }
+}
