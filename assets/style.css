@@ -255,6 +255,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 @media (max-width: 640px) {
   .nav__toggle { display: inline-flex; }
+  /* Mobile: drop the brand mark, leave only the "Fibe / why" wordmark. */
+  .nav .nav__mark { display: none; }
 }
 
 /* ──────────────────────────────────────────────

@@ -263,7 +263,9 @@
         "why": "why",
         "where": "where",
         "when": "when",
-        "whats": "whats"
+        "whats": "whats",
+        "faq": "faq",
+        "blog": "blog"
       },
       "support": "<strong>Support Ukraine.</strong>\n            <span class=\"footer__support-sub\">russia is a terrorist state.</span>",
       "copyright": "© <span id=\"year\">2026</span> fibe.gg — All rights reserved."
@@ -660,7 +662,9 @@
         "why": "why",
         "where": "where",
         "when": "when",
-        "whats": "whats"
+        "whats": "whats",
+        "faq": "faq",
+        "blog": "blog"
       },
       "support": "<strong>Підтримай Україну.</strong>\n            <span class=\"footer__support-sub\">росія — країна-терорист.</span>",
       "copyright": "© <span id=\"year\">2026</span> fibe.gg — Усі права захищено."
