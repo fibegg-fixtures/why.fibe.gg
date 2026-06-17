@@ -162,8 +162,10 @@ const renderHeroGraphSvg = (graph) => {
       ${rungs.join("\n      ")}
     </g>
 
-    <!-- The two strands: phosphor green and signal gold -->
-    <g fill="none" stroke-linecap="round">
+    <!-- The two strands: phosphor green and signal gold.
+         The group carries a class so style.css can power them on (fade) and
+         keep them gently breathing — the helix reads as alive, not frozen. -->
+    <g class="hero__graph-strands" fill="none" stroke-linecap="round">
       <path d="${strandPath(yA)}" style="stroke: var(--brand-400)" stroke-width="1.6" opacity="0.38" />
       <path d="${strandPath(yB)}" style="stroke: var(--gold-400)" stroke-width="1.6" opacity="0.34" />
     </g>
@@ -186,6 +188,14 @@ const renderHeroGraphSvg = (graph) => {
             stroke-linecap="round" stroke-linejoin="round" />
     </g>
 
+    <!-- Traveling phosphor pulse — a packet of light running the shortest
+         path YOU → SHIP on load and every few seconds after. Pure-CSS dash
+         travel; style.css gates it behind prefers-reduced-motion. pathLength
+         is pinned to 600 so the dash maths is independent of sub-pixel length. -->
+    <path class="hero__graph-pulse" d="${fibeWayD}" pathLength="600"
+          fill="none" stroke="var(--brand-200)" stroke-width="3.5"
+          stroke-linecap="round" filter="url(#hero-graph-glow)" aria-hidden="true" />
+
     <!-- Each Fibe-Way waypoint is its own hoverable group with an i18n label -->
     ${waypoints
       .map(
@@ -204,8 +214,12 @@ const renderHeroGraphSvg = (graph) => {
       <circle cx="${START_X}" cy="${MID_Y}" r="5" style="fill: var(--brand-300)" />
     </g>
 
-    <!-- Target endpoint (SHIP) — lands on gold -->
-    <g>
+    <!-- Target endpoint (SHIP) — lands on gold. The ring ripples each time
+         the travelling pulse arrives: you reach the goal. (style.css times
+         it to the pulse and silences it under reduced motion.) -->
+    <g class="hero__graph-goal">
+      <circle class="hero__graph-goal-ring" cx="${END_X}" cy="${MID_Y}" r="14"
+              fill="none" style="stroke: var(--gold-300)" stroke-width="2" aria-hidden="true" />
       <circle cx="${END_X}" cy="${MID_Y}" r="14" style="fill: var(--ink-0); stroke: var(--gold-400)" stroke-width="2.5" />
       <circle cx="${END_X}" cy="${MID_Y}" r="5" style="fill: var(--gold-400)" />
     </g>

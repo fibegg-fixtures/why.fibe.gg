@@ -185,13 +185,31 @@
         <div class="hero__inner">
           <h1 id="hero-title" class="hero__title" data-i18n="hero.title"></h1>
 
-          <figure class="hero__graph" data-graph>
-            <span class="hero__graph-tip" data-graph-tip aria-hidden="true"></span>
-            <!-- SVG body is generated at build time from i18n.json
-                 (hero.graph.{start_label,end_label,way_label,steps}). Edit
-                 the steps array in assets/i18n.json to change the waypoints. -->
-            <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph></svg>
-          </figure>
+          <div class="hero__stage">
+            <figure class="hero__graph" data-graph>
+              <span class="hero__graph-tip" data-graph-tip aria-hidden="true"></span>
+              <!-- SVG body is generated at build time from i18n.json
+                   (hero.graph.{start_label,end_label,way_label,steps}). Edit
+                   the steps array in assets/i18n.json to change the waypoints. -->
+              <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph></svg>
+            </figure>
+
+            <!-- Video placeholder — a viewing chamber beside the Fibe Way.
+                 When the demo exists, swap .hero__video-screen's inner for a
+                 <video>/<iframe>, make the figure a <button>, and drop the
+                 "Soon" chip. Until then it's a clearly-marked placeholder. -->
+            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria">
+              <span class="hero__video-screen" aria-hidden="true">
+                <span class="hero__video-tag" data-i18n="hero.video.tag"></span>
+                <span class="hero__video-soon" data-i18n="hero.video.soon"></span>
+                <span class="hero__video-play">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                </span>
+                <span class="hero__video-bar"><span class="hero__video-bar-fill"></span></span>
+              </span>
+              <figcaption class="hero__video-label" data-i18n="hero.video.label"></figcaption>
+            </figure>
+          </div>
 
           <p class="hero__lede" data-i18n="hero.lede"></p>
           <div class="hero__ctas">

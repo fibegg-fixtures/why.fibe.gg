@@ -77,7 +77,10 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
+/* scroll-padding-top must match the sticky nav height (~56px) so anchor /
+   nav-chip jumps land the section flush under the bar, not ~20px below it.
+   The sections carry their own top padding for breathing room. */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 56px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -606,6 +609,82 @@ body.is-drawer-open { overflow: hidden; }
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand-300) 70%, transparent));
 }
 
+/* ──────────────────────────────────────────────
+   LIVING HERO — the console powers on.
+   On load the Fibe Way draws itself in (YOU → SHIP), a phosphor pulse then
+   runs the shortest path forever, and the two helix strands fade up and keep
+   a slow breath so the molecule reads as alive, not a still frame. Pure CSS:
+   prefers-reduced-motion drops it to the final lit state. The pulse travels
+   linearly (a packet on a wire); everything else eases out.
+   ────────────────────────────────────────────── */
+
+/* The shortest-path line draws on once. dasharray stays at the full 600-unit
+   path length, so the finished line is a single solid dash and the hover
+   stroke-width transition is left untouched. */
+.hero__graph-shortest-line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: hero-way-draw 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+@keyframes hero-way-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* One short bright dash (28 of 600) chasing the line forever. Period equals
+   pathLength, so exactly one packet is on the wire at a time; the opacity
+   fade at each cycle edge hides the wrap from end back to start. */
+.hero__graph-pulse {
+  stroke-dasharray: 28 572;
+  stroke-dashoffset: 600;
+  opacity: 0;
+  animation: hero-pulse-run 3.4s linear 1.05s infinite;
+}
+@keyframes hero-pulse-run {
+  0%   { stroke-dashoffset: 600; opacity: 0; }
+  7%   { opacity: 0.95; }
+  93%  { opacity: 0.95; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Strands fade up, then breathe. transform-box keeps any future transforms
+   anchored to the strand geometry, not the SVG origin. */
+.hero__graph-strands {
+  transform-box: fill-box;
+  animation:
+    hero-strands-on 1.2s ease-out both,
+    hero-strands-breathe 7.5s ease-in-out 1.3s infinite;
+}
+@keyframes hero-strands-on {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes hero-strands-breathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.78; }
+}
+
+/* GOAL arrival — the gold ring ripples out as the packet lands. Same 3.4s
+   period and start delay as the pulse so the flash coincides with arrival;
+   dormant for most of the cycle. */
+.hero__graph-goal-ring {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-goal-arrive 3.4s ease-out 1.05s infinite;
+}
+@keyframes hero-goal-arrive {
+  0%, 84%  { opacity: 0; r: 14; }
+  90%      { opacity: 0.8; r: 14; }
+  100%     { opacity: 0; r: 30; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__graph-shortest-line { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  .hero__graph-pulse { display: none; }
+  .hero__graph-strands { animation: none; opacity: 1; }
+  .hero__graph-goal-ring { display: none; }
+}
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   padding: 0.7rem 1.2rem;
@@ -781,6 +860,190 @@ body.is-drawer-open { overflow: hidden; }
 }
 .hero__lede em { color: var(--fg-1); font-style: normal; font-weight: 600; }
 .hero__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; }
+
+/* ──────────────────────────────────────────────
+   HERO STAGE — the Fibe Way (helix) and a demo "viewing chamber" sit side by
+   side on desktop, stacked on mobile. The chamber matches the persona video
+   posters (HUD brackets, CRT grain, play badge) so it reads as one system.
+   It's a clearly-marked placeholder ("Soon") until a real demo is wired in.
+   ────────────────────────────────────────────── */
+.hero__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  margin: 0 auto 1.4rem;
+}
+@media (min-width: 900px) {
+  .hero__stage { flex-direction: row; justify-content: center; gap: clamp(1.5rem, 3vw, 3rem); }
+}
+/* The helix keeps the lead; the chamber is its companion. */
+.hero__stage .hero__graph { margin: 0; width: 100%; }
+@media (min-width: 900px) {
+  .hero__stage .hero__graph { flex: 1.35 1 0; max-width: 640px; }
+  .hero__stage .hero__video { flex: 1 1 0; max-width: 380px; }
+}
+
+.hero__video { margin: 0; width: 100%; max-width: 420px; }
+.hero__video-screen {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink-4);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 100% at 26% 16%, color-mix(in srgb, var(--brand-500) 26%, transparent) 0%, transparent 55%),
+    radial-gradient(140% 110% at 80% 90%, color-mix(in srgb, var(--gold-500) 16%, transparent) 0%, transparent 60%),
+    linear-gradient(160deg, var(--ink-2) 0%, var(--ink-3) 100%);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.32),
+    0 22px 48px -22px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.hero__video:hover .hero__video-screen {
+  border-color: color-mix(in srgb, var(--brand-500) 50%, var(--ink-4));
+  transform: translateY(-2px);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.32), 0 26px 54px -22px rgba(0, 0, 0, 0.66);
+}
+/* CRT grain + bottom vignette */
+.hero__video-screen::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 7px),
+    linear-gradient(180deg, transparent 56%, rgba(0, 0, 0, 0.42) 100%);
+  pointer-events: none;
+}
+/* HUD corner brackets */
+.hero__video-screen::after {
+  content: "";
+  position: absolute; inset: 8px;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    linear-gradient(var(--brand-400), var(--brand-400)) left 0 top 0 / 16px 2px,
+    linear-gradient(var(--brand-400), var(--brand-400)) left 0 top 0 / 2px 16px,
+    linear-gradient(var(--brand-400), var(--brand-400)) right 0 top 0 / 16px 2px,
+    linear-gradient(var(--brand-400), var(--brand-400)) right 0 top 0 / 2px 16px,
+    linear-gradient(var(--brand-400), var(--brand-400)) left 0 bottom 0 / 16px 2px,
+    linear-gradient(var(--brand-400), var(--brand-400)) left 0 bottom 0 / 2px 16px,
+    linear-gradient(var(--brand-400), var(--brand-400)) right 0 bottom 0 / 16px 2px,
+    linear-gradient(var(--brand-400), var(--brand-400)) right 0 bottom 0 / 2px 16px;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+.hero__video-play {
+  position: absolute; inset: 0; margin: auto;
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink-0) 62%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--fg-0);
+  padding-left: 2px;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-500) 12%, transparent), 0 8px 22px rgba(0, 0, 0, 0.4);
+  animation: hero-play-breathe 3.2s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.hero__video:hover .hero__video-play {
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--ink-0) 80%, transparent);
+}
+@keyframes hero-play-breathe {
+  0%, 100% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-500) 12%, transparent), 0 8px 22px rgba(0, 0, 0, 0.4); }
+  50%      { box-shadow: 0 0 0 14px color-mix(in srgb, var(--brand-500) 5%, transparent), 0 8px 22px rgba(0, 0, 0, 0.4); }
+}
+.hero__video-tag {
+  position: absolute; top: 0.6rem; left: 0.6rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.22rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand-200);
+  background: color-mix(in srgb, var(--ink-0) 58%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 30%, transparent);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.hero__video-tag::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--brand-400);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 25%, transparent);
+}
+.hero__video-soon {
+  position: absolute; top: 0.6rem; right: 0.6rem; z-index: 2;
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-200);
+  background: color-mix(in srgb, var(--gold-500) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 32%, transparent);
+  border-radius: 999px;
+}
+.hero__video-bar {
+  position: absolute; left: 0.6rem; right: 0.6rem; bottom: 0.6rem; z-index: 2;
+  height: 3px; border-radius: 999px;
+  background: color-mix(in srgb, var(--fg-0) 16%, transparent);
+  overflow: hidden;
+}
+.hero__video-bar-fill {
+  display: block; height: 100%; width: 32%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-400), var(--gold-400));
+  animation: hero-video-scrub 4.8s ease-in-out infinite;
+}
+@keyframes hero-video-scrub {
+  0%   { width: 8%; }
+  50%  { width: 46%; }
+  100% { width: 8%; }
+}
+.hero__video-label {
+  margin-top: 0.7rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__video-play { animation: none; }
+  .hero__video-bar-fill { animation: none; width: 32%; }
+}
+
+/* ──────────────────────────────────────────────
+   HERO BOOT — the console powers on top-to-bottom on load: title, then the
+   stage (which itself draws the Fibe Way in), then lede, then the CTA. One
+   short staggered rise; it composes with the helix draw-in/pulse above.
+   The hero is never a reveal target, so this is safe to run on first paint.
+   ────────────────────────────────────────────── */
+.hero__title,
+.hero__stage,
+.hero__lede,
+.hero__ctas {
+  animation: hero-boot 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero__title { animation-delay: 0.04s; }
+.hero__stage { animation-delay: 0.18s; }
+.hero__lede  { animation-delay: 0.34s; }
+.hero__ctas  { animation-delay: 0.46s; }
+@keyframes hero-boot {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__stage,
+  .hero__lede,
+  .hero__ctas { animation: none; opacity: 1; transform: none; }
+}
 
 .marquee {
   position: relative;

@@ -179,12 +179,13 @@
           <h1 id="hero-title" class="hero__title" data-i18n="hero.title">Everyone needs a smartphone<br>
             <span class="hero__title-em">Many doubted in 2007</span></h1>
 
-          <figure class="hero__graph" data-graph>
-            <span class="hero__graph-tip" data-graph-tip aria-hidden="true"></span>
-            <!-- SVG body is generated at build time from i18n.json
-                 (hero.graph.{start_label,end_label,way_label,steps}). Edit
-                 the steps array in assets/i18n.json to change the waypoints. -->
-            <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph aria-label="Many paths; one straight — the Fibe Way">
+          <div class="hero__stage">
+            <figure class="hero__graph" data-graph>
+              <span class="hero__graph-tip" data-graph-tip aria-hidden="true"></span>
+              <!-- SVG body is generated at build time from i18n.json
+                   (hero.graph.{start_label,end_label,way_label,steps}). Edit
+                   the steps array in assets/i18n.json to change the waypoints. -->
+              <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph aria-label="Many paths; one straight — the Fibe Way">
     <title>Many paths; one straight — the Fibe Way</title>
     <defs>
       <!-- gradientUnits=userSpaceOnUse so the gradient anchors to SVG
@@ -242,8 +243,10 @@
       <line x1="648" y1="98.6" x2="648" y2="121.4" ></line>
     </g>
 
-    <!-- The two strands: phosphor green and signal gold -->
-    <g fill="none" stroke-linecap="round">
+    <!-- The two strands: phosphor green and signal gold.
+         The group carries a class so style.css can power them on (fade) and
+         keep them gently breathing — the helix reads as alive, not frozen. -->
+    <g class="hero__graph-strands" fill="none" stroke-linecap="round">
       <path d="M 60 110.0 L 66 115.8 L 72 121.4 L 78 126.9 L 84 132.2 L 90 137.0 L 96 141.5 L 102 145.4 L 108 148.8 L 114 151.6 L 120 153.7 L 126 155.2 L 132 155.9 L 138 155.9 L 144 155.2 L 150 153.7 L 156 151.6 L 162 148.8 L 168 145.4 L 174 141.5 L 180 137.0 L 186 132.2 L 192 126.9 L 198 121.4 L 204 115.8 L 210 110.0 L 216 104.2 L 222 98.6 L 228 93.1 L 234 87.8 L 240 83.0 L 246 78.5 L 252 74.6 L 258 71.2 L 264 68.4 L 270 66.3 L 276 64.8 L 282 64.1 L 288 64.1 L 294 64.8 L 300 66.3 L 306 68.4 L 312 71.2 L 318 74.6 L 324 78.5 L 330 83.0 L 336 87.8 L 342 93.1 L 348 98.6 L 354 104.2 L 360 110.0 L 366 115.8 L 372 121.4 L 378 126.9 L 384 132.2 L 390 137.0 L 396 141.5 L 402 145.4 L 408 148.8 L 414 151.6 L 420 153.7 L 426 155.2 L 432 155.9 L 438 155.9 L 444 155.2 L 450 153.7 L 456 151.6 L 462 148.8 L 468 145.4 L 474 141.5 L 480 137.0 L 486 132.2 L 492 126.9 L 498 121.4 L 504 115.8 L 510 110.0 L 516 104.2 L 522 98.6 L 528 93.1 L 534 87.8 L 540 83.0 L 546 78.5 L 552 74.6 L 558 71.2 L 564 68.4 L 570 66.3 L 576 64.8 L 582 64.1 L 588 64.1 L 594 64.8 L 600 66.3 L 606 68.4 L 612 71.2 L 618 74.6 L 624 78.5 L 630 83.0 L 636 87.8 L 642 93.1 L 648 98.6 L 654 104.2 L 660 110.0" style="stroke: var(--brand-400)" stroke-width="1.6" opacity="0.38" ></path>
       <path d="M 60 110.0 L 66 104.2 L 72 98.6 L 78 93.1 L 84 87.8 L 90 83.0 L 96 78.5 L 102 74.6 L 108 71.2 L 114 68.4 L 120 66.3 L 126 64.8 L 132 64.1 L 138 64.1 L 144 64.8 L 150 66.3 L 156 68.4 L 162 71.2 L 168 74.6 L 174 78.5 L 180 83.0 L 186 87.8 L 192 93.1 L 198 98.6 L 204 104.2 L 210 110.0 L 216 115.8 L 222 121.4 L 228 126.9 L 234 132.2 L 240 137.0 L 246 141.5 L 252 145.4 L 258 148.8 L 264 151.6 L 270 153.7 L 276 155.2 L 282 155.9 L 288 155.9 L 294 155.2 L 300 153.7 L 306 151.6 L 312 148.8 L 318 145.4 L 324 141.5 L 330 137.0 L 336 132.2 L 342 126.9 L 348 121.4 L 354 115.8 L 360 110.0 L 366 104.2 L 372 98.6 L 378 93.1 L 384 87.8 L 390 83.0 L 396 78.5 L 402 74.6 L 408 71.2 L 414 68.4 L 420 66.3 L 426 64.8 L 432 64.1 L 438 64.1 L 444 64.8 L 450 66.3 L 456 68.4 L 462 71.2 L 468 74.6 L 474 78.5 L 480 83.0 L 486 87.8 L 492 93.1 L 498 98.6 L 504 104.2 L 510 110.0 L 516 115.8 L 522 121.4 L 528 126.9 L 534 132.2 L 540 137.0 L 546 141.5 L 552 145.4 L 558 148.8 L 564 151.6 L 570 153.7 L 576 155.2 L 582 155.9 L 588 155.9 L 594 155.2 L 600 153.7 L 606 151.6 L 612 148.8 L 618 145.4 L 624 141.5 L 630 137.0 L 636 132.2 L 642 126.9 L 648 121.4 L 654 115.8 L 660 110.0" style="stroke: var(--gold-400)" stroke-width="1.6" opacity="0.34" ></path>
     </g>
@@ -274,6 +277,14 @@
             stroke-linecap="round" stroke-linejoin="round" ></path>
     </g>
 
+    <!-- Traveling phosphor pulse — a packet of light running the shortest
+         path YOU → SHIP on load and every few seconds after. Pure-CSS dash
+         travel; style.css gates it behind prefers-reduced-motion. pathLength
+         is pinned to 600 so the dash maths is independent of sub-pixel length. -->
+    <path class="hero__graph-pulse" d="M 60 110 L 210 110 L 360 110 L 510 110 L 660 110" pathLength="600"
+          fill="none" stroke="var(--brand-200)" stroke-width="3.5"
+          stroke-linecap="round" filter="url(#hero-graph-glow)" aria-hidden="true" ></path>
+
     <!-- Each Fibe-Way waypoint is its own hoverable group with an i18n label -->
     <g class="hero__graph-step" tabindex="0" role="button"
        data-step-label="Sign Up" aria-label="Sign Up">
@@ -300,8 +311,12 @@
       <circle cx="60" cy="110" r="5" style="fill: var(--brand-300)" ></circle>
     </g>
 
-    <!-- Target endpoint (SHIP) — lands on gold -->
-    <g>
+    <!-- Target endpoint (SHIP) — lands on gold. The ring ripples each time
+         the travelling pulse arrives: you reach the goal. (style.css times
+         it to the pulse and silences it under reduced motion.) -->
+    <g class="hero__graph-goal">
+      <circle class="hero__graph-goal-ring" cx="660" cy="110" r="14"
+              fill="none" style="stroke: var(--gold-300)" stroke-width="2" aria-hidden="true" ></circle>
       <circle cx="660" cy="110" r="14" style="fill: var(--ink-0); stroke: var(--gold-400)" stroke-width="2.5" ></circle>
       <circle cx="660" cy="110" r="5" style="fill: var(--gold-400)" ></circle>
     </g>
@@ -313,7 +328,24 @@
       style="fill: var(--fg-3)" font-size="11" font-family="JetBrains Mono, ui-monospace, Menlo, monospace"
       letter-spacing="0.12em">GOAL</text>
   </svg>
-          </figure>
+            </figure>
+
+            <!-- Video placeholder — a viewing chamber beside the Fibe Way.
+                 When the demo exists, swap .hero__video-screen's inner for a
+                 <video>/<iframe>, make the figure a <button>, and drop the
+                 "Soon" chip. Until then it's a clearly-marked placeholder. -->
+            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria" aria-label="Product demo of the Fibe Way — coming soon">
+              <span class="hero__video-screen" aria-hidden="true">
+                <span class="hero__video-tag" data-i18n="hero.video.tag">Demo</span>
+                <span class="hero__video-soon" data-i18n="hero.video.soon">Soon</span>
+                <span class="hero__video-play">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>
+                </span>
+                <span class="hero__video-bar"><span class="hero__video-bar-fill"></span></span>
+              </span>
+              <figcaption class="hero__video-label" data-i18n="hero.video.label">The Fibe Way, in motion</figcaption>
+            </figure>
+          </div>
 
           <p class="hero__lede" data-i18n="hero.lede">Today we all depend on software.
             Internet created apps which smartphones brought to our pockets.

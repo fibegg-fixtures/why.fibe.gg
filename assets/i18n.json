@@ -73,6 +73,12 @@
           "Summon a Genie",
           "Describe Your Idea"
         ]
+      },
+      "video": {
+        "tag": "Demo",
+        "label": "The Fibe Way, in motion",
+        "soon": "Soon",
+        "aria": "Product demo of the Fibe Way — coming soon"
       }
     },
     "matrix": {
@@ -472,6 +478,12 @@
           "Виклич Джина",
           "Опиши свою ідею"
         ]
+      },
+      "video": {
+        "tag": "Демо",
+        "label": "Шлях Fibe у дії",
+        "soon": "Скоро",
+        "aria": "Демо продукту: Шлях Fibe — незабаром"
       }
     },
     "matrix": {
