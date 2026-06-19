@@ -78,7 +78,7 @@
         "tag": "Demo",
         "label": "The Fibe Way, in motion",
         "soon": "Soon",
-        "aria": "Product demo of the Fibe Way — coming soon"
+        "aria": "Product demo of the Fibe Way"
       }
     },
     "matrix": {
@@ -354,32 +354,28 @@
           "list_0": "<strong>Go for managed service</strong> — let Fibe handle everything: from SSL to LLM",
           "list_1": "<strong>Or self-host</strong> — connect your own server with a local LLM and let Fibe orchestrate it: one SSH port to rule them all",
           "list_2": "<strong>You decide</strong> — how much control and responsibility <b>you</b> want",
-          "kicker": "Bring it back",
-          "more": "Read more →"
+          "kicker": "Bring it back"
         },
         "flat-pricing": {
           "title": "Predictable Bill",
           "list_1": "<strong>Forget per-seat</strong> — invite 5 teammates or 500",
           "list_0": "<strong>Pay per server</strong> — run as many Playgrounds as you want. Scale vertically for free",
           "list_2": "<strong>No opaque limits</strong> — pay only for extra compute and storage when you need it",
-          "kicker": "Scales with real work",
-          "more": "Read more →"
+          "kicker": "Scales with real work"
         },
         "boring-core": {
           "title": "Boring Core",
           "list_0": "<strong>Software development</strong> — simplified; for everyone — is our goal",
           "list_1": "<strong>Battle-tested tactics</strong> — are used to achieve that",
           "list_2": "<strong>Opt-in AI</strong> — when you decide it makes sense",
-          "kicker": "Helps anyone start, scales with the skill",
-          "more": "Read more →"
+          "kicker": "Helps anyone start, scales with the skill"
         },
         "local-parity": {
           "title": "Local Everywhere",
           "list_0": "<strong>Practically anything</strong> — web/mobile application, workflow, data pipeline or MMORPG can be represented with a single <b>docker-compose.yml</b>",
           "list_1": "<strong>Environment agnostic</strong> — is main feature of Docker",
           "list_2": "<strong>Run locally first</strong> — before pushing to CI/CD or production",
-          "kicker": "If you can run it locally — you can run it on Fibe",
-          "more": "Read more →"
+          "kicker": "Runs locally - runs on Fibe"
         }
       }
     },
@@ -448,10 +444,10 @@
       "lang_switch_hreflang": "en"
     },
     "hero": {
-      "eyebrow": "<span class=\"eyebrow__dot\" aria-hidden=\"true\"></span>\n            Чому <b>тобі</b>\n            <span class=\"eyebrow__swap\" aria-label=\"справді, а не просто можливо\">\n              <span class=\"eyebrow__strike\" aria-hidden=\"true\">можливо</span>\n              <span class=\"eyebrow__really\">справді</span>\n            </span>\n            варто Fibe-ити?",
+      "eyebrow": "<span class=\"eyebrow__dot\" aria-hidden=\"true\"></span>\n            Чому <b>тобі</b>\n            <span class=\"eyebrow__swap\" aria-label=\"справді, а не просто можливо\">\n              <span class=\"eyebrow__strike\" aria-hidden=\"true\">можливо</span>\n              <span class=\"eyebrow__really\">справді</span>\n            </span>\n            варто файбити?",
       "title": "Смартфон потрібен кожному<br>\n            <span class=\"hero__title-em\">У 2007 багато хто сумнівався</span>",
       "lede": "Сьогодні ми всі залежимо від софту.\n            Інтернет створив застосунки, а смартфони принесли їх у наші кишені.\n            Fibe підлаштовує їх саме під те, що тобі потрібно",
-      "cta_0": "Знайди свої причини fibe-ити",
+      "cta_0": "Знайди свої причини файбити",
       "marquee": {
         "landing_pages": "лендінги",
         "crms": "CRM-ки",
@@ -483,13 +479,13 @@
         "tag": "Демо",
         "label": "Шлях Fibe у дії",
         "soon": "Скоро",
-        "aria": "Демо продукту: Шлях Fibe — незабаром"
+        "aria": "Демо продукту: Шлях Fibe"
       }
     },
     "matrix": {
       "eyebrow": "Що ти\n            <span class=\"eyebrow__swap\" aria-label=\"справді зробиш, а не просто міг би\">\n              <span class=\"eyebrow__strike\" aria-hidden=\"true\">міг би</span>\n              <span class=\"eyebrow__really\">зробиш</span>\n            </span>\n            з <strong>Fibe</strong>?",
       "title": "Багато причин користуватися смартфоном",
-      "sub": "А fibe-ити — ще більше. Причини залежать від твого бекграунду",
+      "sub": "А файбити — ще більше. Причини залежать від твого бекграунду",
       "axis_domain": "Знання предметної області",
       "axis_dev": "Досвід розробки",
       "tile": {
@@ -536,7 +532,7 @@
         "chip_tag": "А чому б ні?",
         "title": "Збудуй це, заради задоволення",
         "lede_0": "Хочеш узяти максимум від найновіших технологій, але не хочеш марнувати час на вивчення технічних нудот?",
-        "lede_1": "Fibe-ни це, щоб здивувати друзів:",
+        "lede_1": "Зафайби це, щоб здивувати друзів:",
         "list_0": "<strong>Teamspeak-сервер</strong> — для членів твоєї пативки.",
         "list_1": "<strong>Аліас</strong> — за своїми правилами.",
         "list_2": "<strong>Мультиплеєрна tower-defense гра</strong> — де ти граєш проти друзів, а не комп'ютера, кожен зі своєю фракцією.",
@@ -581,7 +577,7 @@
         "list_0": "<strong>Чат з AI</strong> — будуй пайплайни, які оживляють <strong>твою</strong> візію.",
         "list_1": "<strong>Отримай URL, щоб ділитися</strong> — з колегами чи клієнтами.",
         "list_2": "<strong>Ітеруй без страху</strong> — зроби бранч, спробуй рендер, викинь, спробуй знов.",
-        "action_title": "Fibe-ни це в Продукт",
+        "action_title": "Зафайби це в Продукт",
         "slide_0": {
           "title": "Чат, щоб зібрати локальну платформу інвойсів",
           "sub": "Збудуй власну локальну платформу для інвойсів з усім досвідом, який маєш у своїй країні",
@@ -729,7 +725,7 @@
         },
         "build-in-public": {
           "title": "Будуй публічно",
-          "desc": "Показуй, як ти fibe-уєш код, на публіку — для своїх підписників, студентів чи друзів",
+          "desc": "Показуй, як ти файбиш код, на публіку — для своїх підписників, студентів чи друзів",
           "scale_low": "Нудне",
           "scale_high": "Інноваційне",
           "more": "Дізнатися більше →"
@@ -759,32 +755,28 @@
           "list_0": "<strong>Керований сервіс</strong> — дай Fibe керувати всім: від SSL до LLM",
           "list_1": "<strong>Або сел-хост</strong> — або підключи власний сервер із локальною LLM і дай Fibe оркеструвати: один SSH-порт, щоб правити всіма",
           "list_2": "<strong>Ти вирішуєш</strong> — скільки контролю й відповідальності <b>ти</b> хочеш",
-          "kicker": "Поверни його собі",
-          "more": "Читати далі →"
+          "kicker": "Поверни його собі"
         },
         "flat-pricing": {
           "title": "Передбачуваний рахунок",
           "list_0": "<strong>Одна цифра за сервер</strong> — обери коробку, плати за коробку. Який би не був розмір — одна фіксована плата.",
           "list_1": "<strong>Жодного per-seat</strong> — запроси 5 колег чи 500. Той самий рахунок.",
           "list_2": "<strong>Виріс із плану?</strong> — просто апгрейдь сервер. Новий план, та сама форма: одна цифра.",
-          "kicker": "Твій рахунок масштабується із залізом, а не з кількістю людей. Передбачуваний у перший день, передбачуваний на третій рік.",
-          "more": "Читати далі →"
+          "kicker": "Твій рахунок масштабується із залізом, а не з кількістю людей. Передбачуваний у перший день, передбачуваний на третій рік."
         },
         "boring-core": {
           "title": "Нудне ядро",
           "list_0": "<strong>Продукт — це середовища</strong> — справжні, full-stack, ізольовані Docker-хости. Натисни кнопку або підіймай програмно.",
           "list_1": "<strong>Та сама поверхня скрізь</strong> — веб UI, CLI, скрипт, агент. Усі лізуть в одні й ті ж API.",
           "list_2": "<strong>AI — це фіча, а не суть</strong> — вмонтуй усюди, або взагалі не вмонтовуй. Продукт усе одно працює.",
-          "kicker": "Нудна частина — це те, чим ти реально користуєшся. AI — це те, що робить її вп'ятеро швидшою.",
-          "more": "Читати далі →"
+          "kicker": "Нудна частина — це те, чим ти реально користуєшся. AI — це те, що робить її вп'ятеро швидшою."
         },
         "local-parity": {
           "title": "Локально всюди",
           "list_0": "<strong>Звичайний <code>docker-compose.yml</code></strong> — Fibe це тонкий враппер, а не власний DSL. Твій реп — джерело істини.",
           "list_1": "<strong>Перевір CI/CD на лептопі</strong> — прожени весь пайплайн локально. Пуш у прод — лише коли все зелене.",
           "list_2": "<strong>Той самий compose, де завгодно</strong> — твій лептоп, Fibe, машина колеги, air-gapped майданчик клієнта. Ідентична поведінка.",
-          "kicker": "Стандартний Docker. Стандартний Compose. Жодної магії між ними і тобою.",
-          "more": "Читати далі →"
+          "kicker": "Стандартний Docker. Стандартний Compose. Жодної магії між ними і тобою."
         }
       }
     },

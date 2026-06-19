@@ -649,9 +649,13 @@ window.FibeI18n = (() => {
       const lines = md.replace(/\r\n/g, "\n").split("\n");
       let html = "";
       let inList = false;
+      let inOList = false;
       let paraBuf = [];
       let inQuote = false;
       let quoteBuf = [];
+      let inCode = false;
+      let codeBuf = [];
+      let codeLang = "";
 
       const flushPara = () => {
         if (paraBuf.length) {
@@ -665,6 +669,12 @@ window.FibeI18n = (() => {
           inList = false;
         }
       };
+      const flushOList = () => {
+        if (inOList) {
+          html += "</ol>";
+          inOList = false;
+        }
+      };
       const flushQuote = () => {
         if (inQuote) {
           html += `<blockquote><p>${inlineMd(quoteBuf.join(" "))}</p></blockquote>`;
@@ -672,15 +682,38 @@ window.FibeI18n = (() => {
           quoteBuf = [];
         }
       };
+      const flushCode = () => {
+        if (inCode) {
+          html += `<pre><code${codeLang ? ` class="lang-${codeLang}"` : ""}>${escapeHtml(codeBuf.join("\n"))}</code></pre>`;
+          inCode = false;
+          codeBuf = [];
+          codeLang = "";
+        }
+      };
       const flushAll = () => {
         flushPara();
         flushList();
+        flushOList();
         flushQuote();
       };
 
       for (const raw of lines) {
         const line = raw.trimEnd();
-        if (/^###\s+/.test(line)) {
+        const fence = /^```(\w*)\s*$/.exec(line.trimStart());
+
+        // Inside a fenced code block: take every line verbatim (no inline
+        // parsing, no bullet/heading interpretation) until the closing ```.
+        if (inCode) {
+          if (fence) flushCode();
+          else codeBuf.push(raw);
+          continue;
+        }
+
+        if (fence) {
+          flushAll();
+          inCode = true;
+          codeLang = fence[1] || "";
+        } else if (/^###\s+/.test(line)) {
           flushAll();
           html += `<h3>${inlineMd(line.replace(/^###\s+/, ""))}</h3>`;
         } else if (/^##\s+/.test(line)) {
@@ -695,24 +728,37 @@ window.FibeI18n = (() => {
         } else if (/^[-*]\s+/.test(line)) {
           flushPara();
           flushQuote();
+          flushOList();
           if (!inList) {
             html += "<ul>";
             inList = true;
           }
           html += `<li>${inlineMd(line.replace(/^[-*]\s+/, ""))}</li>`;
+        } else if (/^\d+\.\s+/.test(line)) {
+          flushPara();
+          flushQuote();
+          flushList();
+          if (!inOList) {
+            html += "<ol>";
+            inOList = true;
+          }
+          html += `<li>${inlineMd(line.replace(/^\d+\.\s+/, ""))}</li>`;
         } else if (/^>\s?/.test(line)) {
           flushPara();
           flushList();
+          flushOList();
           inQuote = true;
           quoteBuf.push(line.replace(/^>\s?/, ""));
         } else if (line.trim() === "") {
           flushAll();
         } else {
           flushList();
+          flushOList();
           flushQuote();
           paraBuf.push(line);
         }
       }
+      flushCode(); // close an unterminated fence defensively
       flushAll();
       return html;
     };
@@ -753,7 +799,6 @@ window.FibeI18n = (() => {
     // attribute names the markdown folder under /assets/.
     const triggers = [
       { attr: "data-solution-more", folder: "solutions" },
-      { attr: "data-capture-more",  folder: "principles" },
     ];
     triggers.forEach(({ attr, folder }) => {
       document.querySelectorAll(`[${attr}]`).forEach((btn) => {

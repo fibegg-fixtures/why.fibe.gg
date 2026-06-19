@@ -162,10 +162,13 @@
             <a class="drawer__lang" hreflang="en" href="/" data-i18n="drawer.lang_switch_label" data-i18n-attr="hreflang=drawer.lang_switch_hreflang;href=drawer.lang_switch_href">English</a>
             <a class="btn btn--primary drawer__cta" href="https://fibe.gg/" rel="noopener" data-i18n="drawer.try_fibe">fibe →</a>
             <nav class="drawer__family" aria-label="Family">
-              <a href="https://fibe.gg/" rel="noopener">fibe.gg</a>
-              <a href="https://when.fibe.gg/" rel="noopener">when</a>
-              <a href="https://where.fibe.gg/" rel="noopener">where</a>
-              <a href="https://whats.fibe.gg/" rel="noopener">whats</a>
+              <a href="https://fibe.gg/" rel="noopener" data-i18n="footer.family.fibe_gg">fibe.gg</a>
+              <a href="https://why.fibe.gg/" aria-current="page" data-i18n="footer.family.why">why</a>
+              <a href="https://where.fibe.gg/" rel="noopener" data-i18n="footer.family.where">where</a>
+              <a href="https://when.fibe.gg/" rel="noopener" data-i18n="footer.family.when">when</a>
+              <a href="https://whats.fibe.gg/" rel="noopener" data-i18n="footer.family.whats">whats</a>
+              <a href="https://faq.fibe.gg/" rel="noopener" data-i18n="footer.family.faq">faq</a>
+              <a href="https://blog.fibe.gg/" rel="noopener" data-i18n="footer.family.blog">blog</a>
             </nav>
           </div>
       </aside>
@@ -330,18 +333,12 @@
   </svg>
             </figure>
 
-            <!-- Video placeholder — a viewing chamber beside the Fibe Way.
-                 When the demo exists, swap .hero__video-screen's inner for a
-                 <video>/<iframe>, make the figure a <button>, and drop the
-                 "Soon" chip. Until then it's a clearly-marked placeholder. -->
-            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria" aria-label="Демо продукту: Шлях Fibe — незабаром">
-              <span class="hero__video-screen" aria-hidden="true">
-                <span class="hero__video-tag" data-i18n="hero.video.tag">Демо</span>
-                <span class="hero__video-soon" data-i18n="hero.video.soon">Скоро</span>
-                <span class="hero__video-play">
-                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>
-                </span>
-                <span class="hero__video-bar"><span class="hero__video-bar-fill"></span></span>
+            <!-- Demo video — the viewing chamber beside the Fibe Way, now live.
+                 Rumble embed (iframe) fills the 16:9 screen; the screen's HUD
+                 brackets overlay it and the CRT grain sits behind it. -->
+            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria" aria-label="Демо продукту: Шлях Fibe">
+              <span class="hero__video-screen">
+                <iframe class="hero__video-frame" src="https://rumble.com/embed/v79bcpq/?pub=4p9e2e" data-i18n-attr="title=hero.video.label" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; clipboard-write" allowfullscreen title="Шлях Fibe у дії"></iframe>
               </span>
               <figcaption class="hero__video-label" data-i18n="hero.video.label">Шлях Fibe у дії</figcaption>
             </figure>
@@ -358,7 +355,7 @@
               <span class="eyebrow__strike" aria-hidden="true">можливо</span>
               <span class="eyebrow__really">справді</span>
             </span>
-            варто Fibe-ити?</p>
+            варто файбити?</p>
             </a>
           </div>
         </div>
@@ -403,7 +400,7 @@
         <header class="section-head">
 
           <h2 id="reasons-title" data-i18n="matrix.title">Багато причин користуватися смартфоном</h2>
-          <p class="section-sub" data-i18n="matrix.sub">А fibe-ити — ще більше. Причини залежать від твого бекграунду</p>
+          <p class="section-sub" data-i18n="matrix.sub">А файбити — ще більше. Причини залежать від твого бекграунду</p>
         </header>
 
         <div class="matrix">
@@ -512,7 +509,7 @@
           <div class="persona__body">
             <h2 id="p-fun-title" class="persona__title" data-i18n="persona.fun.title">Збудуй це, заради задоволення</h2>
             <p class="persona__lede" data-i18n="persona.fun.lede_0">Хочеш узяти максимум від найновіших технологій, але не хочеш марнувати час на вивчення технічних нудот?</p>
-            <p class="persona__lede" data-i18n="persona.fun.lede_1">Fibe-ни це, щоб здивувати друзів:</p>
+            <p class="persona__lede" data-i18n="persona.fun.lede_1">Зафайби це, щоб здивувати друзів:</p>
             <ul class="persona__list">
               <li data-i18n="persona.fun.list_0"><strong>Teamspeak-сервер</strong> — для членів твоєї пативки.</li>
               <li data-i18n="persona.fun.list_1"><strong>Аліас</strong> — за своїми правилами.</li>
@@ -689,7 +686,7 @@
         <div id="p-product-action" class="persona__action">
           <header class="persona__action-head">
             <p class="persona__action-tag" data-i18n="persona.product.eyebrow">Спрямуй свою експертизу</p>
-            <h3 class="persona__action-title" data-i18n="persona.product.action_title">Fibe-ни це в Продукт</h3>
+            <h3 class="persona__action-title" data-i18n="persona.product.action_title">Зафайби це в Продукт</h3>
           </header>
           <div class="slider-shell">
             <button class="slider__btn slider__btn--prev" type="button" aria-label="Previous walkthroughs" data-slider-prev>‹</button>
@@ -1055,9 +1052,8 @@
       <!-- SOLUTIONS -->
       
 
-      <!-- CAPTURE — the fundamentals people miss at first. Three cards, each
-           with a "Read more" link that opens a modal rendered from a markdown
-           file under /assets/principles/{slug}.md. -->
+      <!-- CAPTURE — the fundamentals people miss at first. Four cards. -->
+
       
 
       <!-- CLOSING — also acts as the "how Fibe pulls this off" reference:
@@ -1194,7 +1190,7 @@
               </span>
               <h3 class="solution__title" data-i18n="solutions.card.build-in-public.title">Будуй публічно</h3>
             </header>
-            <p class="solution__desc" data-i18n="solutions.card.build-in-public.desc">Показуй, як ти fibe-уєш код, на публіку — для своїх підписників, студентів чи друзів</p>
+            <p class="solution__desc" data-i18n="solutions.card.build-in-public.desc">Показуй, як ти файбиш код, на публіку — для своїх підписників, студентів чи друзів</p>
             <div class="solution__scale" aria-label="Novelty: 65 of 100">
               <div class="solution__scale-labels"><span data-i18n="solutions.card.build-in-public.scale_low">Нудне</span><span data-i18n="solutions.card.build-in-public.scale_high">Інноваційне</span></div>
               <div class="solution__scale-bar"><span class="solution__scale-mark" style="left: 65%"></span></div>
@@ -1265,7 +1261,6 @@
               <li data-i18n="capture.card.total-control.list_2"><strong>Ти вирішуєш</strong> — скільки контролю й відповідальності <b>ти</b> хочеш</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.total-control.kicker">Поверни його собі</p>
-            <button class="capture__more" type="button" data-capture-more="total-control" data-i18n="capture.card.total-control.more">Читати далі →</button>
           </article>
 
           <!-- 02: Flat per-server pricing -->
@@ -1290,7 +1285,6 @@
               <li data-i18n="capture.card.flat-pricing.list_2"><strong>Виріс із плану?</strong> — просто апгрейдь сервер. Новий план, та сама форма: одна цифра.</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.flat-pricing.kicker">Твій рахунок масштабується із залізом, а не з кількістю людей. Передбачуваний у перший день, передбачуваний на третій рік.</p>
-            <button class="capture__more" type="button" data-capture-more="flat-pricing" data-i18n="capture.card.flat-pricing.more">Читати далі →</button>
           </article>
 
           <!-- 03: Boring core, AI on top -->
@@ -1313,7 +1307,6 @@
               <li data-i18n="capture.card.boring-core.list_2"><strong>AI — це фіча, а не суть</strong> — вмонтуй усюди, або взагалі не вмонтовуй. Продукт усе одно працює.</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.boring-core.kicker">Нудна частина — це те, чим ти реально користуєшся. AI — це те, що робить її вп'ятеро швидшою.</p>
-            <button class="capture__more" type="button" data-capture-more="boring-core" data-i18n="capture.card.boring-core.more">Читати далі →</button>
           </article>
 
           <!-- 04: Local↔Fibe parity via docker-compose -->
@@ -1339,7 +1332,6 @@
               <li data-i18n="capture.card.local-parity.list_2"><strong>Той самий compose, де завгодно</strong> — твій лептоп, Fibe, машина колеги, air-gapped майданчик клієнта. Ідентична поведінка.</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.local-parity.kicker">Стандартний Docker. Стандартний Compose. Жодної магії між ними і тобою.</p>
-            <button class="capture__more" type="button" data-capture-more="local-parity" data-i18n="capture.card.local-parity.more">Читати далі →</button>
           </article>
         </div>
       </section>

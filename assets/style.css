@@ -224,8 +224,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--fg-3);
   text-align: center;
   text-decoration: none !important;
-  border-top: 1px solid var(--ink-4);
-  margin-top: 0.6rem;
 }
 .drawer__lang:hover { color: var(--brand-200); }
 
@@ -366,16 +364,30 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 1rem;
 }
 .drawer__family {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.6rem;
+  /* Single scrollable row — the family has grown past what fits, so let it
+     scroll horizontally rather than wrap into ragged rows. */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
   font-family: var(--font-mono);
   font-size: 0.82rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent);
 }
+.drawer__family::-webkit-scrollbar { display: none; }
 .drawer__family a {
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 0.3rem 0.55rem;
   color: var(--fg-4);
   border-radius: 6px;
 }
 .drawer__family a:hover { color: var(--brand-300); background: rgba(255,255,255,0.04); }
+.drawer__family a[aria-current="page"] { color: var(--brand-300); }
 
 body.is-drawer-open { overflow: hidden; }
 
@@ -447,9 +459,11 @@ body.is-drawer-open { overflow: hidden; }
    The hamburger toggle sits on the left, brand right next to it. */
 @media (max-width: 640px) {
   .nav__inner { gap: 0.6rem; padding: 0.5rem var(--pad-x); justify-content: flex-start; }
-  .nav__cta { display: none; }
   .nav__paths { display: none; }
-  .nav__inner > .nav__brand { display: none !important; }
+  /* Keep the "Fibe / why" wordmark next to the hamburger (like the other
+     family sites). Its auto right-margin absorbs the middle space so the
+     Try-Fibe CTA still sits at the right edge. */
+  .nav__brand { margin-right: auto; }
 }
 
 /* ──────────────────────────────────────────────
@@ -907,6 +921,17 @@ body.is-drawer-open { overflow: hidden; }
   border-color: color-mix(in srgb, var(--brand-500) 50%, var(--ink-4));
   transform: translateY(-2px);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.32), 0 26px 54px -22px rgba(0, 0, 0, 0.66);
+}
+/* Rumble embed fills the 16:9 chamber. It paints above the CRT grain (::before)
+   but below the HUD corner brackets (::after, z-index:1, pointer-events:none),
+   so the frame's identity survives without covering the video controls. */
+.hero__video-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 /* CRT grain + bottom vignette */
 .hero__video-screen::before {
@@ -1639,7 +1664,18 @@ body.is-drawer-open { overflow: hidden; }
   border-top: 1px solid var(--ink-4);
   background: var(--ink-1);
 }
-.persona:nth-of-type(even) {
+/* The whole page runs a light→dark→light→dark rhythm. The persona band sits
+   between a LIGHT "reasons" section above and a LIGHT "solutions" section
+   below, so it has to *start* on a dark step to alternate cleanly on both
+   seams. Which personas land on a dark step is pinned explicitly here — not
+   by :nth-of-type — because the surrounding non-persona sections offset the
+   element count and silently broke the rhythm (reasons + p-fun both rendered
+   light). Dark steps: fun · product · compete · research.
+   Light steps fall through to the base .persona rule: problem · sharpen · cto. */
+.persona--07,
+.persona--02,
+.persona--04,
+.persona--05 {
   background:
     radial-gradient(900px 400px at 80% 0%, color-mix(in srgb, var(--persona-accent, var(--brand-500)) 7%, transparent), transparent 60%),
     var(--ink-2);
@@ -2398,16 +2434,22 @@ body.is-drawer-open { overflow: hidden; }
    each with a Read-more button that opens the shared modal.
    ────────────────────────────────────────────── */
 .capture {
-  max-width: var(--maxw);
-  margin: 0 auto;
+  /* DARK step before the close. Full-bleed field (no max-width on the section
+     itself) so the dark band spans edge-to-edge; the inner head + grid carry
+     the max-width instead. Cards invert to raised/light below so they still
+     read against the darker field. */
   padding: clamp(4rem, 6vw, 6rem) var(--pad-x);
   border-top: 1px solid var(--ink-4);
+  background:
+    radial-gradient(900px 400px at 80% 0%, color-mix(in srgb, var(--brand-500) 6%, transparent), transparent 60%),
+    var(--ink-2);
 }
 .capture__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin-top: 2rem;
+  max-width: var(--maxw);
+  margin: 2rem auto 0;
 }
 @media (min-width: 600px) {
   .capture__grid {
@@ -2427,9 +2469,13 @@ body.is-drawer-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   padding: 1.25rem 1.3rem 1.35rem;
-  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink-3) 100%);
-  border: 1px solid var(--ink-4);
+  /* Raised tile on the dark .capture field — lighter than the surrounding
+     ink-2 so it reads as elevated (the page's usual recessed-well figure/ground
+     is inverted here, since the field itself is dark). */
+  background: linear-gradient(180deg, var(--ink-1) 0%, color-mix(in srgb, var(--ink-1) 82%, var(--ink-2)) 100%);
+  border: 1px solid var(--ink-5);
   border-radius: var(--radius-lg);
+  box-shadow: 0 10px 26px -16px rgba(0, 0, 0, 0.6);
   isolation: isolate;
   transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
@@ -2486,8 +2532,6 @@ body.is-drawer-open { overflow: hidden; }
   background: var(--gold-500);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold-500) 20%, transparent);
 }
-.capture__card:nth-child(even) .capture__more { color: var(--gold-300); }
-.capture__card:nth-child(even) .capture__more:hover { color: var(--gold-200); }
 
 /* Tag subheader ("WHERE IT RUNS" / "HOW YOU PAY" / etc.) — no longer
    rendered. Kept as a defensive rule in case the markup is restored. */
@@ -2535,30 +2579,7 @@ body.is-drawer-open { overflow: hidden; }
   line-height: 1.5;
   color: var(--fg-2);
   font-style: italic;
-  flex: 1; /* push the read-more link to card bottom */
-}
-
-.capture__more {
-  align-self: flex-start;
-  background: none;
-  border: none;
-  padding: 0.25rem 0;
-  font: inherit;
-  color: var(--brand-300);
-  cursor: pointer;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.005em;
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-.capture__more:hover {
-  color: var(--brand-200);
-  transform: translateX(2px);
-}
-.capture__more:focus-visible {
-  outline: 2px solid var(--brand-400);
-  outline-offset: 3px;
-  border-radius: 4px;
+  margin-top: auto; /* pin the italic line to the card bottom so they align across cards */
 }
 
 /* ──────────────────────────────────────────────
@@ -3016,6 +3037,26 @@ body.is-drawer-open { overflow: hidden; }
   padding: 0.08em 0.35em;
   border-radius: 5px;
 }
+/* Fenced code block — a recessed well; reset the inline-code pill on the
+   <code> inside so only the <pre> carries the framing. */
+.modal__content pre {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--ink-0);
+  border: 1px solid var(--ink-4);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.modal__content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  color: var(--fg-2);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  white-space: pre;
+}
 .modal__content a {
   color: var(--brand-300);
   text-decoration: underline;
@@ -3046,6 +3087,20 @@ body.is-drawer-open { overflow: hidden; }
   border-radius: 2px;
   background: var(--brand-500);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-500) 18%, transparent);
+}
+.modal__content ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+  list-style: decimal;
+}
+.modal__content ol li {
+  margin-bottom: 0.45rem;
+  padding-left: 0.2rem;
+}
+.modal__content ol li::marker {
+  color: var(--brand-300);
+  font-family: var(--font-mono);
+  font-weight: 600;
 }
 .modal__content blockquote {
   margin: 1rem 0;

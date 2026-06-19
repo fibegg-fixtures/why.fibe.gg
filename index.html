@@ -162,10 +162,13 @@
             <a class="drawer__lang" hreflang="uk" href="/uk/" data-i18n="drawer.lang_switch_label" data-i18n-attr="hreflang=drawer.lang_switch_hreflang;href=drawer.lang_switch_href">Українська</a>
             <a class="btn btn--primary drawer__cta" href="https://fibe.gg/" rel="noopener" data-i18n="drawer.try_fibe">fibe →</a>
             <nav class="drawer__family" aria-label="Family">
-              <a href="https://fibe.gg/" rel="noopener">fibe.gg</a>
-              <a href="https://when.fibe.gg/" rel="noopener">when</a>
-              <a href="https://where.fibe.gg/" rel="noopener">where</a>
-              <a href="https://whats.fibe.gg/" rel="noopener">whats</a>
+              <a href="https://fibe.gg/" rel="noopener" data-i18n="footer.family.fibe_gg">fibe.gg</a>
+              <a href="https://why.fibe.gg/" aria-current="page" data-i18n="footer.family.why">why</a>
+              <a href="https://where.fibe.gg/" rel="noopener" data-i18n="footer.family.where">where</a>
+              <a href="https://when.fibe.gg/" rel="noopener" data-i18n="footer.family.when">when</a>
+              <a href="https://whats.fibe.gg/" rel="noopener" data-i18n="footer.family.whats">whats</a>
+              <a href="https://faq.fibe.gg/" rel="noopener" data-i18n="footer.family.faq">faq</a>
+              <a href="https://blog.fibe.gg/" rel="noopener" data-i18n="footer.family.blog">blog</a>
             </nav>
           </div>
       </aside>
@@ -330,18 +333,12 @@
   </svg>
             </figure>
 
-            <!-- Video placeholder — a viewing chamber beside the Fibe Way.
-                 When the demo exists, swap .hero__video-screen's inner for a
-                 <video>/<iframe>, make the figure a <button>, and drop the
-                 "Soon" chip. Until then it's a clearly-marked placeholder. -->
-            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria" aria-label="Product demo of the Fibe Way — coming soon">
-              <span class="hero__video-screen" aria-hidden="true">
-                <span class="hero__video-tag" data-i18n="hero.video.tag">Demo</span>
-                <span class="hero__video-soon" data-i18n="hero.video.soon">Soon</span>
-                <span class="hero__video-play">
-                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>
-                </span>
-                <span class="hero__video-bar"><span class="hero__video-bar-fill"></span></span>
+            <!-- Demo video — the viewing chamber beside the Fibe Way, now live.
+                 Rumble embed (iframe) fills the 16:9 screen; the screen's HUD
+                 brackets overlay it and the CRT grain sits behind it. -->
+            <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria" aria-label="Product demo of the Fibe Way">
+              <span class="hero__video-screen">
+                <iframe class="hero__video-frame" src="https://rumble.com/embed/v79bcpq/?pub=4p9e2e" data-i18n-attr="title=hero.video.label" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; clipboard-write" allowfullscreen title="The Fibe Way, in motion"></iframe>
               </span>
               <figcaption class="hero__video-label" data-i18n="hero.video.label">The Fibe Way, in motion</figcaption>
             </figure>
@@ -1055,9 +1052,8 @@
       <!-- SOLUTIONS -->
       
 
-      <!-- CAPTURE — the fundamentals people miss at first. Three cards, each
-           with a "Read more" link that opens a modal rendered from a markdown
-           file under /assets/principles/{slug}.md. -->
+      <!-- CAPTURE — the fundamentals people miss at first. Four cards. -->
+
       
 
       <!-- CLOSING — also acts as the "how Fibe pulls this off" reference:
@@ -1265,7 +1261,6 @@
               <li data-i18n="capture.card.total-control.list_2"><strong>You decide</strong> — how much control and responsibility <b>you</b> want</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.total-control.kicker">Bring it back</p>
-            <button class="capture__more" type="button" data-capture-more="total-control" data-i18n="capture.card.total-control.more">Read more →</button>
           </article>
 
           <!-- 02: Flat per-server pricing -->
@@ -1290,7 +1285,6 @@
               <li data-i18n="capture.card.flat-pricing.list_2"><strong>No opaque limits</strong> — pay only for extra compute and storage when you need it</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.flat-pricing.kicker">Scales with real work</p>
-            <button class="capture__more" type="button" data-capture-more="flat-pricing" data-i18n="capture.card.flat-pricing.more">Read more →</button>
           </article>
 
           <!-- 03: Boring core, AI on top -->
@@ -1313,7 +1307,6 @@
               <li data-i18n="capture.card.boring-core.list_2"><strong>Opt-in AI</strong> — when you decide it makes sense</li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.boring-core.kicker">Helps anyone start, scales with the skill</p>
-            <button class="capture__more" type="button" data-capture-more="boring-core" data-i18n="capture.card.boring-core.more">Read more →</button>
           </article>
 
           <!-- 04: Local↔Fibe parity via docker-compose -->
@@ -1338,8 +1331,7 @@
               <li data-i18n="capture.card.local-parity.list_1"><strong>Environment agnostic</strong> — is main feature of Docker</li>
               <li data-i18n="capture.card.local-parity.list_2"><strong>Run locally first</strong> — before pushing to CI/CD or production</li>
             </ul>
-            <p class="capture__kicker" data-i18n="capture.card.local-parity.kicker">If you can run it locally — you can run it on Fibe</p>
-            <button class="capture__more" type="button" data-capture-more="local-parity" data-i18n="capture.card.local-parity.more">Read more →</button>
+            <p class="capture__kicker" data-i18n="capture.card.local-parity.kicker">Runs locally - runs on Fibe</p>
           </article>
         </div>
       </section>

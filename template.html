@@ -169,10 +169,13 @@
             ></a>
             <a class="btn btn--primary drawer__cta" href="https://fibe.gg/" rel="noopener" data-i18n="drawer.try_fibe"></a>
             <nav class="drawer__family" aria-label="Family">
-              <a href="https://fibe.gg/" rel="noopener">fibe.gg</a>
-              <a href="https://when.fibe.gg/" rel="noopener">when</a>
-              <a href="https://where.fibe.gg/" rel="noopener">where</a>
-              <a href="https://whats.fibe.gg/" rel="noopener">whats</a>
+              <a href="https://fibe.gg/" rel="noopener" data-i18n="footer.family.fibe_gg"></a>
+              <a href="https://why.fibe.gg/" aria-current="page" data-i18n="footer.family.why"></a>
+              <a href="https://where.fibe.gg/" rel="noopener" data-i18n="footer.family.where"></a>
+              <a href="https://when.fibe.gg/" rel="noopener" data-i18n="footer.family.when"></a>
+              <a href="https://whats.fibe.gg/" rel="noopener" data-i18n="footer.family.whats"></a>
+              <a href="https://faq.fibe.gg/" rel="noopener" data-i18n="footer.family.faq"></a>
+              <a href="https://blog.fibe.gg/" rel="noopener" data-i18n="footer.family.blog"></a>
             </nav>
           </div>
       </aside>
@@ -194,18 +197,17 @@
               <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" data-hero-graph></svg>
             </figure>
 
-            <!-- Video placeholder — a viewing chamber beside the Fibe Way.
-                 When the demo exists, swap .hero__video-screen's inner for a
-                 <video>/<iframe>, make the figure a <button>, and drop the
-                 "Soon" chip. Until then it's a clearly-marked placeholder. -->
+            <!-- Demo video — the viewing chamber beside the Fibe Way, now live.
+                 Rumble embed (iframe) fills the 16:9 screen; the screen's HUD
+                 brackets overlay it and the CRT grain sits behind it. -->
             <figure class="hero__video" data-i18n-attr="aria-label=hero.video.aria">
-              <span class="hero__video-screen" aria-hidden="true">
-                <span class="hero__video-tag" data-i18n="hero.video.tag"></span>
-                <span class="hero__video-soon" data-i18n="hero.video.soon"></span>
-                <span class="hero__video-play">
-                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                </span>
-                <span class="hero__video-bar"><span class="hero__video-bar-fill"></span></span>
+              <span class="hero__video-screen">
+                <iframe class="hero__video-frame"
+                        src="https://rumble.com/embed/v79bcpq/?pub=4p9e2e"
+                        data-i18n-attr="title=hero.video.label"
+                        loading="lazy"
+                        allow="autoplay; fullscreen; picture-in-picture; encrypted-media; clipboard-write"
+                        allowfullscreen></iframe>
               </span>
               <figcaption class="hero__video-label" data-i18n="hero.video.label"></figcaption>
             </figure>
@@ -909,9 +911,8 @@
       <!-- SOLUTIONS -->
       
 
-      <!-- CAPTURE — the fundamentals people miss at first. Three cards, each
-           with a "Read more" link that opens a modal rendered from a markdown
-           file under /assets/principles/{slug}.md. -->
+      <!-- CAPTURE — the fundamentals people miss at first. Four cards. -->
+
       
 
       <!-- CLOSING — also acts as the "how Fibe pulls this off" reference:
@@ -1119,7 +1120,6 @@
               <li data-i18n="capture.card.total-control.list_2"></li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.total-control.kicker"></p>
-            <button class="capture__more" type="button" data-capture-more="total-control" data-i18n="capture.card.total-control.more"></button>
           </article>
 
           <!-- 02: Flat per-server pricing -->
@@ -1144,7 +1144,6 @@
               <li data-i18n="capture.card.flat-pricing.list_2"></li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.flat-pricing.kicker"></p>
-            <button class="capture__more" type="button" data-capture-more="flat-pricing" data-i18n="capture.card.flat-pricing.more"></button>
           </article>
 
           <!-- 03: Boring core, AI on top -->
@@ -1167,7 +1166,6 @@
               <li data-i18n="capture.card.boring-core.list_2"></li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.boring-core.kicker"></p>
-            <button class="capture__more" type="button" data-capture-more="boring-core" data-i18n="capture.card.boring-core.more"></button>
           </article>
 
           <!-- 04: Local↔Fibe parity via docker-compose -->
@@ -1193,7 +1191,6 @@
               <li data-i18n="capture.card.local-parity.list_2"></li>
             </ul>
             <p class="capture__kicker" data-i18n="capture.card.local-parity.kicker"></p>
-            <button class="capture__more" type="button" data-capture-more="local-parity" data-i18n="capture.card.local-parity.more"></button>
           </article>
         </div>
       </section>
